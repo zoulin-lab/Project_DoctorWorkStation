@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace frm_SignUp.Properties
+namespace Doctor_sWorkStation.Properties
 {
 
 

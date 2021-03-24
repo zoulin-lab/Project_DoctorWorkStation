@@ -1,4 +1,4 @@
-﻿namespace frm_SignUp
+﻿namespace Doctor_sWorkStation
 {
     partial class frm_SignUp
     {
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // frm_SignUp
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "frm_SignUp";
-            this.Text = "注册";
-            this.ResumeLayout(false);
-
+            this.Text = "Form1";
         }
 
         #endregion

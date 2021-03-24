@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace frm_SignUp
+namespace Doctor_sWorkStation
 {
     static class Program
     {

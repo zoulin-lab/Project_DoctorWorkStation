@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace frm_SignUp
+namespace Doctor_sWorkStation
 {
     public partial class frm_Login : Form
     {

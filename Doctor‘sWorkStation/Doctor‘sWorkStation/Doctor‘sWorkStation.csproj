@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD63DFA8-3560-44B6-A3F0-3778F329871A}</ProjectGuid>
+    <ProjectGuid>{DAED2C59-137C-429F-965D-33195CF6153B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>frm_SignUp</RootNamespace>
-    <AssemblyName>frm_SignUp</AssemblyName>
+    <RootNamespace>Doctor_sWorkStation</RootNamespace>
+    <AssemblyName>Doctor‘sWorkStation</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,12 +60,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frm_Login.resx">
-      <DependentUpon>frm_Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_SignUp.resx">
-      <DependentUpon>frm_SignUp.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
