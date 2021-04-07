@@ -120,10 +120,6 @@
             // cbxOffices
             // 
             this.cbxOffices.FormattingEnabled = true;
-            this.cbxOffices.Items.AddRange(new object[] {
-            "消化内科",
-            "耳鼻科",
-            "眼科"});
             this.cbxOffices.Location = new System.Drawing.Point(156, 197);
             this.cbxOffices.Name = "cbxOffices";
             this.cbxOffices.Size = new System.Drawing.Size(207, 26);

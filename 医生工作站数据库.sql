@@ -29,10 +29,10 @@ INSERT tb_Doctor
 	   VALUES
 	   ('D001','张三',HashBytes('MD5','001'),'呼吸内科'),
 	   ('D002','李四',HashBytes('MD5','002'),'眼科'),
-	   ('D003','王五',HashBytes('MD5','003'),'耳鼻科')
+	   ('D003','王五',HashBytes('MD5','003'),'消化内科')
 
 SELECT * FROM tb_Doctor
-
+DROP TABLE tb_Patient
 CREATE TABLE tb_Patient
        (No
 	   VARCHAR(10)
@@ -56,7 +56,9 @@ CREATE TABLE tb_Patient
 	   WorkPlace  --单位
 	   VARCHAR(200),
 	   Birthday
-	   DATE)
+	   DATE,
+	   Picture
+	   VARBINARY(MAX))
 delete tb_Patient
 INSERT tb_Patient
        (No,Name,Gender,Age,IsMarried,Nation,Career,Address,WorkPlace,Birthday)
@@ -67,6 +69,7 @@ INSERT tb_Patient
 
 SELECT * FROM tb_Patient
 
+DROP TABLE tb_MedicalRecord
 CREATE TABLE tb_MedicalRecord
        (No
 	   VARCHAR(10)
@@ -82,27 +85,69 @@ CREATE TABLE tb_MedicalRecord
 	   INT,
 	   BedNo  --床号
 	   VARCHAR(10),
+	   OfficesNo  --入院科室
+	   INT,
+	   InDate  --入院日期
+	   DATE, 
 	   MainDiagnoseContent  --主要诊断
 	   VARCHAR(200),
-	   Doctor
+	   Doctor  --医生
 	   VARCHAR(20),
+	   OtherSitiuation  --转科情况
+	   VARCHAR(200),
+	   OutOfficesNo  --出院科室
+	   INT,
+	   OutDate
+	   DATE,
 	   CONSTRAINT pk_MedicalRecord_No_TiHsNo	/*创建主键约束	*/							
 	   PRIMARY KEY(No,ThisNo))	
 
 
 DELETE tb_MedicalRecord
 INSERT tb_MedicalRecord
-       (No,ThisNo,Name,InHospitalNo,InHospitalCount,BedNo,MainDiagnoseContent,Doctor)
+       (No,ThisNo,Name,InHospitalNo,InHospitalCount,BedNo,OfficesNo,InDate,MainDiagnoseContent,Doctor,OtherSitiuation,OutOfficesNo,OutDate)
 	   VALUES
-	   ('0005','M0001','李焕','I0001',2,'0001','呼吸道感染','张三'),
-	   ('1143868','M0002','赵春兰','I0002',1,'0002','泌尿感染','钱六'),
-	   ('1225754','M0003','韩凤革','I0003',4,'0003','蛛网膜下出血','李四')
+	   ('0005','M0001','李焕','I0001',2,'0001',1,'2020/04/01','呼吸道感染','张三','','',''),
+	   ('1143868','M0002','赵春兰','I0002',1,'0002',4,'2020/04/01','泌尿感染','钱六','','',''),
+	   ('1225754','M0003','韩凤革','I0003',4,'0003',3,'2020/04/01','蛛网膜下出血','李四','','','')
 
 SELECT * FROM tb_MedicalRecord 
 
+DROP TABLE tb_Offices
+CREATE TABLE tb_Offices
+       (OfficesNo
+	   INT
+	   CONSTRAINT pk_Offices_OfficesNo	/*创建主键约束	*/							
+	   PRIMARY KEY(OfficesNo)		
+	   NOT NULL,
+	   Name
+	   VARCHAR(20))
+
+INSERT tb_Offices
+       (OfficesNo,Name)
+	   VALUES
+	   (1,'呼吸内科'),
+	   (2,'消化内科'),
+	   (3,'眼科'),
+	   (4,'内分泌科')
+
+	   SELECT p.No AS Patient,p.Name,p.Gender,p.Career,p.Birthday,mr.InHospitalNo,MR.InHospitalCount,MR.OfficesNo,p.Picture,mr.InDate,MR.OutOfficesNo,MR.OutDate,MR.OtherSitiuation
+	   FROM tb_Patient AS P JOIN tb_MedicalRecord AS MR ON P.No=MR.No
+	   WHERE P.No='1143868'
+	   
+	   --更新两张表
+	   BEGIN TRAN
+	   UPDATE tb_Patient 
+	   SET Name='',Gender='',Career='',Birthday=''
+	   WHERE No=''
+	   UPDATE tb_MedicalRecord
+	   SET InHospitalNo='',InHospitalCount='',OfficesNo='',InDate='',OtherSitiuation='',OutOfficesNo='',OutDate=''
+	   WHERE No=''
+	   COMMIT
 
 
 
+	    SELECT * FROM tb_Offices
 
 
 

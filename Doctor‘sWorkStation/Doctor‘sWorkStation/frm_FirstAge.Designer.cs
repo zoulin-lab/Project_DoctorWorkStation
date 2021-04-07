@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.msTools = new System.Windows.Forms.MenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lbPatient = new System.Windows.Forms.ListBox();
+            this.lblPatient = new System.Windows.Forms.Label();
             this.病历ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,25 +68,35 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.主题帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.lblPatient = new System.Windows.Forms.Label();
+            this.msTools = new System.Windows.Forms.MenuStrip();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbObject = new System.Windows.Forms.ListBox();
             this.msTools.SuspendLayout();
             this.SuspendLayout();
             // 
-            // msTools
+            // contextMenuStrip1
             // 
-            this.msTools.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.msTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.病历ToolStripMenuItem,
-            this.查看ToolStripMenuItem,
-            this.工具ToolStripMenuItem,
-            this.帮助HToolStripMenuItem});
-            this.msTools.Location = new System.Drawing.Point(0, 0);
-            this.msTools.Name = "msTools";
-            this.msTools.Size = new System.Drawing.Size(1100, 32);
-            this.msTools.TabIndex = 0;
-            this.msTools.Text = "menuStrip1";
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // lbPatient
+            // 
+            this.lbPatient.FormattingEnabled = true;
+            this.lbPatient.ItemHeight = 18;
+            this.lbPatient.Location = new System.Drawing.Point(12, 75);
+            this.lbPatient.Name = "lbPatient";
+            this.lbPatient.Size = new System.Drawing.Size(176, 526);
+            this.lbPatient.TabIndex = 0;
+            // 
+            // lblPatient
+            // 
+            this.lblPatient.AutoSize = true;
+            this.lblPatient.Location = new System.Drawing.Point(12, 43);
+            this.lblPatient.Name = "lblPatient";
+            this.lblPatient.Size = new System.Drawing.Size(80, 18);
+            this.lblPatient.TabIndex = 1;
+            this.lblPatient.Text = "病人列表";
             // 
             // 病历ToolStripMenuItem
             // 
@@ -103,44 +115,44 @@
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.新建ToolStripMenuItem.Text = "新建";
             // 
             // 打开ToolStripMenuItem
             // 
             this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.打开ToolStripMenuItem.Text = "打开";
             // 
             // 移入ToolStripMenuItem
             // 
             this.移入ToolStripMenuItem.Name = "移入ToolStripMenuItem";
-            this.移入ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.移入ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.移入ToolStripMenuItem.Text = "移入";
             // 
             // 移出ToolStripMenuItem
             // 
             this.移出ToolStripMenuItem.Name = "移出ToolStripMenuItem";
-            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.移出ToolStripMenuItem.Text = "移出";
             // 
             // 提交ToolStripMenuItem
             // 
             this.提交ToolStripMenuItem.Name = "提交ToolStripMenuItem";
-            this.提交ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.提交ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.提交ToolStripMenuItem.Text = "提交";
             // 
             // 属性ToolStripMenuItem
             // 
             this.属性ToolStripMenuItem.Name = "属性ToolStripMenuItem";
-            this.属性ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.属性ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.属性ToolStripMenuItem.Text = "属性";
             this.属性ToolStripMenuItem.Click += new System.EventHandler(this.属性ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.退出ToolStripMenuItem.Text = "退出";
             // 
             // 查看ToolStripMenuItem
@@ -340,37 +352,53 @@
             this.关于ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
-            // contextMenuStrip1
+            // msTools
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.msTools.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.msTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.病历ToolStripMenuItem,
+            this.查看ToolStripMenuItem,
+            this.工具ToolStripMenuItem,
+            this.帮助HToolStripMenuItem});
+            this.msTools.Location = new System.Drawing.Point(0, 0);
+            this.msTools.Name = "msTools";
+            this.msTools.Size = new System.Drawing.Size(1100, 32);
+            this.msTools.TabIndex = 0;
+            this.msTools.Text = "menuStrip1";
             // 
-            // listBox1
+            // label1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(12, 75);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(176, 544);
-            this.listBox1.TabIndex = 0;
+            this.label1.Location = new System.Drawing.Point(241, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "主题";
             // 
-            // lblPatient
+            // lbObject
             // 
-            this.lblPatient.AutoSize = true;
-            this.lblPatient.Location = new System.Drawing.Point(12, 43);
-            this.lblPatient.Name = "lblPatient";
-            this.lblPatient.Size = new System.Drawing.Size(80, 18);
-            this.lblPatient.TabIndex = 1;
-            this.lblPatient.Text = "病人列表";
+            this.lbObject.FormattingEnabled = true;
+            this.lbObject.ItemHeight = 18;
+            this.lbObject.Items.AddRange(new object[] {
+            "病程",
+            "检查",
+            "检验",
+            "首页",
+            "体温",
+            "医嘱"});
+            this.lbObject.Location = new System.Drawing.Point(244, 75);
+            this.lbObject.Name = "lbObject";
+            this.lbObject.Size = new System.Drawing.Size(829, 526);
+            this.lbObject.TabIndex = 2;
             // 
             // frm_FirstAge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 627);
+            this.Controls.Add(this.lbObject);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPatient);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lbPatient);
             this.Controls.Add(this.msTools);
             this.MainMenuStrip = this.msTools;
             this.Name = "frm_FirstAge";
@@ -383,8 +411,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip msTools;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ListBox lbPatient;
+        private System.Windows.Forms.Label lblPatient;
         private System.Windows.Forms.ToolStripMenuItem 病历ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 新建ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
@@ -421,8 +450,8 @@
         private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 主题帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label lblPatient;
+        private System.Windows.Forms.MenuStrip msTools;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lbObject;
     }
 }
