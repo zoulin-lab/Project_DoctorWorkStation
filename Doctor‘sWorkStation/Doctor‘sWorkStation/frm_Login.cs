@@ -50,6 +50,8 @@ namespace Doctor_sWorkStation
             if (rowCount == 1)                                                                          //若查得所输用户号相应的1行记录；
             {
                 MessageBox.Show("登录成功。");															//显示正确提示；
+                frm_FirstAge firstAge = new frm_FirstAge();
+                firstAge.ShowDialog();
             }
             else                                                                                        //否则；
             {
@@ -63,6 +65,11 @@ namespace Doctor_sWorkStation
         {
             frm_SignUp signUp = new frm_SignUp();
             signUp.ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            return;
         }
     }
 }

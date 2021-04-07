@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_FirstAge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_FirstAge.Designer.cs">
+      <DependentUpon>frm_FirstAge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Information.Designer.cs">
+      <DependentUpon>frm_Information.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_FirstAge.resx">
+      <DependentUpon>frm_FirstAge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Information.resx">
+      <DependentUpon>frm_Information.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>

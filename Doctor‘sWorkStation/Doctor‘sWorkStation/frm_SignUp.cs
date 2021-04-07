@@ -33,16 +33,35 @@ namespace Doctor_sWorkStation
                 this.txbPassword.Focus();                                                              //密码文本框获得焦点；
                 return;                                                                                 //返回；
             }
+            if (this.txbName.Text.Trim() == "")                                                    //若密码文本框为空；
+            {
+                MessageBox.Show("姓名不能为空！");															//给出错误提示；
+                this.txbName.Focus();                                                              //密码文本框获得焦点；
+                return;                                                                                 //返回；
+            }
+            if (this.cbxOffices.Text.Trim() == "")                                                    //若密码文本框为空；
+            {
+                MessageBox.Show("科室不能为空！");															//给出错误提示；
+                this.cbxOffices.Focus();                                                              //密码文本框获得焦点；
+                return;                                                                                 //返回；
+            }
             SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
             sqlConnection.ConnectionString =
                 "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
             SqlCommand sqlCommand = sqlConnection.CreateCommand();                                      //调用SQL连接的方法CreateCommand来创建SQL命令；该命令将绑定SQL连接；
             sqlCommand.CommandText =
-                "INSERT tb_Doctor (No,Password) VALUES(@No,HASHBYTES('MD5',@Password));";                 //指定SQL命令的命令文本；命令文本包含参数；
+                "INSERT tb_Doctor (No,Password,Name,Offices) " +
+                "VALUES(@No,HASHBYTES('MD5',@Password),@Name,@Offices);";                           //指定SQL命令的命令文本；命令文本包含参数；
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            DataTable OfficesTable = new DataTable();
+            sqlDataAdapter.Fill(OfficesTable);
+            this.cbxOffices.DataSource = OfficesTable;
             sqlCommand.Parameters.AddWithValue("@No", this.txbNo.Text.Trim());                     //向SQL命令的参数集合添加参数的名称、值；
             sqlCommand.Parameters.AddWithValue("@Password", this.txbPassword.Text.Trim());
-            sqlCommand.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;                           //将密码参数的类型设为变长字符串；
-                                                                                                        //SQL参数自动识别类型；若参数值为字符串，则类型自动设为NVARCHAR，且可在执行时自动转换；但对于相同密码，VARCHAR/NVARCHAR类型所获得的散列值不同，故需手动将SQL参数类型统一设为VARCHAR;
+            sqlCommand.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;                           //将密码参数的类型设为变长字符串；SQL参数自动识别类型；若参数值为字符串，则类型自动设为NVARCHAR，且可在执行时自动转换；但对于相同密码，VARCHAR/NVARCHAR类型所获得的散列值不同，故需手动将SQL参数类型统一设为VARCHAR;
+            sqlCommand.Parameters.AddWithValue("@Name", this.txbName.Text.Trim());
+            sqlCommand.Parameters.AddWithValue("@Offices", this.cbxOffices.Text.Trim());
             int rowAffected = 0;                                                                        //声明整型变量，用于保存受影响行数；
             try                                                                                         //尝试；
             {

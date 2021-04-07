@@ -34,12 +34,16 @@
             this.btnSignUp = new System.Windows.Forms.Button();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.txbNo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txbName = new System.Windows.Forms.TextBox();
+            this.cbxOffices = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 119);
+            this.label2.Location = new System.Drawing.Point(88, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 11;
@@ -56,7 +60,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(288, 176);
+            this.btnCancel.Location = new System.Drawing.Point(288, 265);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 9;
@@ -66,7 +70,7 @@
             // 
             // btnSignUp
             // 
-            this.btnSignUp.Location = new System.Drawing.Point(156, 176);
+            this.btnSignUp.Location = new System.Drawing.Point(156, 265);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(75, 30);
             this.btnSignUp.TabIndex = 8;
@@ -76,7 +80,7 @@
             // 
             // txbPassword
             // 
-            this.txbPassword.Location = new System.Drawing.Point(156, 116);
+            this.txbPassword.Location = new System.Drawing.Point(156, 102);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(207, 28);
             this.txbPassword.TabIndex = 7;
@@ -88,11 +92,52 @@
             this.txbNo.Size = new System.Drawing.Size(207, 28);
             this.txbNo.TabIndex = 6;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(88, 197);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 18);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "科室：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(88, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 18);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "姓名：";
+            // 
+            // txbName
+            // 
+            this.txbName.Location = new System.Drawing.Point(156, 148);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(207, 28);
+            this.txbName.TabIndex = 12;
+            // 
+            // cbxOffices
+            // 
+            this.cbxOffices.FormattingEnabled = true;
+            this.cbxOffices.Items.AddRange(new object[] {
+            "消化内科",
+            "耳鼻科",
+            "眼科"});
+            this.cbxOffices.Location = new System.Drawing.Point(156, 197);
+            this.cbxOffices.Name = "cbxOffices";
+            this.cbxOffices.Size = new System.Drawing.Size(207, 26);
+            this.cbxOffices.TabIndex = 16;
+            // 
             // frm_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 333);
+            this.Controls.Add(this.cbxOffices);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txbName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
@@ -114,6 +159,10 @@
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.TextBox txbPassword;
         private System.Windows.Forms.TextBox txbNo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txbName;
+        private System.Windows.Forms.ComboBox cbxOffices;
     }
 }
 

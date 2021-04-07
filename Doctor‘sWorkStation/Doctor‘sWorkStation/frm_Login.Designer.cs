@@ -48,6 +48,7 @@
             // 
             this.txbPassword.Location = new System.Drawing.Point(151, 123);
             this.txbPassword.Name = "txbPassword";
+            this.txbPassword.PasswordChar = '*';
             this.txbPassword.Size = new System.Drawing.Size(207, 28);
             this.txbPassword.TabIndex = 1;
             // 
@@ -69,6 +70,7 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label1
             // 
