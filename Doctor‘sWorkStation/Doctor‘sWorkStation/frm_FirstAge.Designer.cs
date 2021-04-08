@@ -71,6 +71,7 @@
             this.msTools = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.lbObject = new System.Windows.Forms.ListBox();
+            this.lblDoctor = new System.Windows.Forms.Label();
             this.msTools.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,11 +93,11 @@
             // lblPatient
             // 
             this.lblPatient.AutoSize = true;
-            this.lblPatient.Location = new System.Drawing.Point(12, 43);
+            this.lblPatient.Location = new System.Drawing.Point(81, 43);
             this.lblPatient.Name = "lblPatient";
-            this.lblPatient.Size = new System.Drawing.Size(80, 18);
+            this.lblPatient.Size = new System.Drawing.Size(98, 18);
             this.lblPatient.TabIndex = 1;
-            this.lblPatient.Text = "病人列表";
+            this.lblPatient.Text = "的病人列表";
             // 
             // 病历ToolStripMenuItem
             // 
@@ -115,8 +116,9 @@
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.新建ToolStripMenuItem.Text = "新建";
+            this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 打开ToolStripMenuItem
             // 
@@ -129,12 +131,14 @@
             this.移入ToolStripMenuItem.Name = "移入ToolStripMenuItem";
             this.移入ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.移入ToolStripMenuItem.Text = "移入";
+            this.移入ToolStripMenuItem.Click += new System.EventHandler(this.移入ToolStripMenuItem_Click);
             // 
             // 移出ToolStripMenuItem
             // 
             this.移出ToolStripMenuItem.Name = "移出ToolStripMenuItem";
-            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.移出ToolStripMenuItem.Text = "移出";
+            this.移出ToolStripMenuItem.Click += new System.EventHandler(this.移出ToolStripMenuItem_Click);
             // 
             // 提交ToolStripMenuItem
             // 
@@ -152,8 +156,9 @@
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // 查看ToolStripMenuItem
             // 
@@ -368,7 +373,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(241, 43);
+            this.label1.Location = new System.Drawing.Point(217, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 0;
@@ -385,16 +390,27 @@
             "首页",
             "体温",
             "医嘱"});
-            this.lbObject.Location = new System.Drawing.Point(244, 75);
+            this.lbObject.Location = new System.Drawing.Point(220, 75);
             this.lbObject.Name = "lbObject";
-            this.lbObject.Size = new System.Drawing.Size(829, 526);
+            this.lbObject.Size = new System.Drawing.Size(853, 526);
             this.lbObject.TabIndex = 2;
+            // 
+            // lblDoctor
+            // 
+            this.lblDoctor.AutoSize = true;
+            this.lblDoctor.ForeColor = System.Drawing.Color.Red;
+            this.lblDoctor.Location = new System.Drawing.Point(13, 42);
+            this.lblDoctor.Name = "lblDoctor";
+            this.lblDoctor.Size = new System.Drawing.Size(62, 18);
+            this.lblDoctor.TabIndex = 3;
+            this.lblDoctor.Text = "Doctor";
             // 
             // frm_FirstAge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 627);
+            this.Controls.Add(this.lblDoctor);
             this.Controls.Add(this.lbObject);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPatient);
@@ -453,5 +469,6 @@
         private System.Windows.Forms.MenuStrip msTools;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbObject;
+        private System.Windows.Forms.Label lblDoctor;
     }
 }

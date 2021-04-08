@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Drawing.Imaging;
+using static System.Environment;
 
 namespace Doctor_sWorkStation
 {
@@ -19,59 +20,68 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
-            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
-            sqlConnection.ConnectionString =
-                    "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
-            sqlCommand.CommandText = " SELECT * FROM tb_Offices;";
-            sqlCommand2.CommandText = $@"SELECT p.No AS Patient,p.Name,p.Gender,p.Career,p.Birthday,mr.InHospitalNo,MR.InHospitalCount,MR.OfficesNo,p.Picture,mr.InDate,MR.OutOfficesNo,MR.OutDate,MR.OtherSitiuation  
+            if (Patient.Name != "")
+            {
+                SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+                sqlConnection.ConnectionString =
+                        "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+                SqlCommand sqlCommand = sqlConnection.CreateCommand();
+                SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
+                sqlCommand.CommandText = " SELECT * FROM tb_Offices;";
+                sqlCommand2.CommandText = $@"SELECT p.No AS Patient,p.Name,p.Gender,p.Career,p.Birthday,mr.ThisNo,MR.InHospitalCount,MR.OfficesNo,p.Picture,mr.InDate,MR.OutOfficesNo,MR.OutDate,MR.OtherSitiuation  
                                          FROM tb_Patient AS P JOIN tb_MedicalRecord AS MR ON P.No = MR.No
-                                         WHERE P.No = @No";
-            sqlCommand2.Parameters.AddWithValue("@No", "1143868"); //参数 
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();//数据适配器 
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            DataTable OfficesTable = new DataTable();//用于存放查到的表
-            sqlConnection.Open();
-            sqlDataAdapter.Fill(OfficesTable);
-            this.cbxInHospitalRoom.DataSource = OfficesTable;
-            this.cbxOutHospitalRoom.DataSource = OfficesTable;
-            this.cbxInHospitalRoom.DisplayMember = "Name";
-            this.cbxInHospitalRoom.ValueMember = "OfficesNo";
-            this.cbxOutHospitalRoom.DisplayMember = "Name";
-            this.cbxOutHospitalRoom.ValueMember = "OfficesNo";
-            SqlDataReader sqlDataReader = sqlCommand2.ExecuteReader();//索引器
+                                         WHERE p.Name=@Name";
+                sqlCommand2.Parameters.AddWithValue("@Name", Patient.Name); //参数 
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();//数据适配器 
+                sqlDataAdapter.SelectCommand = sqlCommand;
+                DataTable OfficesTable = new DataTable();//用于存放查到的表
+                sqlConnection.Open();
+                sqlDataAdapter.Fill(OfficesTable);
+                this.cbxInHospitalRoom.DataSource = OfficesTable;
+                this.cbxOutHospitalRoom.DataSource = OfficesTable;
+                this.cbxInHospitalRoom.DisplayMember = "Name";
+                this.cbxInHospitalRoom.ValueMember = "OfficesNo";
+                this.cbxOutHospitalRoom.DisplayMember = "Name";
+                this.cbxOutHospitalRoom.ValueMember = "OfficesNo";
+                SqlDataReader sqlDataReader = sqlCommand2.ExecuteReader();//索引器
 
-            //用于图片
-            byte[] photoBytes = null;
+                //用于图片
+                byte[] photoBytes = null;
 
-            if (sqlDataReader.Read())
+                if (sqlDataReader.Read())
+                {
+                    this.txbNo.Text = sqlDataReader["Patient"].ToString();
+                    this.txbName.Text = sqlDataReader["Name"].ToString();
+                    this.rdbMale.Checked = (bool)sqlDataReader["Gender"];
+                    this.rdbFemale.Checked = !(bool)sqlDataReader["Gender"];
+                    this.txbCareer.Text = sqlDataReader["Career"].ToString();
+                    this.dtpBirthday.Value = (DateTime)sqlDataReader["Birthday"];
+                    this.txbInHospitalNo.Text = sqlDataReader["ThisNo"].ToString();
+                    this.txbInHospitalCount.Text = sqlDataReader["InHospitalCount"].ToString();
+                    this.cbxInHospitalRoom.SelectedValue = (int)sqlDataReader["OfficesNo"];
+                    this.dtpInDate.Value = (DateTime)sqlDataReader["InDate"];
+                    this.cbxOutHospitalRoom.SelectedValue = (int)sqlDataReader["OutOfficesNo"];
+                    this.dtpOutDate.Value = (DateTime)sqlDataReader["OutDate"];
+                    this.txbSituation.Text = sqlDataReader["OtherSitiuation"].ToString();
+                }
+
+                photoBytes = sqlDataReader["Picture"] == DBNull.Value ? null : (byte[])sqlDataReader["Picture"];
+
+                sqlDataReader.Close();//读取器自带的关闭函数
+
+                if (photoBytes != null)
+                {
+                    MemoryStream memoryStream = new MemoryStream(photoBytes);
+                    this.pbPatient.Image = Image.FromStream(memoryStream);
+                }
+
+            }
+            else
             {
-                this.txbNo.Text = sqlDataReader["Patient"].ToString();
-                this.txbName.Text = sqlDataReader["Name"].ToString();
-                this.rdbMale.Checked = (bool)sqlDataReader["Gender"];
-                this.rdbFemale.Checked = !(bool)sqlDataReader["Gender"];
-                this.txbCareer.Text = sqlDataReader["Career"].ToString();
-                this.dtpBirthday.Value = (DateTime)sqlDataReader["Birthday"];
-                this.txbInHospitalNo.Text = sqlDataReader["InHospitalNo"].ToString();
-                this.txbInHospitalCount.Text = sqlDataReader["InHospitalCount"].ToString();
-                this.cbxInHospitalRoom.SelectedValue = (int)sqlDataReader["OfficesNo"];
-                this.dtpInDate.Value= (DateTime)sqlDataReader["InDate"];
-                this.cbxOutHospitalRoom.SelectedValue = (int)sqlDataReader["OutOfficesNo"];
-                this.dtpOutDate.Value= (DateTime)sqlDataReader["OutDate"];
-                this.txbSituation.Text= sqlDataReader["OtherSitiuation"].ToString();
+                MessageBox.Show("暂无病人！");
+                return;
             }
 
-            photoBytes = sqlDataReader["Picture"] == DBNull.Value ? null : (byte[])sqlDataReader["Picture"];
-
-            sqlDataReader.Close();//读取器自带的关闭函数
-
-            if (photoBytes!=null)
-            {
-                MemoryStream memoryStream = new MemoryStream(photoBytes);
-                this.pbPatient.Image = Image.FromStream(memoryStream);
-            }
-            
         }
 
         private void btnPicture_Click(object sender, EventArgs e)
@@ -79,7 +89,7 @@ namespace Doctor_sWorkStation
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Title = "选择病人照片",//标题
-                InitialDirectory = Environment.SpecialFolder.MyPictures.ToString(),//指定文件夹->问题：图片为空时会报错
+                InitialDirectory = GetFolderPath(SpecialFolder.MyPictures),//指定文件夹,使用前加了using static System.Environment; ->问题：图片为空时会报错
                 Filter = "图片文件|*.jpg;*.bmp;*.png"//过滤器
             };
             if (openFileDialog.ShowDialog()==DialogResult.OK)//为了判断选择或打开或取出的按钮
@@ -105,27 +115,26 @@ namespace Doctor_sWorkStation
             sqlCommand.CommandText = @"BEGIN TRAN
 	                                   UPDATE tb_Patient 
 	                                   SET Name=@Name,Gender=@Gender,Career=@Career,Birthday=@Birthday,Picture=@Picture
-	                                   WHERE No=@No
+	                                   WHERE Name=@PatientName
 	                                   UPDATE tb_MedicalRecord
-	                                   SET InHospitalNo=@InHospitalNo,InHospitalCount=@InHospitalCount,OfficesNo=@OfficesNo,InDate=@InDate,OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
-	                                   WHERE No=@No
+	                                   SET ThisNo=@ThisNo,InHospitalCount=@InHospitalCount,OfficesNo=@OfficesNo,InDate=@InDate,OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
+	                                   WHERE Name=@PatientName
 	                                   COMMIT";//后面需要考虑要不要加上病人本次住院ID来用于筛选，暂时先用的都是赵春兰的信息
             sqlCommand.Parameters.AddWithValue("@Name",txbName.Text.Trim());
             sqlCommand.Parameters.AddWithValue("@Gender",rdbMale.Checked);
             sqlCommand.Parameters.AddWithValue("@Career",txbCareer.Text.Trim());
             sqlCommand.Parameters.AddWithValue("@Birthday",dtpBirthday.Value);
-            sqlCommand.Parameters.AddWithValue("@InHospitalNo",txbInHospitalNo.Text.Trim());
+            sqlCommand.Parameters.AddWithValue("@ThisNo",txbInHospitalNo.Text.Trim());
             sqlCommand.Parameters.AddWithValue("@InHospitalCount",Convert.ToInt32(txbInHospitalCount.Text.Trim()));
             sqlCommand.Parameters.AddWithValue("@OfficesNo",(int)cbxInHospitalRoom.SelectedValue);
             sqlCommand.Parameters.AddWithValue("@InDate",dtpInDate.Value);
             sqlCommand.Parameters.AddWithValue("@OtherSitiuation",txbSituation.Text.Trim());
             sqlCommand.Parameters.AddWithValue("@OutOfficesNo",(int)cbxOutHospitalRoom.SelectedValue);
             sqlCommand.Parameters.AddWithValue("@OutDate",dtpInDate.Value);
-
             //更新图片文件
             sqlCommand.Parameters.AddWithValue("@Picture", photoBytes);
 
-            sqlCommand.Parameters.AddWithValue("@No", "1143868");
+            sqlCommand.Parameters.AddWithValue("@PatientName", Patient.Name);
             sqlConnection.Open();
             int rowAffected = sqlCommand.ExecuteNonQuery();//执行并返回结果
             sqlConnection.Close();
@@ -134,12 +143,12 @@ namespace Doctor_sWorkStation
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void frm_Information_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frm_FirstAge firstAge = new frm_FirstAge();
-            firstAge.ShowDialog();
-            frm_Information information = new frm_Information();
-            information.Close();
+            frm_FirstAge frm_FirstAge = new frm_FirstAge();
+            frm_FirstAge.Show();
+            frm_Login frm_Login = new frm_Login();
+            frm_Login.Visible = false;
         }
     }
 }

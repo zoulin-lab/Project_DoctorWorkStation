@@ -102,7 +102,8 @@ namespace Doctor_sWorkStation
         private void btnCancel_Click(object sender, EventArgs e)
         {
             frm_Login login = new frm_Login();
-            login.ShowDialog();
+            login.Show();
+            this.Close();
         }
     }
 }

@@ -46,12 +46,25 @@ namespace Doctor_sWorkStation
             #endregion
             sqlConnection.Open();                                                                       //打开SQL连接；
             int rowCount = (int)sqlCommand.ExecuteScalar();                                             //调用SQL命令的方法ExecuteScalar来执行命令，并接受单个结果（即标量）；
-            sqlConnection.Close();                                                                      //关闭SQL连接；
+            sqlConnection.Close();
+            
+            SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
+            sqlCommand.CommandText = "SELECT Name FROM tb_Doctor WHERE No= @DoctorNo";
+            
             if (rowCount == 1)                                                                          //若查得所输用户号相应的1行记录；
             {
+                Doctor.No = txbNo.Text;
+                sqlCommand.Parameters.AddWithValue("@DoctorNo", txbNo.Text);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();//索引器
+                if (sqlDataReader.Read())
+                {
+                    Doctor.Name = sqlDataReader["Name"].ToString();
+                }
+                sqlDataReader.Close();
                 MessageBox.Show("登录成功。");															//显示正确提示；
                 frm_FirstAge firstAge = new frm_FirstAge();
-                firstAge.ShowDialog();
+                firstAge.Show();
             }
             else                                                                                        //否则；
             {
@@ -64,12 +77,13 @@ namespace Doctor_sWorkStation
         private void lblSignUp_Click(object sender, EventArgs e)
         {
             frm_SignUp signUp = new frm_SignUp();
-            signUp.ShowDialog();
+            signUp.Show();
+            this.Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            return;
+            this.Close();
         }
     }
 }

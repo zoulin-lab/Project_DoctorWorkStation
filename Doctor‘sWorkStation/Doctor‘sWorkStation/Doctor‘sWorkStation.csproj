@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Doctor.cs" />
     <Compile Include="frm_FirstAge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,18 +65,31 @@
     <Compile Include="frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_MoveInPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_MoveInPatient.Designer.cs">
+      <DependentUpon>frm_MoveInPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_MoveOutPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_MoveOutPatient.Designer.cs">
+      <DependentUpon>frm_MoveOutPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_SignUp.Designer.cs">
       <DependentUpon>frm_SignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewPatient.cs">
+    <Compile Include="frm_NewPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewPatient.Designer.cs">
-      <DependentUpon>NewPatient.cs</DependentUpon>
+    <Compile Include="frm_NewPatient.Designer.cs">
+      <DependentUpon>frm_NewPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_FirstAge.resx">
@@ -87,11 +101,17 @@
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_MoveInPatient.resx">
+      <DependentUpon>frm_MoveInPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_MoveOutPatient.resx">
+      <DependentUpon>frm_MoveOutPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_SignUp.resx">
       <DependentUpon>frm_SignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewPatient.resx">
-      <DependentUpon>NewPatient.cs</DependentUpon>
+    <EmbeddedResource Include="frm_NewPatient.resx">
+      <DependentUpon>frm_NewPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

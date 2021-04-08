@@ -27,11 +27,13 @@ DELETE tb_Doctor
 INSERT tb_Doctor
        (No,Name,Password,Offices)
 	   VALUES
-	   ('D001','张三',HashBytes('MD5','001'),'呼吸内科'),
-	   ('D002','李四',HashBytes('MD5','002'),'眼科'),
-	   ('D003','王五',HashBytes('MD5','003'),'消化内科')
+	   ('D001','魏爱东',HashBytes('MD5','001'),'呼吸内科'),
+	   ('D002','李君',HashBytes('MD5','002'),'内分泌科'),
+	   ('D003','周彩云',HashBytes('MD5','003'),'眼科'),
+	   ('D004','马勇',HashBytes('MD5','004'),'消化内科')
 
-SELECT * FROM tb_Doctor
+
+SELECT * FROM tb_Doctor 
 DROP TABLE tb_Patient
 CREATE TABLE tb_Patient
        (No
@@ -65,9 +67,16 @@ INSERT tb_Patient
 	   VALUES
 	   ('0005','李焕',1,30,1,'汉','律师','福建福州','福州律师事务所','1991/01/01'),
 	   ('1143868','赵春兰',0,21,0,'汉','幼师','福建福州','福州春天幼儿园','2000/01/01'),
-	   ('1225754','韩凤革',1,50,1,'汉','高中教师','福建厦门','厦门第一中学','1971/01/01')
+	   ('1225754','韩凤革',1,50,1,'汉','高中教师','福建厦门','厦门第一中学','1971/01/01'),
+	   ('1213180','张久礼',1,45,1,'汉','工人','四川成都','XX','1976/01/01'),
+	   ('1217483','孙桂菊',0,20,0,'汉','大学生','江苏常州','XX','2001/01/01'),
+	   ('1221686','刘海峰',1,33,0,'汉','画师','福建厦门','XX','1988/01/01'),
+	   ('1225980','马乃双',0,22,0,'汉','大学生','福建长乐','XX','1999/01/01'),
+	   ('1216315','郭建峰',1,25,0,'汉','写手','福建福州','XX','1996/01/01'),
+	   ('1133395','王研',0,11,0,'汉','学生','福建漳州','XX','2010/01/01'),
+	   ('1228012','孙兰芹',0,18,3,'汉','大学生','福建福州','XX','2003/01/01')
 
-SELECT * FROM tb_Patient
+SELECT * FROM tb_Patient 
 
 DROP TABLE tb_MedicalRecord
 CREATE TABLE tb_MedicalRecord
@@ -99,19 +108,31 @@ CREATE TABLE tb_MedicalRecord
 	   INT,
 	   OutDate
 	   DATE,
+	   IsToHospital  --是否住院（状态）
+	   BIT,
 	   CONSTRAINT pk_MedicalRecord_No_TiHsNo	/*创建主键约束	*/							
 	   PRIMARY KEY(No,ThisNo))	
 
 
 DELETE tb_MedicalRecord
 INSERT tb_MedicalRecord
-       (No,ThisNo,Name,InHospitalNo,InHospitalCount,BedNo,OfficesNo,InDate,MainDiagnoseContent,Doctor,OtherSitiuation,OutOfficesNo,OutDate)
+       (No,ThisNo,Name,InHospitalNo,InHospitalCount,BedNo,OfficesNo,InDate,MainDiagnoseContent,Doctor,OtherSitiuation,OutOfficesNo,OutDate,IsToHospital)
 	   VALUES
-	   ('0005','M0001','李焕','I0001',2,'0001',1,'2020/04/01','呼吸道感染','张三','','',''),
-	   ('1143868','M0002','赵春兰','I0002',1,'0002',4,'2020/04/01','泌尿感染','钱六','','',''),
-	   ('1225754','M0003','韩凤革','I0003',4,'0003',3,'2020/04/01','蛛网膜下出血','李四','','','')
+	   ('0005','M0001','李焕','I0001',2,'0001',1,'2020/04/01','呼吸道感染','魏爱东','','','',1),
+	   ('1143868','M0002','赵春兰','I0002',1,'0002',4,'2020/04/01','泌尿感染','李君','','','',1),
+	   ('1225754','M0003','韩凤革','I0003',4,'0003',3,'2020/04/07','蛛网膜下出血','周彩云','','','',1),
+	   ('1213180','M0004','张久礼','I0004',1,'0004',4,'2020/04/01','尿毒症','李君','','','',0),
+	   ('1217483','M0005','孙桂菊','I0005',4,'0005',4,'2020/04/03','待查','李君','','','',1),
+	   ('1221686','M0006','刘海峰','I0006',3,'0006',4,'2020/04/08','发烧待查','李君','','','',0),
+	   ('1225980','M0007','马乃双','I0007',2,'0007',4,'2020/04/09','待查','李君','','','',0),
+	   ('1216315','M0008','郭建峰','I0008',2,'0008',3,'2020/04/01','视网膜下出血','周彩云','','','',0),
+	   ('1133395','M0009','王研','I0009',1,'0009',3,'2020/04/01','待查','周彩云','','','',0),
+	   ('1228012','M0010','孙兰芹','I0010',1,'0010',3,'2020/04/01','待查','魏爱东','','','',0)
 
 SELECT * FROM tb_MedicalRecord 
+
+SELECT No,InHospitalNo,Name,BedNo,MainDiagnoseContent,Doctor FROM tb_MedicalRecord
+
 
 DROP TABLE tb_Offices
 CREATE TABLE tb_Offices
@@ -147,7 +168,22 @@ INSERT tb_Offices
 
 
 
-	    SELECT * FROM tb_Offices
+	    SELECT * FROM tb_Patient
+		SELECT * FROM tb_MedicalRecord
+		SELECT No,InHospitalNo,Name,BedNo,MainDiagnoseContent,Doctor FROM tb_MedicalRecord
+
+		SELECT MR.No,MR.InHospitalNo,MR.Name,P.Gender,MR.BedNo,MR.MainDiagnoseContent,MR.Doctor 
+		FROM tb_Patient AS P
+		JOIN tb_MedicalRecord AS MR ON P.No=MR.No
+		WHERE IsToHospital=1
+		ORDER BY InHospitalNo
+
+
+		SELECT MR.No AS 病人ID,MR.InHospitalNo AS 住院号,MR.Name AS 姓名,P.Gender AS 性别,MR.BedNo AS 床号,MR.MainDiagnoseContent AS 主要诊断,MR.Doctor AS 经治医生 
+                                       FROM tb_Patient AS P
+                                       JOIN tb_MedicalRecord AS MR ON P.No = MR.No
+                                       WHERE IsToHospital = 0
+                                       ORDER BY InHospitalNo
 
 
 

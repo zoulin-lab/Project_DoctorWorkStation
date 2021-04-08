@@ -1,6 +1,6 @@
 ﻿namespace Doctor_sWorkStation
 {
-    partial class NewPatient
+    partial class frm_NewPatient
     {
         /// <summary>
         /// Required designer variable.
@@ -52,6 +52,7 @@
             this.btnSure.TabIndex = 1;
             this.btnSure.Text = "确定";
             this.btnSure.UseVisualStyleBackColor = true;
+            this.btnSure.Click += new System.EventHandler(this.btnSure_Click);
             // 
             // btnCancel
             // 
@@ -61,8 +62,9 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // NewPatient
+            // frm_NewPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -70,7 +72,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSure);
             this.Controls.Add(this.dgvNewPatient);
-            this.Name = "NewPatient";
+            this.Name = "frm_NewPatient";
             this.Text = "新入病人";
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewPatient)).EndInit();
             this.ResumeLayout(false);

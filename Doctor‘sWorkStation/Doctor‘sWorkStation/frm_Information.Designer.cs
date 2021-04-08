@@ -61,7 +61,6 @@
             this.pbPatient = new System.Windows.Forms.PictureBox();
             this.btnPicture = new System.Windows.Forms.Button();
             this.btnChangeInfo = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tcInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +84,7 @@
             this.tabPage1.AllowDrop = true;
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1079, 330);
+            this.tabPage1.Size = new System.Drawing.Size(1079, 316);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "诊断信息";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -94,7 +93,7 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1079, 330);
+            this.tabPage2.Size = new System.Drawing.Size(1079, 316);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "中医诊断信息";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -104,7 +103,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1079, 330);
+            this.tabPage3.Size = new System.Drawing.Size(1079, 316);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "手术信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -334,6 +333,7 @@
             this.pbPatient.Location = new System.Drawing.Point(13, 12);
             this.pbPatient.Name = "pbPatient";
             this.pbPatient.Size = new System.Drawing.Size(127, 165);
+            this.pbPatient.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPatient.TabIndex = 36;
             this.pbPatient.TabStop = false;
             // 
@@ -349,7 +349,7 @@
             // 
             // btnChangeInfo
             // 
-            this.btnChangeInfo.Location = new System.Drawing.Point(868, 201);
+            this.btnChangeInfo.Location = new System.Drawing.Point(972, 201);
             this.btnChangeInfo.Name = "btnChangeInfo";
             this.btnChangeInfo.Size = new System.Drawing.Size(99, 30);
             this.btnChangeInfo.TabIndex = 39;
@@ -357,22 +357,11 @@
             this.btnChangeInfo.UseVisualStyleBackColor = true;
             this.btnChangeInfo.Click += new System.EventHandler(this.btnChangeInfo_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(996, 201);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "返回";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frm_Information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 599);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnChangeInfo);
             this.Controls.Add(this.btnPicture);
             this.Controls.Add(this.pbPatient);
@@ -404,6 +393,7 @@
             this.Controls.Add(this.tcInfo);
             this.Name = "frm_Information";
             this.Text = "首页信息";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_Information_FormClosed);
             this.tcInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).EndInit();
             this.ResumeLayout(false);
@@ -446,6 +436,5 @@
         private System.Windows.Forms.PictureBox pbPatient;
         private System.Windows.Forms.Button btnPicture;
         private System.Windows.Forms.Button btnChangeInfo;
-        private System.Windows.Forms.Button button1;
     }
 }
