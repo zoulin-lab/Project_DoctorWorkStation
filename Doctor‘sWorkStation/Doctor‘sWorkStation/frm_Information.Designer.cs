@@ -285,10 +285,11 @@
             // 
             // dtpOutDate
             // 
-            this.dtpOutDate.Location = new System.Drawing.Point(914, 147);
+            this.dtpOutDate.Location = new System.Drawing.Point(915, 147);
             this.dtpOutDate.Name = "dtpOutDate";
-            this.dtpOutDate.Size = new System.Drawing.Size(157, 28);
+            this.dtpOutDate.Size = new System.Drawing.Size(156, 28);
             this.dtpOutDate.TabIndex = 31;
+            this.dtpOutDate.ValueChanged += new System.EventHandler(this.dtpOutDate_ValueChanged);
             // 
             // cbxInHospitalRoom
             // 

@@ -86,6 +86,7 @@
             // 
             this.txbNo.Location = new System.Drawing.Point(140, 63);
             this.txbNo.Name = "txbNo";
+            this.txbNo.ReadOnly = true;
             this.txbNo.Size = new System.Drawing.Size(207, 28);
             this.txbNo.TabIndex = 6;
             // 
@@ -102,6 +103,7 @@
             this.Controls.Add(this.txbNo);
             this.Name = "frm_MoveOutPatient";
             this.Text = "移出病人";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_MoveOutPatient_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

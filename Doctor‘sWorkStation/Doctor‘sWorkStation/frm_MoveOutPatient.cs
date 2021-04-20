@@ -13,11 +13,13 @@ namespace Doctor_sWorkStation
 {
     public partial class frm_MoveOutPatient : Form
     {
-        public frm_MoveOutPatient()
+        Form Patientform = null;
+        public frm_MoveOutPatient(Form form)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
-            
+            txbNo.Text = Doctor.No;
+            Patientform = form;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -44,14 +46,14 @@ namespace Doctor_sWorkStation
             sqlCommand2.CommandText = "UPDATE tb_MedicalRecord SET Doctor='',IsToHospital = 0 WHERE Doctor=@Doctor AND Name=@Name";
             sqlCommand2.Parameters.AddWithValue("@Doctor", Doctor.Name);
             sqlCommand2.Parameters.AddWithValue("@Name", Patient.Name);
-            if (rowCount == 1)                                                                          //若查得所输用户号相应的1行记录；
+            if (rowCount == 1 && txbNo.Text == Doctor.No)                                                                         //若查得所输用户号相应的1行记录；
             {
                 sqlConnection.Open();
                 sqlCommand2.ExecuteNonQuery();//执行并返回结果
                 sqlConnection.Close();
                 MessageBox.Show($"移出成功！");
+                Patientform.Close();//关闭父窗体
                 this.Close();
-                frm_FirstAge frm_FirstAge = new frm_FirstAge();
             }
             else                                                                                        //否则；
             {
@@ -60,5 +62,12 @@ namespace Doctor_sWorkStation
                 this.txbPassword.SelectAll();                                                          //密码文本框内所有文本被选中；
             }
         }
+
+        private void frm_MoveOutPatient_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frm_FirstAge frm_FirstAge = new frm_FirstAge();
+            frm_FirstAge.Show();
+        }
+        
     }
 }

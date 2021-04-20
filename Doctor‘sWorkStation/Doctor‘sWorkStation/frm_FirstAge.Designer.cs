@@ -83,11 +83,12 @@
             // 
             // lbPatient
             // 
+            this.lbPatient.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbPatient.FormattingEnabled = true;
             this.lbPatient.ItemHeight = 18;
-            this.lbPatient.Location = new System.Drawing.Point(12, 75);
+            this.lbPatient.Location = new System.Drawing.Point(16, 75);
             this.lbPatient.Name = "lbPatient";
-            this.lbPatient.Size = new System.Drawing.Size(176, 526);
+            this.lbPatient.Size = new System.Drawing.Size(182, 526);
             this.lbPatient.TabIndex = 0;
             // 
             // lblPatient
@@ -116,7 +117,7 @@
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.新建ToolStripMenuItem.Text = "新建";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
@@ -136,7 +137,7 @@
             // 移出ToolStripMenuItem
             // 
             this.移出ToolStripMenuItem.Name = "移出ToolStripMenuItem";
-            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.移出ToolStripMenuItem.Text = "移出";
             this.移出ToolStripMenuItem.Click += new System.EventHandler(this.移出ToolStripMenuItem_Click);
             // 
@@ -156,7 +157,7 @@
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -285,8 +286,9 @@
             // 套餐医嘱定义ToolStripMenuItem
             // 
             this.套餐医嘱定义ToolStripMenuItem.Name = "套餐医嘱定义ToolStripMenuItem";
-            this.套餐医嘱定义ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
+            this.套餐医嘱定义ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.套餐医嘱定义ToolStripMenuItem.Text = "套餐医嘱定义";
+            this.套餐医嘱定义ToolStripMenuItem.Click += new System.EventHandler(this.套餐医嘱定义ToolStripMenuItem_Click);
             // 
             // 药品字典ToolStripMenuItem
             // 
@@ -299,6 +301,7 @@
             this.病历模板ToolStripMenuItem.Name = "病历模板ToolStripMenuItem";
             this.病历模板ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.病历模板ToolStripMenuItem.Text = "病历模板";
+            this.病历模板ToolStripMenuItem.Click += new System.EventHandler(this.病历模板ToolStripMenuItem_Click);
             // 
             // 选择模板ToolStripMenuItem
             // 
@@ -367,7 +370,7 @@
             this.帮助HToolStripMenuItem});
             this.msTools.Location = new System.Drawing.Point(0, 0);
             this.msTools.Name = "msTools";
-            this.msTools.Size = new System.Drawing.Size(1100, 32);
+            this.msTools.Size = new System.Drawing.Size(1070, 32);
             this.msTools.TabIndex = 0;
             this.msTools.Text = "menuStrip1";
             // 
@@ -381,8 +384,9 @@
             // 
             // lbObject
             // 
+            this.lbObject.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbObject.FormattingEnabled = true;
-            this.lbObject.ItemHeight = 18;
+            this.lbObject.ItemHeight = 24;
             this.lbObject.Items.AddRange(new object[] {
             "病程",
             "检查",
@@ -390,9 +394,9 @@
             "首页",
             "体温",
             "医嘱"});
-            this.lbObject.Location = new System.Drawing.Point(220, 75);
+            this.lbObject.Location = new System.Drawing.Point(220, 70);
             this.lbObject.Name = "lbObject";
-            this.lbObject.Size = new System.Drawing.Size(853, 526);
+            this.lbObject.Size = new System.Drawing.Size(832, 532);
             this.lbObject.TabIndex = 2;
             // 
             // lblDoctor
@@ -409,7 +413,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 627);
+            this.ClientSize = new System.Drawing.Size(1070, 624);
             this.Controls.Add(this.lblDoctor);
             this.Controls.Add(this.lbObject);
             this.Controls.Add(this.label1);

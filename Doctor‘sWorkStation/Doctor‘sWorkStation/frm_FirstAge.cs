@@ -17,9 +17,6 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             lblDoctor.Text = Doctor.Name;
-            
-            
-
             this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
             SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
             sqlConnection.ConnectionString =
@@ -56,7 +53,7 @@ namespace Doctor_sWorkStation
 
         private void 移入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_MoveInPatient frm_MoveInPatient = new frm_MoveInPatient();
+            frm_MoveInPatient frm_MoveInPatient = new frm_MoveInPatient(this);
             frm_MoveInPatient.Show();
         }
 
@@ -82,8 +79,21 @@ namespace Doctor_sWorkStation
             {
                 Patient.Name = lbPatient.SelectedValue.ToString();
             }
-            frm_MoveOutPatient frm_MoveOutPatient = new frm_MoveOutPatient();
+
+            frm_MoveOutPatient frm_MoveOutPatient = new frm_MoveOutPatient(this);
             frm_MoveOutPatient.Show();
+        }
+
+        private void 病历模板ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_MedicalRecordTemplate frm_MedicalRecordTemplate = new frm_MedicalRecordTemplate();
+            frm_MedicalRecordTemplate.Show();
+        }
+
+        private void 套餐医嘱定义ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_DoctorAdviceCategory frm_DoctorAdviceCategory = new frm_DoctorAdviceCategory();
+            frm_DoctorAdviceCategory.Show();
         }
     }
 }

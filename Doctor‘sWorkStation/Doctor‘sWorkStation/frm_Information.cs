@@ -52,8 +52,16 @@ namespace Doctor_sWorkStation
                 {
                     this.txbNo.Text = sqlDataReader["Patient"].ToString();
                     this.txbName.Text = sqlDataReader["Name"].ToString();
-                    this.rdbMale.Checked = (bool)sqlDataReader["Gender"];
-                    this.rdbFemale.Checked = !(bool)sqlDataReader["Gender"];
+                    if (sqlDataReader["Gender"].ToString()=="男")
+                    {
+                        this.rdbMale.Checked = true;
+                        this.rdbFemale.Checked = false;
+                    }
+                    else
+                    {
+                        this.rdbMale.Checked = false;
+                        this.rdbFemale.Checked = true;
+                    }
                     this.txbCareer.Text = sqlDataReader["Career"].ToString();
                     this.dtpBirthday.Value = (DateTime)sqlDataReader["Birthday"];
                     this.txbInHospitalNo.Text = sqlDataReader["ThisNo"].ToString();
@@ -61,8 +69,15 @@ namespace Doctor_sWorkStation
                     this.cbxInHospitalRoom.SelectedValue = (int)sqlDataReader["OfficesNo"];
                     this.dtpInDate.Value = (DateTime)sqlDataReader["InDate"];
                     this.cbxOutHospitalRoom.SelectedValue = (int)sqlDataReader["OutOfficesNo"];
-                    this.dtpOutDate.Value = (DateTime)sqlDataReader["OutDate"];
+                    //this.txbOutDate.Text = sqlDataReader["OutDate"].ToString();
                     this.txbSituation.Text = sqlDataReader["OtherSitiuation"].ToString();
+                    //MessageBox.Show(sqlDataReader["OutDate"].ToString());
+                    if (sqlDataReader["OutDate"].ToString() == "1900/1/1 0:00:00")
+                    {
+                        this.dtpOutDate.Format = DateTimePickerFormat.Custom;
+                        this.dtpOutDate.CustomFormat = " ";
+                        dtpOutDate.Checked = false;
+                    }
                 }
 
                 photoBytes = sqlDataReader["Picture"] == DBNull.Value ? null : (byte[])sqlDataReader["Picture"];
@@ -119,9 +134,16 @@ namespace Doctor_sWorkStation
 	                                   UPDATE tb_MedicalRecord
 	                                   SET ThisNo=@ThisNo,InHospitalCount=@InHospitalCount,OfficesNo=@OfficesNo,InDate=@InDate,OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
 	                                   WHERE Name=@PatientName
-	                                   COMMIT";//后面需要考虑要不要加上病人本次住院ID来用于筛选，暂时先用的都是赵春兰的信息
+	                                   COMMIT";
             sqlCommand.Parameters.AddWithValue("@Name",txbName.Text.Trim());
-            sqlCommand.Parameters.AddWithValue("@Gender",rdbMale.Checked);
+            if (rdbMale.Checked==true)
+            {
+                sqlCommand.Parameters.AddWithValue("@Gender", "男");
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@Gender", "女");
+            }
             sqlCommand.Parameters.AddWithValue("@Career",txbCareer.Text.Trim());
             sqlCommand.Parameters.AddWithValue("@Birthday",dtpBirthday.Value);
             sqlCommand.Parameters.AddWithValue("@ThisNo",txbInHospitalNo.Text.Trim());
@@ -129,8 +151,23 @@ namespace Doctor_sWorkStation
             sqlCommand.Parameters.AddWithValue("@OfficesNo",(int)cbxInHospitalRoom.SelectedValue);
             sqlCommand.Parameters.AddWithValue("@InDate",dtpInDate.Value);
             sqlCommand.Parameters.AddWithValue("@OtherSitiuation",txbSituation.Text.Trim());
-            sqlCommand.Parameters.AddWithValue("@OutOfficesNo",(int)cbxOutHospitalRoom.SelectedValue);
-            sqlCommand.Parameters.AddWithValue("@OutDate",dtpInDate.Value);
+            if (cbxOutHospitalRoom.SelectedIndex>=0)
+            {
+                sqlCommand.Parameters.AddWithValue("@OutOfficesNo", (int)cbxOutHospitalRoom.SelectedValue);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@OutOfficesNo", "");
+            }
+            if (this.dtpOutDate.Checked == false) 
+            {
+                sqlCommand.Parameters.AddWithValue("@OutDate", "1900/1/1 0:00:00");
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@OutDate", dtpOutDate.Value);
+            }
+            
             //更新图片文件
             sqlCommand.Parameters.AddWithValue("@Picture", photoBytes);
 
@@ -149,6 +186,12 @@ namespace Doctor_sWorkStation
             frm_FirstAge.Show();
             frm_Login frm_Login = new frm_Login();
             frm_Login.Visible = false;
+        }
+
+        private void dtpOutDate_ValueChanged(object sender, EventArgs e)
+        {
+            this.dtpOutDate.Format = DateTimePickerFormat.Long;
+            this.dtpOutDate.CustomFormat = null; ;
         }
     }
 }

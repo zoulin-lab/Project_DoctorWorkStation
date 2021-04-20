@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_DoctorAdviceCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DoctorAdviceCategory.Designer.cs">
+      <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor.cs" />
     <Compile Include="frm_FirstAge.cs">
       <SubType>Form</SubType>
@@ -89,9 +95,18 @@
     <Compile Include="frm_NewPatient.Designer.cs">
       <DependentUpon>frm_NewPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_MedicalRecordTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_MedicalRecordTemplate.Designer.cs">
+      <DependentUpon>frm_MedicalRecordTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_DoctorAdviceCategory.resx">
+      <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_FirstAge.resx">
       <DependentUpon>frm_FirstAge.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_MedicalRecordTemplate.resx">
+      <DependentUpon>frm_MedicalRecordTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_MoveInPatient.resx">
       <DependentUpon>frm_MoveInPatient.cs</DependentUpon>

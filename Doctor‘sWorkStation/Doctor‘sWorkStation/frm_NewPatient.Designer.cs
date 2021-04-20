@@ -36,6 +36,7 @@
             // 
             // dgvNewPatient
             // 
+            this.dgvNewPatient.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvNewPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNewPatient.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvNewPatient.Location = new System.Drawing.Point(0, 0);
