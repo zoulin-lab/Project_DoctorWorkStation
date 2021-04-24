@@ -33,6 +33,8 @@ namespace Doctor_sWorkStation
             sqlConnection.Close();
             this.lbPatient.DisplayMember = "Name";
             this.lbPatient.ValueMember = "Name";//一定要写这一步
+
+            
         }
 
         private void 属性ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,6 +46,7 @@ namespace Doctor_sWorkStation
             if (lbPatient.SelectedIndex >= 0)
             {
                 Patient.Name = lbPatient.SelectedValue.ToString();
+                //Patient.ThisNo=
             }
 
             frm_Information information = new frm_Information();
@@ -94,6 +97,22 @@ namespace Doctor_sWorkStation
         {
             frm_DoctorAdviceCategory frm_DoctorAdviceCategory = new frm_DoctorAdviceCategory();
             frm_DoctorAdviceCategory.Show();
+        }
+
+        private void lbObject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //医嘱录入
+            if (lbPatient.SelectedIndex > -1 && lbObject.SelectedIndex == 5)
+            {
+                frm_EnterDoctorAdvice frm_EnterDoctorAdvice = new frm_EnterDoctorAdvice();
+                frm_EnterDoctorAdvice.Show();
+            }
+        }
+
+        private void 药品字典ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_MedicinesInquire frm_MedicinesInquire = new frm_MedicinesInquire();
+            frm_MedicinesInquire.Show();
         }
     }
 }

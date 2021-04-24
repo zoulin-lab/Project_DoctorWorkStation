@@ -9,5 +9,7 @@ namespace Doctor_sWorkStation
     class Patient
     {
         public static string Name;
+        public static string ThisNo;//住院号
+
     }
 }

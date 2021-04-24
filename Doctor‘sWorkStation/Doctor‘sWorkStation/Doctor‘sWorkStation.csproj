@@ -53,6 +53,12 @@
       <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Doctor.cs" />
+    <Compile Include="frm_EnterDoctorAdvice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_EnterDoctorAdvice.Designer.cs">
+      <DependentUpon>frm_EnterDoctorAdvice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_FirstAge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     </Compile>
     <Compile Include="frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_MedicinesInquire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_MedicinesInquire.Designer.cs">
+      <DependentUpon>frm_MedicinesInquire.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_MoveInPatient.cs">
       <SubType>Form</SubType>
@@ -107,6 +119,9 @@
     <EmbeddedResource Include="frm_DoctorAdviceCategory.resx">
       <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_EnterDoctorAdvice.resx">
+      <DependentUpon>frm_EnterDoctorAdvice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_FirstAge.resx">
       <DependentUpon>frm_FirstAge.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_MedicalRecordTemplate.resx">
       <DependentUpon>frm_MedicalRecordTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_MedicinesInquire.resx">
+      <DependentUpon>frm_MedicinesInquire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_MoveInPatient.resx">
       <DependentUpon>frm_MoveInPatient.cs</DependentUpon>

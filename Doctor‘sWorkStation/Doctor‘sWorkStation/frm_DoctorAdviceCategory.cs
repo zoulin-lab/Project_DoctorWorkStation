@@ -195,10 +195,11 @@ namespace Doctor_sWorkStation
             //int rowAffected = sqlDataAdapter.Update(doctorAdviceTable);
             int rowAffected = deletesqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
+            
+            DataRowView currentAdviceRowView = this.dgvDoctorAdvice.CurrentRow.DataBoundItem as DataRowView;                                    //将医嘱数据网格视图的当前行的数据绑定项，转换为数据行视图；
+            DataRow currentRow = currentAdviceRowView.Row;
+            currentRow.Delete();//删除当前选中行
             MessageBox.Show($"删除{rowAffected}行。");
-            frm_DoctorAdviceCategory frm_DoctorAdviceCategory = new frm_DoctorAdviceCategory();
-            frm_DoctorAdviceCategory.Show();
-            this.Close();
         }
     }
 }

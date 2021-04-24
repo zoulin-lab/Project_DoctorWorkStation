@@ -256,4 +256,40 @@ INSERT tb_DoctorAdvice
 
 SELECT distinct COUNT(1) FROM tb_DoctorAdvice WHERE Combo='套餐一'
 
-DELETE tb_DoctorAdvice WHERE No=1
+
+DROP TABLE tb_Medicines
+CREATE TABLE tb_Medicines
+       (No
+	   INT
+	   CONSTRAINT pk_Medicines_No	/*创建主键约束	*/							
+	   PRIMARY KEY(No)		
+	   NOT NULL,
+	   CName
+	   VARCHAR(255),
+	   EName
+	   VARCHAR(255),
+	   PharmacologicalActions
+	   VARCHAR(255),
+	   Usage
+	   VARCHAR(255),
+	   Taboo
+	   VARCHAR(255)
+	   )
+
+INSERT tb_Medicines
+       (No,CName,EName,PharmacologicalActions,Usage,Taboo)
+	   VALUES
+	   (1,'复方氨酚烷胺片','FuFangAnFenWanPian'
+	   ,'适用于缓解普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。'
+	   ,'口服。成人，一次1片，一日2次。'
+	   ,'严重肝肾功能不全者禁用。'),
+	   (2,'小儿肺热咳喘口服液','XiaoErFeiReKeChuanKouFuYe'
+	   ,'清热解毒，宣肺化痰，用于热邪犯于肺卫所致发热、汗出、微恶风寒、咳嗽、痰黄，或兼喘息、口干而渴。'
+	   ,'口服，1岁至3岁每次10毫升，一日3次；4岁至7岁每次10毫升，一日4次；8岁至12岁每次20毫升，一日3次。'
+	   ,'尚不明确。'),
+	   (3,'复方丹参片','FuFangDanShenPian'
+	   ,'详见说明书。'
+	   ,'口服。'
+	   ,'尚不明确。')
+
+SELECT * from tb_MedicalRecord
