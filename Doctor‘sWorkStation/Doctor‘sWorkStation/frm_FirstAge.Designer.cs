@@ -177,20 +177,21 @@
             // 大图标ToolStripMenuItem
             // 
             this.大图标ToolStripMenuItem.Name = "大图标ToolStripMenuItem";
-            this.大图标ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.大图标ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.大图标ToolStripMenuItem.Text = "大图标";
             // 
             // 小图标ToolStripMenuItem
             // 
             this.小图标ToolStripMenuItem.Name = "小图标ToolStripMenuItem";
-            this.小图标ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.小图标ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.小图标ToolStripMenuItem.Text = "小图标";
             // 
             // 列表ToolStripMenuItem
             // 
             this.列表ToolStripMenuItem.Name = "列表ToolStripMenuItem";
-            this.列表ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.列表ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.列表ToolStripMenuItem.Text = "列表";
+            this.列表ToolStripMenuItem.Click += new System.EventHandler(this.列表ToolStripMenuItem_Click);
             // 
             // 排列图标ToolStripMenuItem
             // 
@@ -200,43 +201,43 @@
             this.时间ToolStripMenuItem,
             this.状态ToolStripMenuItem});
             this.排列图标ToolStripMenuItem.Name = "排列图标ToolStripMenuItem";
-            this.排列图标ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.排列图标ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.排列图标ToolStripMenuItem.Text = "排列图标";
             // 
             // 主题ToolStripMenuItem
             // 
             this.主题ToolStripMenuItem.Name = "主题ToolStripMenuItem";
-            this.主题ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.主题ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.主题ToolStripMenuItem.Text = "主题";
             // 
             // 医生ToolStripMenuItem
             // 
             this.医生ToolStripMenuItem.Name = "医生ToolStripMenuItem";
-            this.医生ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.医生ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.医生ToolStripMenuItem.Text = "医生";
             // 
             // 时间ToolStripMenuItem
             // 
             this.时间ToolStripMenuItem.Name = "时间ToolStripMenuItem";
-            this.时间ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.时间ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.时间ToolStripMenuItem.Text = "时间";
             // 
             // 状态ToolStripMenuItem
             // 
             this.状态ToolStripMenuItem.Name = "状态ToolStripMenuItem";
-            this.状态ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
+            this.状态ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.状态ToolStripMenuItem.Text = "状态";
             // 
             // 刷新ToolStripMenuItem
             // 
             this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.刷新ToolStripMenuItem.Text = "刷新";
             // 
             // 选项ToolStripMenuItem
             // 
             this.选项ToolStripMenuItem.Name = "选项ToolStripMenuItem";
-            this.选项ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.选项ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.选项ToolStripMenuItem.Text = "选项";
             // 
             // 工具ToolStripMenuItem
@@ -262,82 +263,82 @@
             // 空白化验单ToolStripMenuItem
             // 
             this.空白化验单ToolStripMenuItem.Name = "空白化验单ToolStripMenuItem";
-            this.空白化验单ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.空白化验单ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.空白化验单ToolStripMenuItem.Text = "空白化验单";
             // 
             // 制式化验单ToolStripMenuItem
             // 
             this.制式化验单ToolStripMenuItem.Name = "制式化验单ToolStripMenuItem";
-            this.制式化验单ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.制式化验单ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.制式化验单ToolStripMenuItem.Text = "制式化验单";
             // 
             // 病案检索ToolStripMenuItem
             // 
             this.病案检索ToolStripMenuItem.Name = "病案检索ToolStripMenuItem";
-            this.病案检索ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.病案检索ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.病案检索ToolStripMenuItem.Text = "病案检索";
             // 
             // 学习病历ToolStripMenuItem
             // 
             this.学习病历ToolStripMenuItem.Name = "学习病历ToolStripMenuItem";
-            this.学习病历ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.学习病历ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.学习病历ToolStripMenuItem.Text = "学习病历";
             // 
             // 套餐医嘱定义ToolStripMenuItem
             // 
             this.套餐医嘱定义ToolStripMenuItem.Name = "套餐医嘱定义ToolStripMenuItem";
-            this.套餐医嘱定义ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.套餐医嘱定义ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.套餐医嘱定义ToolStripMenuItem.Text = "套餐医嘱定义";
             this.套餐医嘱定义ToolStripMenuItem.Click += new System.EventHandler(this.套餐医嘱定义ToolStripMenuItem_Click);
             // 
             // 药品字典ToolStripMenuItem
             // 
             this.药品字典ToolStripMenuItem.Name = "药品字典ToolStripMenuItem";
-            this.药品字典ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.药品字典ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.药品字典ToolStripMenuItem.Text = "药品字典";
             this.药品字典ToolStripMenuItem.Click += new System.EventHandler(this.药品字典ToolStripMenuItem_Click);
             // 
             // 病历模板ToolStripMenuItem
             // 
             this.病历模板ToolStripMenuItem.Name = "病历模板ToolStripMenuItem";
-            this.病历模板ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.病历模板ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.病历模板ToolStripMenuItem.Text = "病历模板";
             this.病历模板ToolStripMenuItem.Click += new System.EventHandler(this.病历模板ToolStripMenuItem_Click);
             // 
             // 选择模板ToolStripMenuItem
             // 
             this.选择模板ToolStripMenuItem.Name = "选择模板ToolStripMenuItem";
-            this.选择模板ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.选择模板ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.选择模板ToolStripMenuItem.Text = "选择模板";
             // 
             // 出院通知ToolStripMenuItem
             // 
             this.出院通知ToolStripMenuItem.Name = "出院通知ToolStripMenuItem";
-            this.出院通知ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.出院通知ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.出院通知ToolStripMenuItem.Text = "出院通知";
             // 
             // 等床病人ToolStripMenuItem
             // 
             this.等床病人ToolStripMenuItem.Name = "等床病人ToolStripMenuItem";
-            this.等床病人ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.等床病人ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.等床病人ToolStripMenuItem.Text = "等床病人";
             // 
             // 选择摆药药局ToolStripMenuItem
             // 
             this.选择摆药药局ToolStripMenuItem.Name = "选择摆药药局ToolStripMenuItem";
-            this.选择摆药药局ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.选择摆药药局ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.选择摆药药局ToolStripMenuItem.Text = "选择摆药药局";
             // 
             // 修改口令ToolStripMenuItem
             // 
             this.修改口令ToolStripMenuItem.Name = "修改口令ToolStripMenuItem";
-            this.修改口令ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.修改口令ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.修改口令ToolStripMenuItem.Text = "修改口令";
             // 
             // 参数设置ToolStripMenuItem
             // 
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(200, 30);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
             // 
             // 帮助HToolStripMenuItem

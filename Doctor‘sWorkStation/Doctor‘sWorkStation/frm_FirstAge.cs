@@ -107,12 +107,32 @@ namespace Doctor_sWorkStation
                 frm_EnterDoctorAdvice frm_EnterDoctorAdvice = new frm_EnterDoctorAdvice();
                 frm_EnterDoctorAdvice.Show();
             }
+            if (lbPatient.SelectedIndex > -1 && lbObject.SelectedIndex == 3)
+            {
+                if (lbPatient.SelectedIndex < 0)
+                {
+                    Patient.Name = "";
+                }
+                if (lbPatient.SelectedIndex >= 0)
+                {
+                    Patient.Name = lbPatient.SelectedValue.ToString();
+                }
+                frm_Information frm_Information = new frm_Information();
+                frm_Information.Show();
+                this.Close();
+            }
         }
 
         private void 药品字典ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_MedicinesInquire frm_MedicinesInquire = new frm_MedicinesInquire();
             frm_MedicinesInquire.Show();
+        }
+
+        private void 列表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_PatientList frm_PatientList = new frm_PatientList();
+            frm_PatientList.Show();
         }
     }
 }

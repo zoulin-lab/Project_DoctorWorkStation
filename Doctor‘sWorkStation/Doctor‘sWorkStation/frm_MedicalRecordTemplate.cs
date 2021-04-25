@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.Office;
+using MSWord = Microsoft.Office.Interop.Word;
 
 namespace Doctor_sWorkStation
 {
@@ -23,7 +25,9 @@ namespace Doctor_sWorkStation
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"D:\杂物\19信管3190707031邹林.DOCX");
+            frm_PatientTamplate frm_PatientTamplate = new frm_PatientTamplate();
+            frm_PatientTamplate.Show();
         }
+        
     }
 }

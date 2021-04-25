@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvTemplate = new System.Windows.Forms.DataGridView();
-            this.btnNew = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -46,15 +46,15 @@
             this.dgvTemplate.Size = new System.Drawing.Size(351, 355);
             this.dgvTemplate.TabIndex = 0;
             // 
-            // btnNew
+            // btnOpen
             // 
-            this.btnNew.Location = new System.Drawing.Point(412, 24);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(88, 32);
-            this.btnNew.TabIndex = 1;
-            this.btnNew.Text = "新建";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.btnOpen.Location = new System.Drawing.Point(412, 24);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(88, 32);
+            this.btnOpen.TabIndex = 1;
+            this.btnOpen.Text = "打开";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnDelete
             // 
@@ -91,7 +91,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.dgvTemplate);
             this.Name = "frm_MedicalRecordTemplate";
             this.Text = "模板";
@@ -103,7 +103,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvTemplate;
-        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;

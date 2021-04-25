@@ -53,6 +53,12 @@
       <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Doctor.cs" />
+    <Compile Include="frm_EditTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_EditTemplate.Designer.cs">
+      <DependentUpon>frm_EditTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_EnterDoctorAdvice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,18 @@
     <Compile Include="frm_MoveOutPatient.Designer.cs">
       <DependentUpon>frm_MoveOutPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_PatientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PatientList.Designer.cs">
+      <DependentUpon>frm_PatientList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PatientTamplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PatientTamplate.Designer.cs">
+      <DependentUpon>frm_PatientTamplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,11 +131,20 @@
     <Compile Include="frm_MedicalRecordTemplate.Designer.cs">
       <DependentUpon>frm_MedicalRecordTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_TemplateConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_TemplateConfiguration.Designer.cs">
+      <DependentUpon>frm_TemplateConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_DoctorAdviceCategory.resx">
       <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_EditTemplate.resx">
+      <DependentUpon>frm_EditTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_EnterDoctorAdvice.resx">
       <DependentUpon>frm_EnterDoctorAdvice.cs</DependentUpon>
@@ -143,11 +170,20 @@
     <EmbeddedResource Include="frm_MoveOutPatient.resx">
       <DependentUpon>frm_MoveOutPatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_PatientList.resx">
+      <DependentUpon>frm_PatientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PatientTamplate.resx">
+      <DependentUpon>frm_PatientTamplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_SignUp.resx">
       <DependentUpon>frm_SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NewPatient.resx">
       <DependentUpon>frm_NewPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_TemplateConfiguration.resx">
+      <DependentUpon>frm_TemplateConfiguration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -172,6 +208,44 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="LCC11">
+      <Guid>{EDCD5812-6A06-43C3-AFAC-46EF5D14E22C}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
