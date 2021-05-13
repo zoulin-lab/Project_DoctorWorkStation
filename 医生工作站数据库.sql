@@ -20,19 +20,37 @@ CREATE TABLE tb_Doctor
 	    Password
 	    VARCHAR(20)
 	    NOT NULL,
-	    Offices
-	    VARCHAR(20)
+	    OfficeNo
+	    int
 	   )
+
 DELETE tb_Doctor
 INSERT tb_Doctor
-       (No,Name,Password,Offices)
+       (No,Name,Password,OfficeNo)
 	   VALUES
-	   ('D001','魏爱东',HashBytes('MD5','001'),'呼吸内科'),
-	   ('D002','李君',HashBytes('MD5','002'),'内分泌科'),
-	   ('D003','周彩云',HashBytes('MD5','003'),'眼科'),
-	   ('D004','马勇',HashBytes('MD5','004'),'消化内科')
+	   ('D001','魏爱东',HashBytes('MD5','001'),1),
+	   ('D002','李君',HashBytes('MD5','002'),4),
+	   ('D003','周彩云',HashBytes('MD5','003'),3),
+	   ('D004','马勇',HashBytes('MD5','004'),2)
+select * from tb_Doctor
 
-SELECT * FROM tb_Doctor 
+DROP TABLE tb_Offices
+CREATE TABLE tb_Offices
+       (OfficesNo
+	   INT
+	   CONSTRAINT pk_Offices_OfficesNo	/*创建主键约束	*/							
+	   PRIMARY KEY(OfficesNo)		
+	   NOT NULL,
+	   Name
+	   VARCHAR(20))
+
+INSERT tb_Offices
+       (OfficesNo,Name)
+	   VALUES
+	   (1,'呼吸内科'),
+	   (2,'消化内科'),
+	   (3,'眼科'),
+	   (4,'内分泌科') 
 
 DROP TABLE tb_Patient
 CREATE TABLE tb_Patient
@@ -57,22 +75,40 @@ CREATE TABLE tb_Patient
 	   VARCHAR(200),
 	   Birthday
 	   DATE,
+	   OfficeNo
+	   int,
 	   Picture
 	   VARBINARY(MAX))
 delete tb_Patient
 INSERT tb_Patient
-       (No,Name,Gender,IsMarried,Nation,Career,Address,WorkPlace,Birthday)
+       (No,Name,Gender,IsMarried,Nation,Career,Address,WorkPlace,Birthday,OfficeNo)
 	   VALUES
-	   ('0005','李焕','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01'),
-	   ('1143868','赵春兰','女',0,'汉','幼师','福建福州','福州春天幼儿园','2000/01/01'),
-	   ('1225754','韩凤革','男',1,'汉','高中教师','福建厦门','厦门第一中学','1971/01/01'),
-	   ('1213180','张久礼','男',1,'汉','工人','四川成都','XX','1976/01/01'),
-	   ('1217483','孙桂菊','女',0,'汉','大学生','江苏常州','XX','2001/01/01'),
-	   ('1221686','刘海峰','男',0,'汉','画师','福建厦门','XX','1988/01/01'),
-	   ('1225980','马乃双','女',0,'汉','大学生','福建长乐','XX','1999/01/01'),
-	   ('1216315','郭建峰','男',0,'汉','写手','福建福州','XX','1996/01/01'),
-	   ('1133395','王研','女',0,'汉','学生','福建漳州','XX','2010/01/01'),
-	   ('1228012','孙兰芹','女',3,'汉','大学生','福建福州','XX','2003/01/01')
+	   ('0015','张七','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01',1),
+	   ('0016','张八','女',0,'汉','学生','福建漳州','XX','2010/01/01',1),
+	   ('0017','张九','女',3,'汉','大学生','福建福州','XX','2003/01/01',1),
+	   ('0018','张十','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01',1),
+	   ('0019','张十一','女',0,'汉','学生','福建漳州','XX','2010/01/01',1),
+	   ('0020','张十二','女',3,'汉','大学生','福建福州','XX','2003/01/01',1),
+
+	   ('0005','李焕','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01',1),
+	   ('1143868','赵春兰','女',0,'汉','幼师','福建福州','福州春天幼儿园','2000/01/01',4),
+	   ('1225754','韩凤革','男',1,'汉','高中教师','福建厦门','厦门第一中学','1971/01/01',3),
+	   ('1213180','张久礼','男',1,'汉','工人','四川成都','XX','1976/01/01',4),
+	   ('1217483','孙桂菊','女',0,'汉','大学生','江苏常州','XX','2001/01/01',4),
+	   ('1221686','刘海峰','男',0,'汉','画师','福建厦门','XX','1988/01/01',4),
+	   ('1225980','马乃双','女',0,'汉','大学生','福建长乐','XX','1999/01/01',4),
+	   ('1216315','郭建峰','男',0,'汉','写手','福建福州','XX','1996/01/01',3),
+	   ('1133395','王研','女',0,'汉','学生','福建漳州','XX','2010/01/01',3),
+	   ('1228012','孙兰芹','女',3,'汉','大学生','福建福州','XX','2003/01/01',3),
+	   ('0006','李焕二','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01',1),
+	   ('0007','焕二','女',0,'汉','学生','福建漳州','XX','2010/01/01',4),
+	   ('0008','李三','女',3,'汉','大学生','福建福州','XX','2003/01/01',3),
+	   ('0009','张一','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01',1),
+	   ('0010','张二','女',0,'汉','学生','福建漳州','XX','2010/01/01',1),
+	   ('0011','张三','女',3,'汉','大学生','福建福州','XX','2003/01/01',1),
+	   ('0012','张四','男',1,'汉','律师','福建福州','福州律师事务所','1991/01/01',2),
+	   ('0013','张五','女',0,'汉','学生','福建漳州','XX','2010/01/01',2),
+	   ('0014','张六','女',3,'汉','大学生','福建福州','XX','2003/01/01',2)
 
 SELECT * FROM tb_Patient 
 
@@ -126,29 +162,20 @@ INSERT tb_MedicalRecord
 	   ('1216315','M0008','郭建峰',2,'0008',3,'2020/04/01','视网膜下出血','周彩云','','','',0,0),
 	   ('1133395','M0009','王研',1,'0009',3,'2020/04/01','待查','周彩云','','','',0,1),
 	   ('1228012','M0010','孙兰芹',1,'0010',3,'2020/04/01','待查','','','','',0,0)
+INSERT tb_MedicalRecord
+       (No,ThisNo,Name,InHospitalCount,BedNo,OfficesNo,InDate,MainDiagnoseContent,Doctor,OtherSitiuation,OutOfficesNo,OutDate,IsToHospital,Category)
+	   VALUES
+	   ('0006','M0011','李焕二',2,'0001',1,'2020/04/01','呼吸道感染','魏爱东','','','',1,1),
+	   ('0007','M0012','焕二',1,'0002',4,'2020/04/01','泌尿感染','李君','','','',1,1),
+	   ('0008','M0013','李三',4,'0003',3,'2020/04/07','蛛网膜下出血','周彩云','','','',1,0)
+
 
 SELECT * FROM tb_MedicalRecord 
 
 SELECT No,InHospitalNo,Name,BedNo,MainDiagnoseContent,Doctor FROM tb_MedicalRecord
 
 
-DROP TABLE tb_Offices
-CREATE TABLE tb_Offices
-       (OfficesNo
-	   INT
-	   CONSTRAINT pk_Offices_OfficesNo	/*创建主键约束	*/							
-	   PRIMARY KEY(OfficesNo)		
-	   NOT NULL,
-	   Name
-	   VARCHAR(20))
 
-INSERT tb_Offices
-       (OfficesNo,Name)
-	   VALUES
-	   (1,'呼吸内科'),
-	   (2,'消化内科'),
-	   (3,'眼科'),
-	   (4,'内分泌科')
 
 	   SELECT p.No AS Patient,p.Name,p.Gender,p.Career,p.Birthday,mr.ThisNo,MR.InHospitalCount,MR.OfficesNo,p.Picture,mr.InDate,MR.OutOfficesNo,MR.OutDate,MR.OtherSitiuation
 	   FROM tb_Patient AS P JOIN tb_MedicalRecord AS MR ON P.No=MR.No
@@ -292,4 +319,55 @@ INSERT tb_Medicines
 	   ,'口服。'
 	   ,'尚不明确。')
 
-SELECT * from tb_MedicalRecord
+SELECT No,ThisNo,Name,BedNo,MainDiagnoseContent,Doctor from tb_MedicalRecord
+select * from tb_MedicalRecord
+
+drop table tb_Template
+CREATE TABLE tb_Template
+       (No
+	   INT
+	   Identity(1,1)
+	   CONSTRAINT pk_Tamplate_No	/*创建主键约束	*/							
+	   PRIMARY KEY(No)		
+	   NOT NULL,
+	   Name
+	   VARCHAR(20),
+	   Category
+	   VARCHAR(20)
+	   )
+
+INSERT tb_Template
+       (Name,Category)
+	   VALUES
+	   ('会议记录','科室'),
+	   ('入科记录','个人'),
+	   ('病历模板一','公用')
+
+DELETE tb_Template 
+INSERT tb_Template(Name,Category) VALUES ('1','1')
+
+drop table tb_DoctorChooseTemplate
+CREATE TABLE tb_DoctorChooseTemplate
+       (DoctorNo
+	   varchar(10)	  
+	   NOT NULL,
+	   TemplateNo
+	   int
+	   CONSTRAINT pk_DoctorChooseTemplate_DoctorNo_TemplateNo	/*创建主键约束	*/							
+	   PRIMARY KEY(DoctorNo,TemplateNo)	
+	   )
+
+select * from tb_DoctorChooseTemplate
+
+delete tb_DoctorChooseTemplate
+insert tb_DoctorChooseTemplate(DoctorNo,TemplateNo) 
+values('D001',1)
+
+select t.No,t.Name,t.Category from tb_DoctorChooseTemplate as dct
+join tb_Template as t  on DCT.TemplateNo=T.No
+
+select p.No,p.Name,p.Gender,p.IsMarried,p.Nation,p.Career,p.Address,p.WorkPlace,p.Birthday,o.Name as OfficeName from tb_Patient as p
+join tb_Offices as o on p.OfficeNo=o.OfficesNo 
+where OfficeNo=1
+
+select * from tb_MedicalRecord

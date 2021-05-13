@@ -83,6 +83,12 @@
     <Compile Include="frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_MedicalRecordWrite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_MedicalRecordWrite.Designer.cs">
+      <DependentUpon>frm_MedicalRecordWrite.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_MedicinesInquire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,7 +143,19 @@
     <Compile Include="frm_TemplateConfiguration.Designer.cs">
       <DependentUpon>frm_TemplateConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_NewPatientWrite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_NewPatientWrite.Designer.cs">
+      <DependentUpon>frm_NewPatientWrite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
+    <Compile Include="frm_PatientListTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PatientListTwo.Designer.cs">
+      <DependentUpon>frm_PatientListTwo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_DoctorAdviceCategory.resx">
@@ -161,6 +179,9 @@
     <EmbeddedResource Include="frm_MedicalRecordTemplate.resx">
       <DependentUpon>frm_MedicalRecordTemplate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_MedicalRecordWrite.resx">
+      <DependentUpon>frm_MedicalRecordWrite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_MedicinesInquire.resx">
       <DependentUpon>frm_MedicinesInquire.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +194,9 @@
     <EmbeddedResource Include="frm_PatientList.resx">
       <DependentUpon>frm_PatientList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_PatientListTwo.resx">
+      <DependentUpon>frm_PatientListTwo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_PatientTamplate.resx">
       <DependentUpon>frm_PatientTamplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TemplateConfiguration.resx">
       <DependentUpon>frm_TemplateConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_NewPatientWrite.resx">
+      <DependentUpon>frm_NewPatientWrite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

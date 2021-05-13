@@ -35,12 +35,12 @@
             this.lblEName = new System.Windows.Forms.Label();
             this.lblCName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.palMedicinesInfo = new System.Windows.Forms.Panel();
             this.txbFuntion = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txbUsage = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txbTaboo = new System.Windows.Forms.TextBox();
+            this.palMedicinesInfo = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -70,9 +70,9 @@
             // 
             this.btnSearch.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(487, 26);
+            this.btnSearch.Location = new System.Drawing.Point(480, 17);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(83, 28);
+            this.btnSearch.Size = new System.Drawing.Size(83, 42);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -119,6 +119,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "【药理作用】";
             // 
+            // txbFuntion
+            // 
+            this.txbFuntion.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.txbFuntion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFuntion.Location = new System.Drawing.Point(7, 27);
+            this.txbFuntion.Multiline = true;
+            this.txbFuntion.Name = "txbFuntion";
+            this.txbFuntion.Size = new System.Drawing.Size(790, 58);
+            this.txbFuntion.TabIndex = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txbUsage);
@@ -130,38 +140,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "【用法】";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txbTaboo);
-            this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(14, 324);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(803, 99);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "【禁忌】";
-            // 
-            // palMedicinesInfo
-            // 
-            this.palMedicinesInfo.Controls.Add(this.groupBox1);
-            this.palMedicinesInfo.Controls.Add(this.groupBox4);
-            this.palMedicinesInfo.Controls.Add(this.groupBox2);
-            this.palMedicinesInfo.Controls.Add(this.groupBox3);
-            this.palMedicinesInfo.Location = new System.Drawing.Point(12, 60);
-            this.palMedicinesInfo.Name = "palMedicinesInfo";
-            this.palMedicinesInfo.Size = new System.Drawing.Size(837, 426);
-            this.palMedicinesInfo.TabIndex = 7;
-            // 
-            // txbFuntion
-            // 
-            this.txbFuntion.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.txbFuntion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbFuntion.Location = new System.Drawing.Point(7, 27);
-            this.txbFuntion.Multiline = true;
-            this.txbFuntion.Name = "txbFuntion";
-            this.txbFuntion.Size = new System.Drawing.Size(790, 58);
-            this.txbFuntion.TabIndex = 0;
-            // 
             // txbUsage
             // 
             this.txbUsage.BackColor = System.Drawing.SystemColors.MenuBar;
@@ -172,6 +150,17 @@
             this.txbUsage.Size = new System.Drawing.Size(790, 58);
             this.txbUsage.TabIndex = 1;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txbTaboo);
+            this.groupBox4.ForeColor = System.Drawing.Color.Black;
+            this.groupBox4.Location = new System.Drawing.Point(14, 324);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(803, 106);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "【禁忌】";
+            // 
             // txbTaboo
             // 
             this.txbTaboo.BackColor = System.Drawing.SystemColors.MenuBar;
@@ -179,14 +168,25 @@
             this.txbTaboo.Location = new System.Drawing.Point(6, 27);
             this.txbTaboo.Multiline = true;
             this.txbTaboo.Name = "txbTaboo";
-            this.txbTaboo.Size = new System.Drawing.Size(790, 58);
+            this.txbTaboo.Size = new System.Drawing.Size(791, 73);
             this.txbTaboo.TabIndex = 1;
+            // 
+            // palMedicinesInfo
+            // 
+            this.palMedicinesInfo.Controls.Add(this.groupBox1);
+            this.palMedicinesInfo.Controls.Add(this.groupBox4);
+            this.palMedicinesInfo.Controls.Add(this.groupBox2);
+            this.palMedicinesInfo.Controls.Add(this.groupBox3);
+            this.palMedicinesInfo.Location = new System.Drawing.Point(12, 65);
+            this.palMedicinesInfo.Name = "palMedicinesInfo";
+            this.palMedicinesInfo.Size = new System.Drawing.Size(831, 444);
+            this.palMedicinesInfo.TabIndex = 7;
             // 
             // frm_MedicinesInquire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 492);
+            this.ClientSize = new System.Drawing.Size(872, 531);
             this.Controls.Add(this.palMedicinesInfo);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txbName);

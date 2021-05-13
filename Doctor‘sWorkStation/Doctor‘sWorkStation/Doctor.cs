@@ -10,5 +10,6 @@ namespace Doctor_sWorkStation
     {
         public static string No;
         public static string Name;
+        public static string OfficeNo;
     }
 }

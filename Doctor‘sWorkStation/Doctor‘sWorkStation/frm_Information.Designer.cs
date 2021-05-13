@@ -61,7 +61,10 @@
             this.pbPatient = new System.Windows.Forms.PictureBox();
             this.btnPicture = new System.Windows.Forms.Button();
             this.btnChangeInfo = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tcInfo.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +94,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(1079, 316);
@@ -350,13 +355,29 @@
             // 
             // btnChangeInfo
             // 
-            this.btnChangeInfo.Location = new System.Drawing.Point(972, 201);
+            this.btnChangeInfo.Location = new System.Drawing.Point(160, 201);
             this.btnChangeInfo.Name = "btnChangeInfo";
             this.btnChangeInfo.Size = new System.Drawing.Size(99, 30);
             this.btnChangeInfo.TabIndex = 39;
             this.btnChangeInfo.Text = "更改信息";
             this.btnChangeInfo.UseVisualStyleBackColor = true;
             this.btnChangeInfo.Click += new System.EventHandler(this.btnChangeInfo_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(26, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 18);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "label10";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(184, 28);
+            this.textBox1.TabIndex = 1;
             // 
             // frm_Information
             // 
@@ -396,6 +417,8 @@
             this.Text = "首页信息";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_Information_FormClosed);
             this.tcInfo.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -437,5 +460,7 @@
         private System.Windows.Forms.PictureBox pbPatient;
         private System.Windows.Forms.Button btnPicture;
         private System.Windows.Forms.Button btnChangeInfo;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label10;
     }
 }

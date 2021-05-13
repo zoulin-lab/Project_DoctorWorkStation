@@ -117,7 +117,7 @@ namespace Doctor_sWorkStation
 	                                         (@No,@LongOrShort,@CategoryNo,@Content,@HowMuch,@Nnit,@Way,@Frequency,@Combo)";
             insertsqlCommand.Parameters.AddWithValue("@No", currentNo);
             insertsqlCommand.Parameters.Add("@LongOrShort", SqlDbType.VarChar, 0, "LongOrShort");
-            insertsqlCommand.Parameters.Add("@CategoryNo",SqlDbType.Int,0, "CategoryNo");
+            insertsqlCommand.Parameters.Add("@CategoryNo", SqlDbType.Int, 0, "CategoryNo");
             insertsqlCommand.Parameters.Add("@Content", SqlDbType.VarChar, 0, "Content");
             insertsqlCommand.Parameters.Add("@HowMuch", SqlDbType.VarChar, 0, "HowMuch");
             insertsqlCommand.Parameters.Add("@Nnit", SqlDbType.VarChar, 0, "Nnit");

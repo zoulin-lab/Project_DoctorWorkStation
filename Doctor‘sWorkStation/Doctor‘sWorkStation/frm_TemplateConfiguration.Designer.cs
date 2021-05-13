@@ -45,6 +45,7 @@
             this.dgvTemplate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTemplate.Location = new System.Drawing.Point(31, 91);
             this.dgvTemplate.Name = "dgvTemplate";
+            this.dgvTemplate.RowHeadersVisible = false;
             this.dgvTemplate.RowTemplate.Height = 30;
             this.dgvTemplate.Size = new System.Drawing.Size(240, 330);
             this.dgvTemplate.TabIndex = 0;
@@ -54,6 +55,7 @@
             this.dgvHadPickedTemplate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHadPickedTemplate.Location = new System.Drawing.Point(369, 91);
             this.dgvHadPickedTemplate.Name = "dgvHadPickedTemplate";
+            this.dgvHadPickedTemplate.RowHeadersVisible = false;
             this.dgvHadPickedTemplate.RowTemplate.Height = 30;
             this.dgvHadPickedTemplate.Size = new System.Drawing.Size(240, 330);
             this.dgvHadPickedTemplate.TabIndex = 1;
@@ -66,6 +68,7 @@
             this.btnLeft.TabIndex = 2;
             this.btnLeft.Text = ">";
             this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnRight
             // 
@@ -75,24 +78,27 @@
             this.btnRight.TabIndex = 3;
             this.btnRight.Text = "<";
             this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(188, 447);
+            this.btnSave.Location = new System.Drawing.Point(184, 447);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 34);
+            this.btnSave.Size = new System.Drawing.Size(87, 42);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "保存(S)";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(369, 447);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(79, 34);
+            this.btnClose.Size = new System.Drawing.Size(83, 42);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "关闭(C)";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label1
             // 

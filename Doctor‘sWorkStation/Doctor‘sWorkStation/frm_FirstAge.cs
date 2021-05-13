@@ -64,7 +64,7 @@ namespace Doctor_sWorkStation
         {
             frm_NewPatient frm_NewPatient = new frm_NewPatient();
             frm_NewPatient.Show();
-            this.Close();
+            //this.Close();
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,6 +133,31 @@ namespace Doctor_sWorkStation
         {
             frm_PatientList frm_PatientList = new frm_PatientList();
             frm_PatientList.Show();
+        }
+
+        private void 选择模板ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_TemplateConfiguration frm_TemplateConfiguration = new frm_TemplateConfiguration();
+            frm_TemplateConfiguration.Show();
+        }
+
+        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_MedicalRecordWrite frm_MedicalRecordWrite = new frm_MedicalRecordWrite();
+            frm_MedicalRecordWrite.Show();
+            frm_MedicalRecordWrite.Text = "某某的病历";
+        }
+
+        private void 搜索病人ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_PatientList frm_PatientList = new frm_PatientList();
+            frm_PatientList.Show();
+        }
+
+        private void 所有病人ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_PatientListTwo frm_PatientListTwo = new frm_PatientListTwo();
+            frm_PatientListTwo.Show();
         }
     }
 }

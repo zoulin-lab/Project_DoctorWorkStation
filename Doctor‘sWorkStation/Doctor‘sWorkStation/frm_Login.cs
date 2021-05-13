@@ -49,7 +49,7 @@ namespace Doctor_sWorkStation
             sqlConnection.Close();
             
             SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
-            sqlCommand.CommandText = "SELECT Name FROM tb_Doctor WHERE No= @DoctorNo";
+            sqlCommand.CommandText = "SELECT Name,OfficeNo FROM tb_Doctor WHERE No= @DoctorNo";
             
             if (rowCount == 1)                                                                          //若查得所输用户号相应的1行记录；
             {
@@ -60,6 +60,7 @@ namespace Doctor_sWorkStation
                 if (sqlDataReader.Read())
                 {
                     Doctor.Name = sqlDataReader["Name"].ToString();
+                    Doctor.OfficeNo= sqlDataReader["OfficeNo"].ToString();
                 }
                 sqlDataReader.Close();
                 MessageBox.Show("登录成功。");															//显示正确提示；

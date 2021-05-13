@@ -28,7 +28,7 @@ namespace Doctor_sWorkStation
             SqlCommand sqlCommand = sqlConnection.CreateCommand();                                      //调用SQL连接的方法CreateCommand来创建SQL命令；该命令将绑定SQL连接； 
             sqlCommand.CommandText = $@"SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
 		                                JOIN tb_Patient AS P ON MR.No=P.No
-		                                WHERE (Doctor=@No AND IsToHospital=0) OR (Doctor='' AND IsToHospital=0)";
+		                                WHERE (Doctor=@No AND IsToHospital!=1) OR (Doctor='' AND IsToHospital!=1)";
             sqlCommand.Parameters.AddWithValue("@No", Doctor.Name);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
