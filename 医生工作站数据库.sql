@@ -31,7 +31,10 @@ INSERT tb_Doctor
 	   ('D001','魏爱东',HashBytes('MD5','001'),1),
 	   ('D002','李君',HashBytes('MD5','002'),4),
 	   ('D003','周彩云',HashBytes('MD5','003'),3),
-	   ('D004','马勇',HashBytes('MD5','004'),2)
+	   ('D004','马勇',HashBytes('MD5','004'),2),
+	   ('D005','梁一一',HashBytes('MD5','005'),1),
+	   ('D006','张强',HashBytes('MD5','006'),1),
+	   ('D007','王小二',HashBytes('MD5','007'),1)
 select * from tb_Doctor
 
 DROP TABLE tb_Offices
@@ -51,6 +54,28 @@ INSERT tb_Offices
 	   (2,'消化内科'),
 	   (3,'眼科'),
 	   (4,'内分泌科') 
+
+CREATE TABLE tb_Bed
+       (No
+	   INT
+	   CONSTRAINT pk_Bed_No	/*创建主键约束	*/							
+	   PRIMARY KEY(No)		
+	   NOT NULL,
+	   Name
+	   VARCHAR(20))
+
+	   delete tb_Bed
+INSERT tb_Bed
+       (No,Name)
+	   VALUES
+	   (1,'0001'),(2,'0002'),(3,'0003'),(4,'0004'),(5,'0005'),
+	   (6,'0006'),(7,'0007'),(8,'0008'),(9,'0009'),(10,'0010'),
+	   (11,'0011'),(12,'0012'),(13,'0013'),(14,'0014'),(15,'0015'),
+	   (16,'0016'),(17,'0017'),(18,'0018'),(19,'0019'),(20,'0020')
+
+select No,Name from tb_Bed where Name not in(select BedNo from tb_MedicalRecord) 
+
+
 
 DROP TABLE tb_Patient
 CREATE TABLE tb_Patient
@@ -161,13 +186,13 @@ INSERT tb_MedicalRecord
 	   ('1225980','M0007','马乃双',2,'0007',4,'2020/04/09','待查','李君','','','',0,1),
 	   ('1216315','M0008','郭建峰',2,'0008',3,'2020/04/01','视网膜下出血','周彩云','','','',0,0),
 	   ('1133395','M0009','王研',1,'0009',3,'2020/04/01','待查','周彩云','','','',0,1),
-	   ('1228012','M0010','孙兰芹',1,'0010',3,'2020/04/01','待查','','','','',0,0)
+	   ('1228012','M0010','孙兰芹',1,'0010',3,'2020/04/01','待查','魏爱东','','','',0,0)
 INSERT tb_MedicalRecord
        (No,ThisNo,Name,InHospitalCount,BedNo,OfficesNo,InDate,MainDiagnoseContent,Doctor,OtherSitiuation,OutOfficesNo,OutDate,IsToHospital,Category)
 	   VALUES
-	   ('0006','M0011','李焕二',2,'0001',1,'2020/04/01','呼吸道感染','魏爱东','','','',1,1),
-	   ('0007','M0012','焕二',1,'0002',4,'2020/04/01','泌尿感染','李君','','','',1,1),
-	   ('0008','M0013','李三',4,'0003',3,'2020/04/07','蛛网膜下出血','周彩云','','','',1,0)
+	   ('0006','M0011','李焕二',2,'0011',1,'2020/04/01','呼吸道感染','魏爱东','','','',1,1),
+	   ('0007','M0012','焕二',1,'0012',4,'2020/04/01','泌尿感染','李君','','','',1,1),
+	   ('0008','M0013','李三',4,'0013',3,'2020/04/07','蛛网膜下出血','周彩云','','','',1,0)
 
 
 SELECT * FROM tb_MedicalRecord 
@@ -370,4 +395,25 @@ select p.No,p.Name,p.Gender,p.IsMarried,p.Nation,p.Career,p.Address,p.WorkPlace,
 join tb_Offices as o on p.OfficeNo=o.OfficesNo 
 where OfficeNo=1
 
-select * from tb_MedicalRecord
+SELECT * FROM tb_Patient where OfficeNo=1 
+
+ select p.No,p.Name,p.Gender,p.IsMarried,p.Nation,p.Career,p.Address,p.WorkPlace,p.Birthday,o.Name as OfficeName from tb_Patient as p
+                                       join tb_Offices as o on p.OfficeNo=o.OfficesNo 
+                                       where OfficeNo=1 and No not in (select No from tb_MedicalRecord)
+   select * from tb_MedicalRecord where OfficesNo=1                                    
+delete tb_MedicalRecord where No='0009'
+
+SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
+		                                JOIN tb_Patient AS P ON MR.No=P.No
+		                                WHERE (Doctor='魏爱东' AND IsToHospital=0) OR (Doctor='' AND IsToHospital=0)
+
+  select * from tb_Template
+  select * from tb_Offices
+  select No,Name,OfficeNo from tb_Doctor
+  select No,Name,ThisNo,BedNo,MainDiagnoseContent from tb_MedicalRecord where BedNo=''
+
+  select No,Name from tb_Bed where Name not in(select BedNo from tb_MedicalRecord) 
+
+  SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
+		                                JOIN tb_Patient AS P ON MR.No=P.No
+		                                WHERE (Doctor='魏爱东' AND IsToHospital!=1 And BedNo!='') OR (Doctor='' AND IsToHospital!=1 And BedNo!='' ) 

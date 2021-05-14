@@ -149,6 +149,12 @@
     <Compile Include="frm_NewPatientWrite.Designer.cs">
       <DependentUpon>frm_NewPatientWrite.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_WaitBedPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_WaitBedPatient.Designer.cs">
+      <DependentUpon>frm_WaitBedPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="frm_PatientListTwo.cs">
       <SubType>Form</SubType>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NewPatientWrite.resx">
       <DependentUpon>frm_NewPatientWrite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_WaitBedPatient.resx">
+      <DependentUpon>frm_WaitBedPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

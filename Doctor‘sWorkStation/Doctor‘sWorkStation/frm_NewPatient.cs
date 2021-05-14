@@ -97,7 +97,7 @@ namespace Doctor_sWorkStation
             //this.dgvNewPatient.Columns["No"].HeaderText = "学号";												
             //this.dgvNewPatient.Columns["Name"].HeaderText = "姓名";
             this.dgvNewPatient.Columns["RowID"].Visible = false;                                               //将数据网格视图的指定列设为不可见；
-            this.lblTip.Text = $"每页显示{PageSize}条，共{MaxPageNo}页，当前为第1页！";
+            this.lblTip.Text = $"每页显示{PageSize}条，共{MaxPageNo}页，当前为首页！";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

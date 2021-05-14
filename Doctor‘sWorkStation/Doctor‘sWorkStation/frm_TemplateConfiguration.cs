@@ -63,7 +63,7 @@ namespace Doctor_sWorkStation
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($@"{dgvTemplate.RowCount.ToString()}");
+            //MessageBox.Show($@"{dgvTemplate.RowCount.ToString()}");
             if (this.dgvTemplate.RowCount == 1)         //等于1而不是等于0的原因是网格内还有一行标题   //若课程数据网格视图内的行计数等于0；
                 return;                                                                                     //返回；
             DataRowView currentTemplateRowView =

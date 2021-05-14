@@ -39,6 +39,7 @@
             this.tvPatient.Name = "tvPatient";
             this.tvPatient.Size = new System.Drawing.Size(206, 395);
             this.tvPatient.TabIndex = 0;
+            this.tvPatient.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPatient_AfterSelect);
             // 
             // dgvPatient
             // 
@@ -47,18 +48,18 @@
             this.dgvPatient.Location = new System.Drawing.Point(274, 29);
             this.dgvPatient.Name = "dgvPatient";
             this.dgvPatient.RowTemplate.Height = 30;
-            this.dgvPatient.Size = new System.Drawing.Size(288, 395);
+            this.dgvPatient.Size = new System.Drawing.Size(588, 395);
             this.dgvPatient.TabIndex = 1;
             // 
             // frm_PatientListTwo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 450);
+            this.ClientSize = new System.Drawing.Size(898, 450);
             this.Controls.Add(this.dgvPatient);
             this.Controls.Add(this.tvPatient);
             this.Name = "frm_PatientListTwo";
-            this.Text = "PatientListTwo";
+            this.Text = "所有病人列表";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).EndInit();
             this.ResumeLayout(false);
 

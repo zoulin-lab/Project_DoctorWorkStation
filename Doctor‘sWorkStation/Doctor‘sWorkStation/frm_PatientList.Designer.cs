@@ -81,7 +81,7 @@
             this.Controls.Add(this.txbName);
             this.Controls.Add(this.label1);
             this.Name = "frm_PatientList";
-            this.Text = "病人列表";
+            this.Text = "根据名字搜索病人";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatientList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

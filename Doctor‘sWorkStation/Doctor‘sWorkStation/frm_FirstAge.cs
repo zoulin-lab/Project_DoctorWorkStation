@@ -159,5 +159,11 @@ namespace Doctor_sWorkStation
             frm_PatientListTwo frm_PatientListTwo = new frm_PatientListTwo();
             frm_PatientListTwo.Show();
         }
+
+        private void 等床病人ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_WaitBedPatient frm_WaitBedPatient = new frm_WaitBedPatient();
+            frm_WaitBedPatient.Show();
+        }
     }
 }

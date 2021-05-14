@@ -328,6 +328,7 @@
             this.等床病人ToolStripMenuItem.Name = "等床病人ToolStripMenuItem";
             this.等床病人ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.等床病人ToolStripMenuItem.Text = "等床病人";
+            this.等床病人ToolStripMenuItem.Click += new System.EventHandler(this.等床病人ToolStripMenuItem_Click);
             // 
             // 选择摆药药局ToolStripMenuItem
             // 

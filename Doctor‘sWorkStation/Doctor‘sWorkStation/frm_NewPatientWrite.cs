@@ -117,7 +117,14 @@ namespace Doctor_sWorkStation
             sqlConnection.Open();
             insertCommand.ExecuteNonQuery();
             sqlConnection.Close();
-            MessageBox.Show($"病人{this.txbName.Text}新建成功！");
+            if (this.cbxBedNo.Text == "") 
+            {
+                MessageBox.Show($"暂无空闲病床！病人{this.txbName.Text}成为等床病人！");
+            }
+            else
+            {
+                MessageBox.Show($"病人{this.txbName.Text}新建成功！");
+            }
 
         }
 
