@@ -285,6 +285,12 @@ CREATE TABLE tb_DoctorAdvice
 	   VARCHAR(20),
 	   Combo  --套餐
 	   VARCHAR(20),
+	   --StartTime
+	   --DateTime,
+	   --DoDateTime
+	   --DateTime,
+	   --StopDateTime
+	   --DateTime,
 	   CONSTRAINT pk_DoctorAdvice_No_Combo	/*创建主键约束	*/							
 	   PRIMARY KEY(No,Combo)	
 	   )
@@ -298,8 +304,9 @@ INSERT tb_DoctorAdvice
 	   (3,'长期',1,'先锋霉素IV号','1','g','口服','3/1日','套餐一'),
 	   (4,'长期',1,'10%葡萄糖注射液','250','ml','静滴','1/1日','套餐一')
 
-SELECT distinct Combo FROM tb_DoctorAdvice 
-SELECT * FROM tb_DoctorAdvice
+SELECT * FROM tb_DoctorAdvice 
+SELECT LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency FROM tb_DoctorAdvice AS DA 
+JOIN tb_DoctorAdviceCategory AS DAC ON DA.CategoryNo=DAC.No
 
 INSERT tb_DoctorAdvice
        (No,LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
@@ -417,3 +424,64 @@ SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FR
   SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
 		                                JOIN tb_Patient AS P ON MR.No=P.No
 		                                WHERE (Doctor='魏爱东' AND IsToHospital!=1 And BedNo!='') OR (Doctor='' AND IsToHospital!=1 And BedNo!='' ) 
+
+
+DROP TABLE tb_PatientDoctorAdvice
+CREATE TABLE tb_PatientDoctorAdvice
+       (PatientNo  --病人ID
+	   VARCHAR(10)
+	   NOT NULL,
+	   DoctorAdviceNo  --医嘱编号
+	   INT
+	   NOT NULL,
+	   LongOrShort --长期短期
+	   VARCHAR(20),
+	   CategoryNo --种类
+	   INT,
+	   StartDateTime  --开始时间
+	   DateTime,
+	   Content --内容
+	   VARCHAR(255),
+	   HowMuch --剂量
+	   VARCHAR(20),
+	   Nnit     --单位
+	   VARCHAR(20),
+	   Way  --途径
+	   VARCHAR(20),
+	   Frequency  --频次
+	   VARCHAR(20),
+	   DoDateTime  --执行时间
+	   DateTime,
+	   StopDateTime  --结束时间
+	   DateTime,
+	   CONSTRAINT pk_PatientDoctorAdvice_PatientNo_DoctorAdviceNo	/*创建主键约束	*/							
+	   PRIMARY KEY(PatientNo,DoctorAdviceNo)	
+	   )
+
+insert tb_PatientDoctorAdvice(PatientNo,DoctorAdviceNo,LongOrShort,CategoryNo,StartDateTime,Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime)
+Values('0005',1,'长期',3,'2021-03-03','一级护理','','','','','2021-03-04','2021-06-06'),
+      ('0005',2,'短期',4,'2021-03-03','多喝热水少吃辣','','','','','2021-03-04','2021-05-05'),
+	  ('0005',3,'短期',1,'2021-03-03','葡萄糖','1','g','口服','1/1日','2021-03-04','2021-05-05'),
+	  ('0005',4,'短期',1,'2021-03-03','生理盐水','300','ml','静滴','1/2日','2021-03-04','2021-05-05')
+
+select * from tb_PatientDoctorAdvice as pda join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+where PatientNo=''
+select p.Name,mr.BedNo,p.Gender,p.Birthday from tb_MedicalRecord as mr join tb_Patient as p on mr.No=p.No
+where p.No='0005'
+select p.Name,mr.BedNo,p.Gender,p.Birthday from tb_MedicalRecord as mr join tb_Patient as p on mr.No=p.No
+                                        where p.No='0005'
+
+select LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency from tb_PatientDoctorAdvice
+
+SELECT LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency FROM tb_DoctorAdvice AS DA 
+JOIN tb_DoctorAdviceCategory AS DAC ON DA.CategoryNo=DAC.No
+WHERE Combo=''
+
+
+SELECT LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency FROM tb_DoctorAdvice AS DA 
+                                         JOIN tb_DoctorAdviceCategory AS DAC ON DA.CategoryNo=DAC.No
+                                         WHERE Combo='套餐一'
+
+SELECT LongOrShort,CategoryNo,StartTime,Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime FROM tb_DoctorAdvice AS DA 
+                                         JOIN tb_DoctorAdviceCategory AS DAC ON DA.CategoryNo=DAC.No
+                                         WHERE Combo=''

@@ -57,7 +57,7 @@ namespace Doctor_sWorkStation
             this.dgvWaitBedPatient.Columns["BedNo"].Visible=false;
             dgvcbxc.DataSource = BedTable;
             dgvcbxc.Name = "Bed";
-            dgvcbxc.HeaderText = "床号";
+            dgvcbxc.HeaderText = "选择床号";
             dgvcbxc.DisplayMember = "Name";
             dgvcbxc.ValueMember = "Name";
             dgvcbxc.DataPropertyName = "BedNo";//与数据库数据源绑定

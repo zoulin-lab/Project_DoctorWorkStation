@@ -20,7 +20,7 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
-            if (Patient.Name != "")
+            if (Patient.No != "")
             {
                 SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
                 sqlConnection.ConnectionString =
@@ -30,8 +30,8 @@ namespace Doctor_sWorkStation
                 sqlCommand.CommandText = " SELECT * FROM tb_Offices;";
                 sqlCommand2.CommandText = $@"SELECT p.No AS Patient,p.Name,p.Gender,p.Career,p.Birthday,mr.ThisNo,MR.InHospitalCount,MR.OfficesNo,p.Picture,mr.InDate,MR.OutOfficesNo,MR.OutDate,MR.OtherSitiuation  
                                          FROM tb_Patient AS P JOIN tb_MedicalRecord AS MR ON P.No = MR.No
-                                         WHERE p.Name=@Name";
-                sqlCommand2.Parameters.AddWithValue("@Name", Patient.Name); //参数 
+                                         WHERE p.No=@No";
+                sqlCommand2.Parameters.AddWithValue("@No", Patient.No); //参数 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();//数据适配器 
                 sqlDataAdapter.SelectCommand = sqlCommand;
                 DataTable OfficesTable = new DataTable();//用于存放查到的表
@@ -130,10 +130,10 @@ namespace Doctor_sWorkStation
             sqlCommand.CommandText = @"BEGIN TRAN
 	                                   UPDATE tb_Patient 
 	                                   SET Name=@Name,Gender=@Gender,Career=@Career,Birthday=@Birthday,Picture=@Picture
-	                                   WHERE Name=@PatientName
+	                                   WHERE No=@PatientNo
 	                                   UPDATE tb_MedicalRecord
 	                                   SET ThisNo=@ThisNo,InHospitalCount=@InHospitalCount,OfficesNo=@OfficesNo,InDate=@InDate,OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
-	                                   WHERE Name=@PatientName
+	                                   WHERE No=@PatientNo
 	                                   COMMIT";
             sqlCommand.Parameters.AddWithValue("@Name",txbName.Text.Trim());
             if (rdbMale.Checked==true)
@@ -171,7 +171,7 @@ namespace Doctor_sWorkStation
             //更新图片文件
             sqlCommand.Parameters.AddWithValue("@Picture", photoBytes);
 
-            sqlCommand.Parameters.AddWithValue("@PatientName", Patient.Name);
+            sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
             sqlConnection.Open();
             int rowAffected = sqlCommand.ExecuteNonQuery();//执行并返回结果
             sqlConnection.Close();

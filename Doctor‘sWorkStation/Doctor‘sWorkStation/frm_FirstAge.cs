@@ -32,7 +32,7 @@ namespace Doctor_sWorkStation
             this.lbPatient.DataSource = PatientTable;
             sqlConnection.Close();
             this.lbPatient.DisplayMember = "Name";
-            this.lbPatient.ValueMember = "Name";//一定要写这一步
+            this.lbPatient.ValueMember = "No";//一定要写这一步
 
             
         }
@@ -41,11 +41,11 @@ namespace Doctor_sWorkStation
         {
             if (lbPatient.SelectedIndex < 0)
             {
-                Patient.Name = "";
+                Patient.No = "";
             }
             if (lbPatient.SelectedIndex >= 0)
             {
-                Patient.Name = lbPatient.SelectedValue.ToString();
+                Patient.No = lbPatient.SelectedValue.ToString();
                 //Patient.ThisNo=
             }
 
@@ -104,6 +104,7 @@ namespace Doctor_sWorkStation
             //医嘱录入
             if (lbPatient.SelectedIndex > -1 && lbObject.SelectedIndex == 5)
             {
+                Patient.No = lbPatient.SelectedValue.ToString();
                 frm_EnterDoctorAdvice frm_EnterDoctorAdvice = new frm_EnterDoctorAdvice();
                 frm_EnterDoctorAdvice.Show();
             }
@@ -111,11 +112,11 @@ namespace Doctor_sWorkStation
             {
                 if (lbPatient.SelectedIndex < 0)
                 {
-                    Patient.Name = "";
+                    Patient.No = "";
                 }
                 if (lbPatient.SelectedIndex >= 0)
                 {
-                    Patient.Name = lbPatient.SelectedValue.ToString();
+                    Patient.No = lbPatient.SelectedValue.ToString();
                 }
                 frm_Information frm_Information = new frm_Information();
                 frm_Information.Show();

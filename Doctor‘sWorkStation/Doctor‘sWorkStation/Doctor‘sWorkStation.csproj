@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarColumn.cs" />
     <Compile Include="frm_DoctorAdviceCategory.cs">
       <SubType>Form</SubType>
     </Compile>

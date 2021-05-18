@@ -28,25 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblBedNo = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
             this.lblAgo = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.gpbLongOrShort = new System.Windows.Forms.GroupBox();
-            this.gpbShowLimits = new System.Windows.Forms.GroupBox();
-            this.rbnAll = new System.Windows.Forms.RadioButton();
-            this.rbnLong = new System.Windows.Forms.RadioButton();
             this.rbnShort = new System.Windows.Forms.RadioButton();
-            this.rbnHadDo = new System.Windows.Forms.RadioButton();
-            this.rbnRecord = new System.Windows.Forms.RadioButton();
+            this.rbnLong = new System.Windows.Forms.RadioButton();
+            this.rbnAll = new System.Windows.Forms.RadioButton();
+            this.gpbShowLimits = new System.Windows.Forms.GroupBox();
             this.rbnAllShow = new System.Windows.Forms.RadioButton();
+            this.rbnRecord = new System.Windows.Forms.RadioButton();
+            this.rbnHadDo = new System.Windows.Forms.RadioButton();
             this.dgvDoctorAdvice = new System.Windows.Forms.DataGridView();
             this.dgvDoctorAdvice2 = new System.Windows.Forms.DataGridView();
+            this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.gpbLongOrShort.SuspendLayout();
             this.gpbShowLimits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctorAdvice)).BeginInit();
@@ -56,47 +60,47 @@
             // lblBedNo
             // 
             this.lblBedNo.AutoSize = true;
-            this.lblBedNo.Location = new System.Drawing.Point(32, 35);
+            this.lblBedNo.Location = new System.Drawing.Point(827, 35);
             this.lblBedNo.Name = "lblBedNo";
-            this.lblBedNo.Size = new System.Drawing.Size(62, 18);
+            this.lblBedNo.Size = new System.Drawing.Size(44, 18);
             this.lblBedNo.TabIndex = 0;
-            this.lblBedNo.Text = "label1";
+            this.lblBedNo.Text = "床号";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(193, 35);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(62, 18);
+            this.lblName.Size = new System.Drawing.Size(44, 18);
             this.lblName.TabIndex = 1;
-            this.lblName.Text = "label2";
+            this.lblName.Text = "姓名";
             // 
             // lblGender
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Location = new System.Drawing.Point(366, 35);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(62, 18);
+            this.lblGender.Size = new System.Drawing.Size(44, 18);
             this.lblGender.TabIndex = 2;
-            this.lblGender.Text = "label3";
+            this.lblGender.Text = "性别";
             // 
             // lblAgo
             // 
             this.lblAgo.AutoSize = true;
             this.lblAgo.Location = new System.Drawing.Point(535, 35);
             this.lblAgo.Name = "lblAgo";
-            this.lblAgo.Size = new System.Drawing.Size(62, 18);
+            this.lblAgo.Size = new System.Drawing.Size(44, 18);
             this.lblAgo.TabIndex = 3;
-            this.lblAgo.Text = "label4";
+            this.lblAgo.Text = "年龄";
             // 
             // lblPatientID
             // 
             this.lblPatientID.AutoSize = true;
-            this.lblPatientID.Location = new System.Drawing.Point(714, 35);
+            this.lblPatientID.Location = new System.Drawing.Point(32, 35);
             this.lblPatientID.Name = "lblPatientID";
             this.lblPatientID.Size = new System.Drawing.Size(62, 18);
             this.lblPatientID.TabIndex = 4;
-            this.lblPatientID.Text = "label5";
+            this.lblPatientID.Text = "病人ID";
             // 
             // gpbLongOrShort
             // 
@@ -110,28 +114,17 @@
             this.gpbLongOrShort.TabStop = false;
             this.gpbLongOrShort.Text = "长期/临时";
             // 
-            // gpbShowLimits
+            // rbnShort
             // 
-            this.gpbShowLimits.Controls.Add(this.rbnAllShow);
-            this.gpbShowLimits.Controls.Add(this.rbnRecord);
-            this.gpbShowLimits.Controls.Add(this.rbnHadDo);
-            this.gpbShowLimits.Location = new System.Drawing.Point(556, 78);
-            this.gpbShowLimits.Name = "gpbShowLimits";
-            this.gpbShowLimits.Size = new System.Drawing.Size(334, 69);
-            this.gpbShowLimits.TabIndex = 6;
-            this.gpbShowLimits.TabStop = false;
-            this.gpbShowLimits.Text = "显示范围";
-            // 
-            // rbnAll
-            // 
-            this.rbnAll.AutoSize = true;
-            this.rbnAll.Location = new System.Drawing.Point(14, 28);
-            this.rbnAll.Name = "rbnAll";
-            this.rbnAll.Size = new System.Drawing.Size(69, 22);
-            this.rbnAll.TabIndex = 0;
-            this.rbnAll.TabStop = true;
-            this.rbnAll.Text = "全部";
-            this.rbnAll.UseVisualStyleBackColor = true;
+            this.rbnShort.AutoSize = true;
+            this.rbnShort.Location = new System.Drawing.Point(231, 28);
+            this.rbnShort.Name = "rbnShort";
+            this.rbnShort.Size = new System.Drawing.Size(69, 22);
+            this.rbnShort.TabIndex = 2;
+            this.rbnShort.TabStop = true;
+            this.rbnShort.Text = "短期";
+            this.rbnShort.UseVisualStyleBackColor = true;
+            this.rbnShort.Click += new System.EventHandler(this.rbnShort_Click);
             // 
             // rbnLong
             // 
@@ -143,39 +136,31 @@
             this.rbnLong.TabStop = true;
             this.rbnLong.Text = "长期";
             this.rbnLong.UseVisualStyleBackColor = true;
+            this.rbnLong.Click += new System.EventHandler(this.rbnLong_Click);
             // 
-            // rbnShort
+            // rbnAll
             // 
-            this.rbnShort.AutoSize = true;
-            this.rbnShort.Location = new System.Drawing.Point(231, 28);
-            this.rbnShort.Name = "rbnShort";
-            this.rbnShort.Size = new System.Drawing.Size(69, 22);
-            this.rbnShort.TabIndex = 2;
-            this.rbnShort.TabStop = true;
-            this.rbnShort.Text = "短期";
-            this.rbnShort.UseVisualStyleBackColor = true;
+            this.rbnAll.AutoSize = true;
+            this.rbnAll.Location = new System.Drawing.Point(14, 28);
+            this.rbnAll.Name = "rbnAll";
+            this.rbnAll.Size = new System.Drawing.Size(69, 22);
+            this.rbnAll.TabIndex = 0;
+            this.rbnAll.TabStop = true;
+            this.rbnAll.Text = "全部";
+            this.rbnAll.UseVisualStyleBackColor = true;
+            this.rbnAll.Click += new System.EventHandler(this.rbnAll_Click);
             // 
-            // rbnHadDo
+            // gpbShowLimits
             // 
-            this.rbnHadDo.AutoSize = true;
-            this.rbnHadDo.Location = new System.Drawing.Point(136, 28);
-            this.rbnHadDo.Name = "rbnHadDo";
-            this.rbnHadDo.Size = new System.Drawing.Size(87, 22);
-            this.rbnHadDo.TabIndex = 1;
-            this.rbnHadDo.TabStop = true;
-            this.rbnHadDo.Text = "已执行";
-            this.rbnHadDo.UseVisualStyleBackColor = true;
-            // 
-            // rbnRecord
-            // 
-            this.rbnRecord.AutoSize = true;
-            this.rbnRecord.Location = new System.Drawing.Point(245, 28);
-            this.rbnRecord.Name = "rbnRecord";
-            this.rbnRecord.Size = new System.Drawing.Size(87, 22);
-            this.rbnRecord.TabIndex = 2;
-            this.rbnRecord.TabStop = true;
-            this.rbnRecord.Text = "医嘱本";
-            this.rbnRecord.UseVisualStyleBackColor = true;
+            this.gpbShowLimits.Controls.Add(this.rbnAllShow);
+            this.gpbShowLimits.Controls.Add(this.rbnRecord);
+            this.gpbShowLimits.Controls.Add(this.rbnHadDo);
+            this.gpbShowLimits.Location = new System.Drawing.Point(694, 78);
+            this.gpbShowLimits.Name = "gpbShowLimits";
+            this.gpbShowLimits.Size = new System.Drawing.Size(334, 69);
+            this.gpbShowLimits.TabIndex = 6;
+            this.gpbShowLimits.TabStop = false;
+            this.gpbShowLimits.Text = "显示范围";
             // 
             // rbnAllShow
             // 
@@ -188,47 +173,81 @@
             this.rbnAllShow.Text = "都显示";
             this.rbnAllShow.UseVisualStyleBackColor = true;
             // 
+            // rbnRecord
+            // 
+            this.rbnRecord.AutoSize = true;
+            this.rbnRecord.Location = new System.Drawing.Point(245, 28);
+            this.rbnRecord.Name = "rbnRecord";
+            this.rbnRecord.Size = new System.Drawing.Size(87, 22);
+            this.rbnRecord.TabIndex = 2;
+            this.rbnRecord.TabStop = true;
+            this.rbnRecord.Text = "医嘱本";
+            this.rbnRecord.UseVisualStyleBackColor = true;
+            // 
+            // rbnHadDo
+            // 
+            this.rbnHadDo.AutoSize = true;
+            this.rbnHadDo.Location = new System.Drawing.Point(136, 28);
+            this.rbnHadDo.Name = "rbnHadDo";
+            this.rbnHadDo.Size = new System.Drawing.Size(87, 22);
+            this.rbnHadDo.TabIndex = 1;
+            this.rbnHadDo.TabStop = true;
+            this.rbnHadDo.Text = "已执行";
+            this.rbnHadDo.UseVisualStyleBackColor = true;
+            // 
             // dgvDoctorAdvice
             // 
-            this.dgvDoctorAdvice.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvDoctorAdvice.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvDoctorAdvice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctorAdvice.Location = new System.Drawing.Point(21, 170);
+            this.dgvDoctorAdvice.Location = new System.Drawing.Point(19, 180);
             this.dgvDoctorAdvice.Name = "dgvDoctorAdvice";
             this.dgvDoctorAdvice.RowTemplate.Height = 30;
-            this.dgvDoctorAdvice.Size = new System.Drawing.Size(869, 150);
+            this.dgvDoctorAdvice.Size = new System.Drawing.Size(1009, 217);
             this.dgvDoctorAdvice.TabIndex = 7;
             // 
             // dgvDoctorAdvice2
             // 
-            this.dgvDoctorAdvice2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvDoctorAdvice2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvDoctorAdvice2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctorAdvice2.Location = new System.Drawing.Point(21, 326);
+            this.dgvDoctorAdvice2.ContextMenuStrip = this.cmsMenu;
+            this.dgvDoctorAdvice2.Location = new System.Drawing.Point(21, 421);
             this.dgvDoctorAdvice2.Name = "dgvDoctorAdvice2";
             this.dgvDoctorAdvice2.RowTemplate.Height = 30;
-            this.dgvDoctorAdvice2.Size = new System.Drawing.Size(869, 150);
+            this.dgvDoctorAdvice2.Size = new System.Drawing.Size(1007, 170);
             this.dgvDoctorAdvice2.TabIndex = 8;
+            // 
+            // cmsMenu
+            // 
+            this.cmsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.cmsMenu.Name = "cmsMenu";
+            this.cmsMenu.ShowImageMargin = false;
+            this.cmsMenu.Size = new System.Drawing.Size(36, 4);
+            this.cmsMenu.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMenu_Opening);
+            this.cmsMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsMenu_ItemClicked);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(21, 495);
+            this.btnSave.Location = new System.Drawing.Point(21, 597);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 31);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "保存(T)";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(271, 495);
+            this.btnNew.Location = new System.Drawing.Point(356, 597);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(94, 31);
             this.btnNew.TabIndex = 10;
             this.btnNew.Text = "新增(A)";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(556, 495);
+            this.btnDelete.Location = new System.Drawing.Point(652, 597);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 31);
             this.btnDelete.TabIndex = 11;
@@ -237,7 +256,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(796, 495);
+            this.btnClose.Location = new System.Drawing.Point(934, 597);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 31);
             this.btnClose.TabIndex = 12;
@@ -245,11 +264,31 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 159);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "已执行医嘱";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 400);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 18);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "新开医嘱";
+            // 
             // frm_EnterDoctorAdvice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 552);
+            this.ClientSize = new System.Drawing.Size(1040, 657);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNew);
@@ -297,5 +336,8 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip cmsMenu;
     }
 }
