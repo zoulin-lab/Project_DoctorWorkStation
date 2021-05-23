@@ -122,6 +122,12 @@ namespace Doctor_sWorkStation
                 frm_Information.Show();
                 this.Close();
             }
+            if (lbPatient.SelectedIndex > -1 && lbObject.SelectedIndex == 0)
+            {
+                string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{lbPatient.Text}.docx";
+                System.Diagnostics.Process.Start(fileName);
+
+            }
         }
 
         private void 药品字典ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,6 +171,20 @@ namespace Doctor_sWorkStation
         {
             frm_WaitBedPatient frm_WaitBedPatient = new frm_WaitBedPatient();
             frm_WaitBedPatient.Show();
+        }
+
+        private void 大图标ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Patient.No = lbPatient.SelectedValue.ToString();
+            frm_CostInformation frm_CostInformation = new frm_CostInformation();
+            frm_CostInformation.Show();
+        }
+
+        private void 出院通知ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Patient.No = lbPatient.SelectedValue.ToString(); 
+            frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
+            frm_DischargeNotice.Show();
         }
     }
 }

@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txbTemplateTitle = new System.Windows.Forms.TextBox();
-            this.txbTemplate = new System.Windows.Forms.TextBox();
+            this.cbxTemplateCategory = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnEdit
@@ -79,32 +79,38 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(107, 169);
+            this.label2.Location = new System.Drawing.Point(71, 169);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 18);
+            this.label2.Size = new System.Drawing.Size(80, 18);
             this.label2.TabIndex = 4;
-            this.label2.Text = "模板";
+            this.label2.Text = "模板类型";
             // 
             // txbTemplateTitle
             // 
             this.txbTemplateTitle.Location = new System.Drawing.Point(157, 92);
             this.txbTemplateTitle.Name = "txbTemplateTitle";
             this.txbTemplateTitle.Size = new System.Drawing.Size(254, 28);
-            this.txbTemplateTitle.TabIndex = 5;
+            this.txbTemplateTitle.TabIndex = 6;
             // 
-            // txbTemplate
+            // cbxTemplateCategory
             // 
-            this.txbTemplate.Location = new System.Drawing.Point(157, 166);
-            this.txbTemplate.Name = "txbTemplate";
-            this.txbTemplate.Size = new System.Drawing.Size(254, 28);
-            this.txbTemplate.TabIndex = 6;
+            this.cbxTemplateCategory.FormattingEnabled = true;
+            this.cbxTemplateCategory.Items.AddRange(new object[] {
+            "-请选择-",
+            "个人",
+            "公用",
+            "科室"});
+            this.cbxTemplateCategory.Location = new System.Drawing.Point(157, 166);
+            this.cbxTemplateCategory.Name = "cbxTemplateCategory";
+            this.cbxTemplateCategory.Size = new System.Drawing.Size(254, 26);
+            this.cbxTemplateCategory.TabIndex = 7;
             // 
             // frm_EditTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 403);
-            this.Controls.Add(this.txbTemplate);
+            this.Controls.Add(this.cbxTemplateCategory);
             this.Controls.Add(this.txbTemplateTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -127,6 +133,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbTemplateTitle;
-        private System.Windows.Forms.TextBox txbTemplate;
+        private System.Windows.Forms.ComboBox cbxTemplateCategory;
     }
 }

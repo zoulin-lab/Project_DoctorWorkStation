@@ -22,7 +22,7 @@ namespace Doctor_sWorkStation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\{this.txbTemplate.Text}.docx";
+            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\{this.txbTemplateTitle.Text}.docx";
             System.Diagnostics.Process.Start(fileName);
         }
 
@@ -33,19 +33,19 @@ namespace Doctor_sWorkStation
                 "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";
             SqlCommand insertsqlCommand = sqlConnection.CreateCommand();
             insertsqlCommand.CommandText = $@"INSERT tb_Template(Name,Category) VALUES (@Name,@Category)";
-            insertsqlCommand.Parameters.AddWithValue("@Name", this.txbTemplate.Text);
-            insertsqlCommand.Parameters.AddWithValue("@Category", this.txbTemplateTitle.Text);
+            insertsqlCommand.Parameters.AddWithValue("@Name", this.txbTemplateTitle.Text);
+            insertsqlCommand.Parameters.AddWithValue("@Category", this.cbxTemplateCategory.SelectedItem.ToString());
             sqlConnection.Open();
             insertsqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
 
             string path = @"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\";
-            FileStream newTxt = File.Create(path + $"{this.txbTemplate.Text}" + ".docx");
+            FileStream newTxt = File.Create(path + $"{this.txbTemplateTitle.Text}" + ".docx");
             newTxt.Close();
 
             MessageBox.Show("新建成功！");
 
-            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\{this.txbTemplate.Text}.docx";
+            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\{this.txbTemplateTitle.Text}.docx";
             System.Diagnostics.Process.Start(fileName);
         }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Doctor_sWorkStation
 {
@@ -36,6 +37,27 @@ namespace Doctor_sWorkStation
             cbxTemplate.DisplayMember = "Name";
             cbxTemplate.ValueMember = "No";
             cbxTemplate.SelectedIndex = -1;
+        }
+
+        private void btnCanel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string ThisFileName = this.txbMedicalRecordTitle.Text;
+            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{ThisFileName}.docx";
+            System.Diagnostics.Process.Start(fileName);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            File.Copy($@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.cbxTemplate.Text}.docx", $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx");
+            MessageBox.Show("新建成功！");
+            MessageBox.Show(this.cbxTemplate.Text);
+            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx";
+            System.Diagnostics.Process.Start(fileName);
         }
     }
 }

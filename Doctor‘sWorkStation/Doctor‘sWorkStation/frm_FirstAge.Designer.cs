@@ -43,14 +43,8 @@
             this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.大图标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.小图标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.列表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.排列图标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.主题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.医生ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.时间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.状态ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.搜索病人ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.所有病人ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.空白化验单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.制式化验单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +66,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbObject = new System.Windows.Forms.ListBox();
             this.lblDoctor = new System.Windows.Forms.Label();
-            this.搜索病人ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.所有病人ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msTools.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,48 +111,48 @@
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.新建ToolStripMenuItem.Text = "新建";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 打开ToolStripMenuItem
             // 
             this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.打开ToolStripMenuItem.Text = "打开";
             this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
             // 
             // 移入ToolStripMenuItem
             // 
             this.移入ToolStripMenuItem.Name = "移入ToolStripMenuItem";
-            this.移入ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.移入ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.移入ToolStripMenuItem.Text = "移入";
             this.移入ToolStripMenuItem.Click += new System.EventHandler(this.移入ToolStripMenuItem_Click);
             // 
             // 移出ToolStripMenuItem
             // 
             this.移出ToolStripMenuItem.Name = "移出ToolStripMenuItem";
-            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.移出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.移出ToolStripMenuItem.Text = "移出";
             this.移出ToolStripMenuItem.Click += new System.EventHandler(this.移出ToolStripMenuItem_Click);
             // 
             // 提交ToolStripMenuItem
             // 
             this.提交ToolStripMenuItem.Name = "提交ToolStripMenuItem";
-            this.提交ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.提交ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.提交ToolStripMenuItem.Text = "提交";
             // 
             // 属性ToolStripMenuItem
             // 
             this.属性ToolStripMenuItem.Name = "属性ToolStripMenuItem";
-            this.属性ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.属性ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.属性ToolStripMenuItem.Text = "属性";
             this.属性ToolStripMenuItem.Click += new System.EventHandler(this.属性ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -168,11 +160,7 @@
             // 
             this.查看ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.大图标ToolStripMenuItem,
-            this.小图标ToolStripMenuItem,
-            this.列表ToolStripMenuItem,
-            this.排列图标ToolStripMenuItem,
-            this.刷新ToolStripMenuItem,
-            this.选项ToolStripMenuItem});
+            this.小图标ToolStripMenuItem});
             this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
             this.查看ToolStripMenuItem.Size = new System.Drawing.Size(106, 28);
             this.查看ToolStripMenuItem.Text = "查看（V）";
@@ -181,7 +169,8 @@
             // 
             this.大图标ToolStripMenuItem.Name = "大图标ToolStripMenuItem";
             this.大图标ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.大图标ToolStripMenuItem.Text = "处方";
+            this.大图标ToolStripMenuItem.Text = "费用信息";
+            this.大图标ToolStripMenuItem.Click += new System.EventHandler(this.大图标ToolStripMenuItem_Click);
             // 
             // 小图标ToolStripMenuItem
             // 
@@ -192,58 +181,19 @@
             this.小图标ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.小图标ToolStripMenuItem.Text = "病人列表";
             // 
-            // 列表ToolStripMenuItem
+            // 搜索病人ToolStripMenuItem
             // 
-            this.列表ToolStripMenuItem.Name = "列表ToolStripMenuItem";
-            this.列表ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.列表ToolStripMenuItem.Text = "病人列表";
+            this.搜索病人ToolStripMenuItem.Name = "搜索病人ToolStripMenuItem";
+            this.搜索病人ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.搜索病人ToolStripMenuItem.Text = "搜索病人";
+            this.搜索病人ToolStripMenuItem.Click += new System.EventHandler(this.搜索病人ToolStripMenuItem_Click);
             // 
-            // 排列图标ToolStripMenuItem
+            // 所有病人ToolStripMenuItem
             // 
-            this.排列图标ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.主题ToolStripMenuItem,
-            this.医生ToolStripMenuItem,
-            this.时间ToolStripMenuItem,
-            this.状态ToolStripMenuItem});
-            this.排列图标ToolStripMenuItem.Name = "排列图标ToolStripMenuItem";
-            this.排列图标ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.排列图标ToolStripMenuItem.Text = "费用信息";
-            // 
-            // 主题ToolStripMenuItem
-            // 
-            this.主题ToolStripMenuItem.Name = "主题ToolStripMenuItem";
-            this.主题ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
-            this.主题ToolStripMenuItem.Text = "主题";
-            // 
-            // 医生ToolStripMenuItem
-            // 
-            this.医生ToolStripMenuItem.Name = "医生ToolStripMenuItem";
-            this.医生ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
-            this.医生ToolStripMenuItem.Text = "医生";
-            // 
-            // 时间ToolStripMenuItem
-            // 
-            this.时间ToolStripMenuItem.Name = "时间ToolStripMenuItem";
-            this.时间ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
-            this.时间ToolStripMenuItem.Text = "时间";
-            // 
-            // 状态ToolStripMenuItem
-            // 
-            this.状态ToolStripMenuItem.Name = "状态ToolStripMenuItem";
-            this.状态ToolStripMenuItem.Size = new System.Drawing.Size(128, 30);
-            this.状态ToolStripMenuItem.Text = "状态";
-            // 
-            // 刷新ToolStripMenuItem
-            // 
-            this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.刷新ToolStripMenuItem.Text = "刷新";
-            // 
-            // 选项ToolStripMenuItem
-            // 
-            this.选项ToolStripMenuItem.Name = "选项ToolStripMenuItem";
-            this.选项ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.选项ToolStripMenuItem.Text = "选项";
+            this.所有病人ToolStripMenuItem.Name = "所有病人ToolStripMenuItem";
+            this.所有病人ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.所有病人ToolStripMenuItem.Text = "所有病人";
+            this.所有病人ToolStripMenuItem.Click += new System.EventHandler(this.所有病人ToolStripMenuItem_Click);
             // 
             // 工具ToolStripMenuItem
             // 
@@ -322,6 +272,7 @@
             this.出院通知ToolStripMenuItem.Name = "出院通知ToolStripMenuItem";
             this.出院通知ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.出院通知ToolStripMenuItem.Text = "出院通知";
+            this.出院通知ToolStripMenuItem.Click += new System.EventHandler(this.出院通知ToolStripMenuItem_Click);
             // 
             // 等床病人ToolStripMenuItem
             // 
@@ -360,13 +311,13 @@
             // 主题帮助ToolStripMenuItem
             // 
             this.主题帮助ToolStripMenuItem.Name = "主题帮助ToolStripMenuItem";
-            this.主题帮助ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.主题帮助ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
             this.主题帮助ToolStripMenuItem.Text = "主题帮助";
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // msTools
@@ -419,20 +370,6 @@
             this.lblDoctor.TabIndex = 3;
             this.lblDoctor.Text = "Doctor";
             // 
-            // 搜索病人ToolStripMenuItem
-            // 
-            this.搜索病人ToolStripMenuItem.Name = "搜索病人ToolStripMenuItem";
-            this.搜索病人ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.搜索病人ToolStripMenuItem.Text = "搜索病人";
-            this.搜索病人ToolStripMenuItem.Click += new System.EventHandler(this.搜索病人ToolStripMenuItem_Click);
-            // 
-            // 所有病人ToolStripMenuItem
-            // 
-            this.所有病人ToolStripMenuItem.Name = "所有病人ToolStripMenuItem";
-            this.所有病人ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.所有病人ToolStripMenuItem.Text = "所有病人";
-            this.所有病人ToolStripMenuItem.Click += new System.EventHandler(this.所有病人ToolStripMenuItem_Click);
-            // 
             // frm_FirstAge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -469,14 +406,6 @@
         private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 大图标ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 小图标ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 列表ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 排列图标ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 主题ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 医生ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 时间ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 状态ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 选项ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 空白化验单ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 制式化验单ToolStripMenuItem;

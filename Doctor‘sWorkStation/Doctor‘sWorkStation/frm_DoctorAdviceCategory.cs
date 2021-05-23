@@ -19,7 +19,7 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
-            
+            this.dgvDoctorAdvice.RowHeadersVisible = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -106,16 +106,16 @@ namespace Doctor_sWorkStation
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            int currentNo = this.dgvDoctorAdvice.CurrentRow.Index + 1;
+            //int currentNo = this.dgvDoctorAdvice.CurrentRow.Index + 1;
             SqlConnection sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString =
                 "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";
             SqlCommand insertsqlCommand = sqlConnection.CreateCommand();
             insertsqlCommand.CommandText = $@"INSERT tb_DoctorAdvice
-                                             (No,LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
+                                             (LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
 	                                          VALUES
-	                                         (@No,@LongOrShort,@CategoryNo,@Content,@HowMuch,@Nnit,@Way,@Frequency,@Combo)";
-            insertsqlCommand.Parameters.AddWithValue("@No", currentNo);
+	                                         (@LongOrShort,@CategoryNo,@Content,@HowMuch,@Nnit,@Way,@Frequency,@Combo)";
+            //insertsqlCommand.Parameters.AddWithValue("@No", currentNo);
             insertsqlCommand.Parameters.Add("@LongOrShort", SqlDbType.VarChar, 0, "LongOrShort");
             insertsqlCommand.Parameters.Add("@CategoryNo", SqlDbType.Int, 0, "CategoryNo");
             insertsqlCommand.Parameters.Add("@Content", SqlDbType.VarChar, 0, "Content");
@@ -135,21 +135,21 @@ namespace Doctor_sWorkStation
         
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            int currentNo = this.dgvDoctorAdvice.CurrentRow.Index + 1;
+            //int currentNo = this.dgvDoctorAdvice.CurrentRow.Index + 1;
             SqlConnection sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString =
                 "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";
             SqlCommand insertsqlCommand = sqlConnection.CreateCommand();
             SqlCommand updatesqlCommand = sqlConnection.CreateCommand();
             insertsqlCommand.CommandText = $@"INSERT tb_DoctorAdvice
-                                             (No,LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
+                                             (LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
 	                                          VALUES
-	                                         (@No,@LongOrShort,@CategoryNo,@Content,@HowMuch,@Nnit,@Way,@Frequency,@Combo)";
+	                                         (@LongOrShort,@CategoryNo,@Content,@HowMuch,@Nnit,@Way,@Frequency,@Combo)";
             updatesqlCommand.CommandText = $@"update tb_DoctorAdvice
                                               set LongOrShort=@LongOrShort,CategoryNo=@CategoryNo,Content=@Content,HowMuch=@HowMuch,Nnit=@Nnit,Way=@Way,Frequency=@Frequency
                                               where No=@No AND Combo=@Combo";
 
-            insertsqlCommand.Parameters.AddWithValue("@No", currentNo);
+            //insertsqlCommand.Parameters.AddWithValue("@No", currentNo);
             insertsqlCommand.Parameters.Add("@LongOrShort", SqlDbType.VarChar, 0, "LongOrShort");
             insertsqlCommand.Parameters.Add("@CategoryNo", SqlDbType.Int, 0, "CategoryNo");
             insertsqlCommand.Parameters.Add("@Content", SqlDbType.VarChar, 0, "Content");

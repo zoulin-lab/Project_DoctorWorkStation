@@ -268,6 +268,7 @@ DROP TABLE tb_DoctorAdvice
 CREATE TABLE tb_DoctorAdvice
        (No
 	   INT
+	   Identity(1,1)
 	   NOT NULL,
 	   LongOrShort
 	   VARCHAR(20),
@@ -297,12 +298,12 @@ CREATE TABLE tb_DoctorAdvice
 
 DELETE tb_DoctorAdvice
 INSERT tb_DoctorAdvice
-       (No,LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
+       (LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency,Combo)
 	   VALUES
-	   (1,'长期',3,'二级护理','','','','','套餐一'),
-	   (2,'长期',4,'半流食','','','','','套餐一'),
-	   (3,'长期',1,'先锋霉素IV号','1','g','口服','3/1日','套餐一'),
-	   (4,'长期',1,'10%葡萄糖注射液','250','ml','静滴','1/1日','套餐一')
+	   ('长期',3,'二级护理','','','','','套餐一'),
+	   ('长期',4,'半流食','','','','','套餐一'),
+	   ('长期',1,'先锋霉素IV号','1','g','口服','3/1日','套餐一'),
+	   ('长期',1,'10%葡萄糖注射液','250','ml','静滴','1/1日','套餐一')
 
 SELECT * FROM tb_DoctorAdvice 
 SELECT LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency FROM tb_DoctorAdvice AS DA 
@@ -389,42 +390,6 @@ CREATE TABLE tb_DoctorChooseTemplate
 	   PRIMARY KEY(DoctorNo,TemplateNo)	
 	   )
 
-select * from tb_DoctorChooseTemplate
-
-delete tb_DoctorChooseTemplate
-insert tb_DoctorChooseTemplate(DoctorNo,TemplateNo) 
-values('D001',1)
-
-select t.No,t.Name,t.Category from tb_DoctorChooseTemplate as dct
-join tb_Template as t  on DCT.TemplateNo=T.No
-
-select p.No,p.Name,p.Gender,p.IsMarried,p.Nation,p.Career,p.Address,p.WorkPlace,p.Birthday,o.Name as OfficeName from tb_Patient as p
-join tb_Offices as o on p.OfficeNo=o.OfficesNo 
-where OfficeNo=1
-
-SELECT * FROM tb_Patient where OfficeNo=1 
-
- select p.No,p.Name,p.Gender,p.IsMarried,p.Nation,p.Career,p.Address,p.WorkPlace,p.Birthday,o.Name as OfficeName from tb_Patient as p
-                                       join tb_Offices as o on p.OfficeNo=o.OfficesNo 
-                                       where OfficeNo=1 and No not in (select No from tb_MedicalRecord)
-   select * from tb_MedicalRecord where OfficesNo=1                                    
-delete tb_MedicalRecord where No='0009'
-
-SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
-		                                JOIN tb_Patient AS P ON MR.No=P.No
-		                                WHERE (Doctor='魏爱东' AND IsToHospital=0) OR (Doctor='' AND IsToHospital=0)
-
-  select * from tb_Template
-  select * from tb_Offices
-  select No,Name,OfficeNo from tb_Doctor
-  select No,Name,ThisNo,BedNo,MainDiagnoseContent from tb_MedicalRecord where BedNo=''
-
-  select No,Name from tb_Bed where Name not in(select BedNo from tb_MedicalRecord) 
-
-  SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
-		                                JOIN tb_Patient AS P ON MR.No=P.No
-		                                WHERE (Doctor='魏爱东' AND IsToHospital!=1 And BedNo!='') OR (Doctor='' AND IsToHospital!=1 And BedNo!='' ) 
-
 
 DROP TABLE tb_PatientDoctorAdvice
 CREATE TABLE tb_PatientDoctorAdvice
@@ -433,6 +398,7 @@ CREATE TABLE tb_PatientDoctorAdvice
 	   NOT NULL,
 	   DoctorAdviceNo  --医嘱编号
 	   INT
+	   Identity(1,1)
 	   NOT NULL,
 	   LongOrShort --长期短期
 	   VARCHAR(20),
@@ -457,12 +423,12 @@ CREATE TABLE tb_PatientDoctorAdvice
 	   CONSTRAINT pk_PatientDoctorAdvice_PatientNo_DoctorAdviceNo	/*创建主键约束	*/							
 	   PRIMARY KEY(PatientNo,DoctorAdviceNo)	
 	   )
-
-insert tb_PatientDoctorAdvice(PatientNo,DoctorAdviceNo,LongOrShort,CategoryNo,StartDateTime,Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime)
-Values('0005',1,'长期',3,'2021-03-03','一级护理','','','','','2021-03-04','2021-06-06'),
-      ('0005',2,'短期',4,'2021-03-03','多喝热水少吃辣','','','','','2021-03-04','2021-05-05'),
-	  ('0005',3,'短期',1,'2021-03-03','葡萄糖','1','g','口服','1/1日','2021-03-04','2021-05-05'),
-	  ('0005',4,'短期',1,'2021-03-03','生理盐水','300','ml','静滴','1/2日','2021-03-04','2021-05-05')
+delete tb_PatientDoctorAdvice
+insert tb_PatientDoctorAdvice(PatientNo,LongOrShort,CategoryNo,StartDateTime,Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime)
+Values('0005','长期',3,'2021-03-03','一级护理','','','','','2021-03-04','2021-06-06'),
+      ('0005','短期',4,'2021-03-03','多喝热水少吃辣','','','','','2021-03-04','2021-05-05'),
+	  ('0005','短期',1,'2021-03-03','葡萄糖','1','g','口服','1/1日','2021-03-04','2021-05-05'),
+	  ('0005','短期',1,'2021-03-03','生理盐水','300','ml','静滴','1/2日','2021-03-04','2021-05-05')
 
 select * from tb_PatientDoctorAdvice as pda join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
 where PatientNo=''
@@ -485,3 +451,83 @@ SELECT LongOrShort,CategoryNo,Content,HowMuch,Nnit,Way,Frequency FROM tb_DoctorA
 SELECT LongOrShort,CategoryNo,StartTime,Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime FROM tb_DoctorAdvice AS DA 
                                          JOIN tb_DoctorAdviceCategory AS DAC ON DA.CategoryNo=DAC.No
                                          WHERE Combo=''
+
+select * from tb_PatientDoctorAdvice
+
+insert tb_PatientDoctorAdvice(PatientNo,LongOrShort,CategoryNo,StartDateTime,
+Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime)
+values('','',,'','','','','','','','')
+
+select * from tb_PatientDoctorAdvice
+select * from tb_DoctorAdvice
+
+drop table tb_PriceList
+CREATE TABLE tb_PriceList
+       (No
+	   VARCHAR(8)
+	   CONSTRAINT pk_PriceList_No	/*创建主键约束	*/							
+	   PRIMARY KEY(No)		
+	   NOT NULL,
+	   Name
+	   VARCHAR(20),
+	   Price
+	   decimal,
+	   )
+delete tb_PriceList
+insert tb_PriceList(No,Name,Price)
+values('T0001','检验一',100),('T0002','检验二',200),
+      ('E0001','检查一',500),('E0002','检查二',800),
+      ('M0001','复方丹参片',40),('M0002','葡萄糖',30),('M0003','生理盐水',20),
+      ('M0004','复方氨酚烷胺片',35),('M0005','小儿肺热咳喘口服液',42),('M0006','先锋霉素IV号',70),
+	  ('M0007','10%葡萄糖注射液',70),
+	  ('N0001','一级护理',500),('N0002','二级护理',1000),('N0003','三级护理',1500),
+	  ('S0001','手术一',10000),('S0002','手术二',15000)
+select * from tb_PriceList
+select * from tb_PatientDoctorAdvice
+
+select Content,Price from tb_PatientDoctorAdvice as pda 
+                                        join tb_PriceList as pl on pda.Content=pl.Name
+                                        where PatientNo='0005' and pda.IsCost=1
+update tb_PatientDoctorAdvice
+set IsCost=1
+where PatientNo='' and Content='' 
+
+drop table tb_PriceList
+CREATE TABLE tb_PatientPriceList
+       (PatientNo
+	   VARCHAR(8)
+	   NOT NULL,
+	   AdviceContent
+	   VARCHAR(100),
+	   Price
+	   decimal,CONSTRAINT pk_PatientPriceList_PatientNo_AdviceContent	/*创建主键约束	*/							
+	   PRIMARY KEY(PatientNo,AdviceContent)	
+	   )
+insert tb_PatientPriceList(PatientNo,AdviceContent,Price)
+values('0005','一级护理',500)
+select * from tb_PriceList
+where PatientNo=''
+
+select Content,Price from tb_PatientDoctorAdvice as pda 
+                                        join tb_PriceList as pl on pda.Content=pl.Name
+                                        where Content not in (select AdviceContent from tb_PatientPriceList
+                                        where PatientNo='0005') and PatientNo='0005'
+select * from tb_PatientPriceList
+where PatientNo='0005'
+
+select COUNT(1) from tb_PatientDoctorAdvice
+where PatientNo='0005' and StopDateTime>GETDATE()
+
+select * from tb_PatientDoctorAdvice
+where PatientNo='0005' and StopDateTime>GETDATE()
+
+select p.Name,pda.LongOrShort,dac.Name as CategoryName,pda.Content,pda.HowMuch,pda.Nnit,pda.Way,pda.Frequency,
+pda.StopDateTime,pl.Price from tb_PatientDoctorAdvice as pda 
+join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+join tb_PriceList as pl on pl.Name=pda.Content
+join tb_Patient as p on pda.PatientNo=p.No
+where PatientNo='0005'
+
+select * from tb_Patient
+select * from tb_MedicalRecord
+select * from tb_Template

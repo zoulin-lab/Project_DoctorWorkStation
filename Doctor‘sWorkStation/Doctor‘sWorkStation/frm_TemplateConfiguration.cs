@@ -69,13 +69,13 @@ namespace Doctor_sWorkStation
             DataRowView currentTemplateRowView =
                 this.dgvTemplate.CurrentRow.DataBoundItem as DataRowView;                                    //将课程数据网格视图的当前行的数据绑定项，转换为数据行视图；
             DataRow                                                                                         //声明数据行；
-                currentTemolateRow = currentTemplateRowView.Row													//通过当前的数据行视图，获取其相应的数据行；
+                currentTemplateRow = currentTemplateRowView.Row													//通过当前的数据行视图，获取其相应的数据行；
                 , MyTemplateRow = this.MyTemplateTable.NewRow();									//已选课程数据行则通过已选课程数据表的方法NewRow来新建；随后该行的状态为分离；
-            MyTemplateRow["No"] = currentTemolateRow["No"];												//逐一将当前课程数据行的各列值，赋予已选课程数据行的相应列；
-            MyTemplateRow["Name"] = currentTemolateRow["Name"];
-            MyTemplateRow["Category"] = currentTemolateRow["Category"];
+            MyTemplateRow["No"] = currentTemplateRow["No"];												//逐一将当前课程数据行的各列值，赋予已选课程数据行的相应列；
+            MyTemplateRow["Name"] = currentTemplateRow["Name"];
+            MyTemplateRow["Category"] = currentTemplateRow["Category"];
             this.MyTemplateTable.Rows.Add(MyTemplateRow);											//已选课程数据行加入已选课程数据表；随后该行的状态为添加；
-            currentTemolateRow.Delete();
+            currentTemplateRow.Delete();
         }
 
         private void btnRight_Click(object sender, EventArgs e)

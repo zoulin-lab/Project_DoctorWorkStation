@@ -13,7 +13,7 @@ namespace Doctor_sWorkStation
 {
     public partial class frm_EnterDoctorAdvice : Form
     {
-        DateTimePicker dtp = new DateTimePicker();
+        private int DoctorAdviceCategoryNo;
 
         public frm_EnterDoctorAdvice()
         {
@@ -85,7 +85,7 @@ namespace Doctor_sWorkStation
             this.dgvDoctorAdvice2.Columns.Add(dgvcbxc);
             dgvcbxc.DisplayIndex = 2;
             ShowTableTwo();
-
+            
             CalendarColumn calendar = new CalendarColumn();
             calendar.Name = "StartDateTime";
             calendar.HeaderText = "下达时间";
@@ -106,8 +106,7 @@ namespace Doctor_sWorkStation
                 DataGridViewAutoSizeColumnMode.Fill;
             
         }
-
-
+        
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -212,7 +211,7 @@ namespace Doctor_sWorkStation
             this.dgvDoctorAdvice.ReadOnly = true;
             this.dgvDoctorAdvice.Columns["LongOrShort"].HeaderText = "长期/短期";
             this.dgvDoctorAdvice.Columns["Name"].HeaderText = "医嘱类别";
-            this.dgvDoctorAdvice.Columns["StartDateTime"].HeaderText = "开始时间";
+            this.dgvDoctorAdvice.Columns["StartDateTime"].HeaderText = "下达时间";
             this.dgvDoctorAdvice.Columns["Content"].HeaderText = "医嘱内容";
             this.dgvDoctorAdvice.Columns["HowMuch"].HeaderText = "剂量";
             this.dgvDoctorAdvice.Columns["Nnit"].HeaderText = "单位";
@@ -256,16 +255,135 @@ namespace Doctor_sWorkStation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
-            sqlConnection.ConnectionString =
-                "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandText = $@"";
+            if (this.dgvDoctorAdvice2.CurrentRow.Cells["StartDateTime"].Value != null
+                && this.dgvDoctorAdvice2.CurrentRow.Cells["DoDateTime"].Value != null
+                && this.dgvDoctorAdvice2.CurrentRow.Cells["StopDateTime"].Value != null)
+            {
+                SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+                sqlConnection.ConnectionString =
+                    "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+                SqlCommand sqlCommand = sqlConnection.CreateCommand();
+                sqlCommand.CommandText = $@"insert tb_PatientDoctorAdvice(PatientNo,LongOrShort,CategoryNo,StartDateTime,
+                                        Content,HowMuch,Nnit,Way,Frequency,DoDateTime,StopDateTime)
+                                        values(@PatientNo,@LongOrShort,@CategoryNo,@StartDateTime,
+                                               @Content,@HowMuch,@Nnit,@Way,@Frequency,@DoDateTime,@StopDateTime)";
+                sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
+                sqlCommand.Parameters.AddWithValue("@LongOrShort", this.dgvDoctorAdvice2.CurrentRow.Cells["LongOrShort"].Value);
+                //sqlCommand.Parameters.AddWithValue("@CategoryNo", this.dgvDoctorAdvice2.CurrentRow.Cells["CategoryName"].Value);
+                sqlCommand.Parameters.AddWithValue("@CategoryNo", this.dgvDoctorAdvice2.CurrentRow.Cells["CategoryNo"].FormattedValue);
+                sqlCommand.Parameters.AddWithValue("@StartDateTime", (DateTime)this.dgvDoctorAdvice2.CurrentRow.Cells["StartDateTime"].Value);
+                sqlCommand.Parameters.AddWithValue("@Content", this.dgvDoctorAdvice2.CurrentRow.Cells["Content"].Value);
+                sqlCommand.Parameters.AddWithValue("@HowMuch", this.dgvDoctorAdvice2.CurrentRow.Cells["HowMuch"].Value);
+                sqlCommand.Parameters.AddWithValue("@Nnit", this.dgvDoctorAdvice2.CurrentRow.Cells["Nnit"].Value);
+                sqlCommand.Parameters.AddWithValue("@Way", this.dgvDoctorAdvice2.CurrentRow.Cells["Way"].Value);
+                sqlCommand.Parameters.AddWithValue("@Frequency", this.dgvDoctorAdvice2.CurrentRow.Cells["Frequency"].Value);
+                sqlCommand.Parameters.AddWithValue("@DoDateTime", (DateTime)this.dgvDoctorAdvice2.CurrentRow.Cells["DoDateTime"].Value);
+                sqlCommand.Parameters.AddWithValue("@StopDateTime", (DateTime)this.dgvDoctorAdvice2.CurrentRow.Cells["StopDateTime"].Value);
+
+                sqlConnection.Open();
+                if (MessageBox.Show("现在就提交新开医嘱吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("提交成功！");
+                }
+                sqlConnection.Close();
+                //MessageBox.Show("新增成功！");
+            }
+            else
+            {
+                MessageBox.Show("时间不能为空！");
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             this.dgvDoctorAdvice2.ReadOnly = false;
+        }
+
+        private void rbnAllShow_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+            sqlConnection.ConnectionString =
+                "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandText = $@"select * from tb_PatientDoctorAdvice as pda join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+                                        where PatientNo=@PatientNo";
+            sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
+            DataTable DoctorAdviceTable = new DataTable();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlConnection.Open();
+            sqlDataAdapter.Fill(DoctorAdviceTable);
+            sqlConnection.Close();
+            this.dgvDoctorAdvice.DataSource = DoctorAdviceTable;
+            ShowTableOne();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if ((DateTime)this.dgvDoctorAdvice.CurrentRow.Cells["DoDateTime"].Value > DateTime.Now)
+            {
+                SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+                sqlConnection.ConnectionString =
+                    "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+                SqlCommand sqlCommand = sqlConnection.CreateCommand();
+                sqlCommand.CommandText = $@"delete tb_PatientDoctorAdvice
+                                        where PatientNo=@PatientNo And DoctorAdviceNo=@DoctorAdviceNo";
+                sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
+                sqlCommand.Parameters.AddWithValue("@DoctorAdviceNo", this.dgvDoctorAdvice.CurrentRow.Cells["DoctorAdviceNo"].Value);
+                sqlConnection.Open();
+                if (MessageBox.Show("确定删除吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("删除成功！");
+                    DataRowView currentAdviceRowView = this.dgvDoctorAdvice.CurrentRow.DataBoundItem as DataRowView;                                    //将医嘱数据网格视图的当前行的数据绑定项，转换为数据行视图；
+                    DataRow currentRow = currentAdviceRowView.Row;
+                    currentRow.Delete();//删除当前选中行
+                }
+                sqlConnection.Close();
+            }
+            else
+            {
+                MessageBox.Show("医嘱已执行，不可删除！");
+            }
+        }
+
+        private void rbnHadDo_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+            sqlConnection.ConnectionString =
+                "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandText = $@"select * from tb_PatientDoctorAdvice as pda join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+                                        where PatientNo=@PatientNo and DoDateTime > GETDATE() ";
+            sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
+            DataTable DoctorAdviceTable = new DataTable();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlConnection.Open();
+            sqlDataAdapter.Fill(DoctorAdviceTable);
+            sqlConnection.Close();
+            this.dgvDoctorAdvice.DataSource = DoctorAdviceTable;
+            ShowTableOne();
+        }
+
+        private void rbnRecord_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+            sqlConnection.ConnectionString =
+                "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandText = $@"select * from tb_PatientDoctorAdvice as pda join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+                                        where PatientNo=@PatientNo and StopDateTime < GETDATE() ";
+            sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
+            DataTable DoctorAdviceTable = new DataTable();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlConnection.Open();
+            sqlDataAdapter.Fill(DoctorAdviceTable);
+            sqlConnection.Close();
+            this.dgvDoctorAdvice.DataSource = DoctorAdviceTable;
+            ShowTableOne();
         }
     }
 }

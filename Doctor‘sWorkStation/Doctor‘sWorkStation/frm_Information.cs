@@ -193,5 +193,37 @@ namespace Doctor_sWorkStation
             this.dtpOutDate.Format = DateTimePickerFormat.Long;
             this.dtpOutDate.CustomFormat = null; ;
         }
+
+        private void btnOutHospital_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+            sqlConnection.ConnectionString =
+                "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();                                      //调用SQL连接的方法CreateCommand来创建SQL命令；该命令将绑定SQL连接； 
+            sqlCommand.CommandText = $@"select COUNT(1) from tb_PatientDoctorAdvice
+                                        where PatientNo=@PatientNo and StopDateTime>GETDATE()";
+            sqlCommand.Parameters.AddWithValue("@PatientNo", this.txbNo.Text);//参数
+            sqlConnection.Open();
+            int Count = (int)sqlCommand.ExecuteScalar();
+            sqlConnection.Close();
+            if (Count > 0)
+            {
+                if (MessageBox.Show("仍有医嘱还在执行中,确定出院吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    Patient.No = this.txbNo.Text;
+                    frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
+                    frm_DischargeNotice.Show();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("确定允许病人出院吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    Patient.No = this.txbNo.Text;
+                    frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
+                    frm_DischargeNotice.Show();
+                }
+            }
+        }
     }
 }

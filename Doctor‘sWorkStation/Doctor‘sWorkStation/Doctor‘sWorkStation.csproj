@@ -47,6 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarColumn.cs" />
+    <Compile Include="frm_CostInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_CostInformation.Designer.cs">
+      <DependentUpon>frm_CostInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_DischargeNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DischargeNotice.Designer.cs">
+      <DependentUpon>frm_DischargeNotice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_DoctorAdviceCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +77,12 @@
     </Compile>
     <Compile Include="frm_EnterDoctorAdvice.Designer.cs">
       <DependentUpon>frm_EnterDoctorAdvice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Examination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Examination.Designer.cs">
+      <DependentUpon>frm_Examination.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_FirstAge.cs">
       <SubType>Form</SubType>
@@ -165,6 +183,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_CostInformation.resx">
+      <DependentUpon>frm_CostInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_DischargeNotice.resx">
+      <DependentUpon>frm_DischargeNotice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_DoctorAdviceCategory.resx">
       <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_EnterDoctorAdvice.resx">
       <DependentUpon>frm_EnterDoctorAdvice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Examination.resx">
+      <DependentUpon>frm_Examination.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_FirstAge.resx">
       <DependentUpon>frm_FirstAge.cs</DependentUpon>

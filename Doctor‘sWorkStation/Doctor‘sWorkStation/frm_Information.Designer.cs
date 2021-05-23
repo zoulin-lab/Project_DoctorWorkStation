@@ -31,6 +31,8 @@
             this.tcInfo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,8 +63,7 @@
             this.pbPatient = new System.Windows.Forms.PictureBox();
             this.btnPicture = new System.Windows.Forms.Button();
             this.btnChangeInfo = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnOutHospital = new System.Windows.Forms.Button();
             this.tcInfo.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).BeginInit();
@@ -102,6 +103,22 @@
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "中医诊断信息";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(184, 28);
+            this.textBox1.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(26, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 18);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "label10";
             // 
             // tabPage3
             // 
@@ -143,7 +160,7 @@
             // 
             // txbNo
             // 
-            this.txbNo.Location = new System.Drawing.Point(225, 22);
+            this.txbNo.Location = new System.Drawing.Point(225, 24);
             this.txbNo.Name = "txbNo";
             this.txbNo.ReadOnly = true;
             this.txbNo.Size = new System.Drawing.Size(100, 28);
@@ -363,27 +380,22 @@
             this.btnChangeInfo.UseVisualStyleBackColor = true;
             this.btnChangeInfo.Click += new System.EventHandler(this.btnChangeInfo_Click);
             // 
-            // label10
+            // btnOutHospital
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(26, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 18);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "label10";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(103, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 28);
-            this.textBox1.TabIndex = 1;
+            this.btnOutHospital.Location = new System.Drawing.Point(972, 201);
+            this.btnOutHospital.Name = "btnOutHospital";
+            this.btnOutHospital.Size = new System.Drawing.Size(99, 30);
+            this.btnOutHospital.TabIndex = 40;
+            this.btnOutHospital.Text = "允许出院";
+            this.btnOutHospital.UseVisualStyleBackColor = true;
+            this.btnOutHospital.Click += new System.EventHandler(this.btnOutHospital_Click);
             // 
             // frm_Information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 599);
+            this.Controls.Add(this.btnOutHospital);
             this.Controls.Add(this.btnChangeInfo);
             this.Controls.Add(this.btnPicture);
             this.Controls.Add(this.pbPatient);
@@ -462,5 +474,6 @@
         private System.Windows.Forms.Button btnChangeInfo;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnOutHospital;
     }
 }

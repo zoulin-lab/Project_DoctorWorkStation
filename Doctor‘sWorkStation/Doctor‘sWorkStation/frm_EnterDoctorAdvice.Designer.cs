@@ -172,6 +172,7 @@
             this.rbnAllShow.TabStop = true;
             this.rbnAllShow.Text = "都显示";
             this.rbnAllShow.UseVisualStyleBackColor = true;
+            this.rbnAllShow.Click += new System.EventHandler(this.rbnAllShow_Click);
             // 
             // rbnRecord
             // 
@@ -181,8 +182,9 @@
             this.rbnRecord.Size = new System.Drawing.Size(87, 22);
             this.rbnRecord.TabIndex = 2;
             this.rbnRecord.TabStop = true;
-            this.rbnRecord.Text = "医嘱本";
+            this.rbnRecord.Text = "已完成";
             this.rbnRecord.UseVisualStyleBackColor = true;
+            this.rbnRecord.Click += new System.EventHandler(this.rbnRecord_Click);
             // 
             // rbnHadDo
             // 
@@ -192,8 +194,9 @@
             this.rbnHadDo.Size = new System.Drawing.Size(87, 22);
             this.rbnHadDo.TabIndex = 1;
             this.rbnHadDo.TabStop = true;
-            this.rbnHadDo.Text = "已执行";
+            this.rbnHadDo.Text = "未执行";
             this.rbnHadDo.UseVisualStyleBackColor = true;
+            this.rbnHadDo.Click += new System.EventHandler(this.rbnHadDo_Click);
             // 
             // dgvDoctorAdvice
             // 
@@ -253,6 +256,7 @@
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "删除(D)";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
             // 
@@ -269,9 +273,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(19, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.Size = new System.Drawing.Size(80, 18);
             this.label1.TabIndex = 13;
-            this.label1.Text = "已执行医嘱";
+            this.label1.Text = "已有医嘱";
             // 
             // label2
             // 

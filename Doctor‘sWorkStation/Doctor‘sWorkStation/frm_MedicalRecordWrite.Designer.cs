@@ -70,6 +70,7 @@
             this.btnCanel.TabIndex = 9;
             this.btnCanel.Text = "放弃";
             this.btnCanel.UseVisualStyleBackColor = true;
+            this.btnCanel.Click += new System.EventHandler(this.btnCanel_Click);
             // 
             // btnSave
             // 
@@ -79,6 +80,7 @@
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnEdit
             // 
@@ -88,6 +90,7 @@
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "编辑";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // cbxTemplate
             // 
