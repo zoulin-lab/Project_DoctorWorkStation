@@ -503,31 +503,46 @@ CREATE TABLE tb_PatientPriceList
 	   decimal,CONSTRAINT pk_PatientPriceList_PatientNo_AdviceContent	/*创建主键约束	*/							
 	   PRIMARY KEY(PatientNo,AdviceContent)	
 	   )
+delete tb_PatientPriceList
 insert tb_PatientPriceList(PatientNo,AdviceContent,Price)
 values('0005','一级护理',500)
-select * from tb_PriceList
+select * from tb_PatientPriceList
 where PatientNo=''
 
-select Content,Price from tb_PatientDoctorAdvice as pda 
-                                        join tb_PriceList as pl on pda.Content=pl.Name
-                                        where Content not in (select AdviceContent from tb_PatientPriceList
-                                        where PatientNo='0005') and PatientNo='0005'
 select * from tb_PatientPriceList
-where PatientNo='0005'
-
-select COUNT(1) from tb_PatientDoctorAdvice
-where PatientNo='0005' and StopDateTime>GETDATE()
-
-select * from tb_PatientDoctorAdvice
-where PatientNo='0005' and StopDateTime>GETDATE()
-
-select p.Name,pda.LongOrShort,dac.Name as CategoryName,pda.Content,pda.HowMuch,pda.Nnit,pda.Way,pda.Frequency,
-pda.StopDateTime,pl.Price from tb_PatientDoctorAdvice as pda 
-join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
-join tb_PriceList as pl on pl.Name=pda.Content
-join tb_Patient as p on pda.PatientNo=p.No
 where PatientNo='0005'
 
 select * from tb_Patient
 select * from tb_MedicalRecord
 select * from tb_Template
+select * from tb_PatientDoctorAdvice
+
+
+select p.Name,pda.LongOrShort,dac.Name as CategoryName,pda.Content,pda.HowMuch,pda.Nnit,pda.Way,pda.Frequency,
+                                        pda.StopDateTime,pl.Price from tb_PatientDoctorAdvice as pda 
+                                        join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+                                        join tb_PatientPriceList as pl on pl.AdviceContent=pda.Content
+                                        join tb_Patient as p on pda.PatientNo=p.No
+                                        where pl.PatientNo='0005'
+
+select p.Name,pda.LongOrShort,dac.Name as CategoryName,pda.Content,pda.HowMuch,pda.Nnit,pda.Way,pda.Frequency,
+                                        pda.StopDateTime,pl.Price from tb_PatientDoctorAdvice as pda 
+                                        join tb_DoctorAdviceCategory as dac on pda.CategoryNo=dac.No
+                                        join tb_PriceList as pl on pl.Name=pda.Content
+                                        join tb_Patient as p on pda.PatientNo=p.No
+                                        where p.No='0005' and pl.Name not in(select AdviceContent from tb_PatientPriceList
+)
+select * from tb_Patient
+select * from tb_MedicalRecord
+where No='0005'
+ where Doctor='魏爱东'
+ update tb_MedicalRecord
+ set IsToHospital=0
+ where No=''
+ SELECT MR.No AS 病人ID ,P.Gender AS 性别 ,MR.Name AS 名字,MR.ThisNo AS 住院号 FROM tb_MedicalRecord AS MR
+		                                JOIN tb_Patient AS P ON MR.No=P.No
+		                                WHERE (Doctor='魏爱东' AND IsToHospital!=1 And BedNo!='' AND OutOfficesNo=0) OR (Doctor='' AND IsToHospital!=1 And BedNo!='' AND OutOfficesNo=0) 
+
+										UPDATE tb_MedicalRecord
+	                                   SET OtherSitiuation='',OutOfficesNo='',OutDate=''
+	                                   WHERE No=''

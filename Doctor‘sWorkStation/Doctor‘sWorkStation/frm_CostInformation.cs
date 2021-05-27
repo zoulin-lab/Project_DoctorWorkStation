@@ -20,8 +20,12 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             this.dgvCostInfo1.RowHeadersVisible = false;
+            this.dgvCostInfo1.BackgroundColor = Color.White;
+            this.dgvCostInfo2.BackgroundColor = Color.White;
             this.dgvCostInfo2.RowHeadersVisible = false;
             this.dgvCostInfo1.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvCostInfo2.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
             lblPrice.Visible = false;
 
@@ -47,21 +51,32 @@ namespace Doctor_sWorkStation
             sqlDataAdapter.SelectCommand = sqlCommand2;
             sqlDataAdapter.Fill(SelectedPriceTable);
             sqlConnection.Close();
-            //DataGridViewLinkColumn dgvlc = new DataGridViewLinkColumn();
-            //dgvlc.HeaderText = "转入详情";
-            //dgvlc.Name = "Detils";
-            //dgvlc.Text = "详情页";
-            //dgvlc.DisplayIndex = 3;
-            //this.dgvCostInfo1.Columns.Add(dgvlc);
+            
             this.dgvCostInfo1.DataSource = CostTable;
             this.dgvCostInfo2.DataSource = SelectedPriceTable;
             this.dgvCostInfo1.Columns["Content"].HeaderText = "项目";
             this.dgvCostInfo1.Columns["Price"].HeaderText = "费用";
             this.dgvCostInfo2.Columns["AdviceContent"].HeaderText = "项目";
             this.dgvCostInfo2.Columns["Price"].HeaderText = "费用";
-            this.dgvCostInfo1.Columns[this.dgvCostInfo1.Columns.Count - 1].AutoSizeMode =                       //数据网格视图的倒数第2列（即考试类型列）的自动调整列宽模式设为填充（至数据网格视图右侧边缘）；
+
+            DataGridViewLinkColumn link = new DataGridViewLinkColumn();
+            link.Name = "link_More";
+            link.HeaderText = "更多";
+            link.DefaultCellStyle.NullValue = "详情";
+            this.dgvCostInfo1.Columns.Add(link);
+            this.dgvCostInfo1.Columns["link_More"].DisplayIndex = 2;
+
+            DataGridViewLinkColumn link2 = new DataGridViewLinkColumn();
+            link2.Name = "link2_More";
+            link2.HeaderText = "更多";
+            link2.DefaultCellStyle.NullValue = "详情";
+            this.dgvCostInfo2.Columns.Add(link2);
+            this.dgvCostInfo2.Columns["link2_More"].DisplayIndex = 2;
+
+            
+            this.dgvCostInfo1.Columns[this.dgvCostInfo1.Columns.Count -1].AutoSizeMode =                       //数据网格视图的倒数第2列（即考试类型列）的自动调整列宽模式设为填充（至数据网格视图右侧边缘）；
                 DataGridViewAutoSizeColumnMode.Fill;
-            this.dgvCostInfo2.Columns[this.dgvCostInfo1.Columns.Count - 1].AutoSizeMode =                       //数据网格视图的倒数第2列（即考试类型列）的自动调整列宽模式设为填充（至数据网格视图右侧边缘）；
+            this.dgvCostInfo2.Columns[this.dgvCostInfo2.Columns.Count - 1].AutoSizeMode =                       //数据网格视图的倒数第2列（即考试类型列）的自动调整列宽模式设为填充（至数据网格视图右侧边缘）；
                 DataGridViewAutoSizeColumnMode.Fill;
         }
 
@@ -112,24 +127,41 @@ namespace Doctor_sWorkStation
                 @"insert tb_PatientPriceList(PatientNo,AdviceContent,Price)
                   values(@PatientNo,@AdviceContent,@Price)";                                              //指定SQL命令的命令文本；该命令插入选课记录；
             insertCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
-            insertCommand.Parameters.Add("@AdviceContent", SqlDbType.Char, 100, "AdviceContent");
+            insertCommand.Parameters.Add("@AdviceContent", SqlDbType.VarChar, 100, "AdviceContent");
             insertCommand.Parameters.Add("@Price",SqlDbType.Decimal,1,"Price");
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();                                           //声明并实例化SQL数据适配器；
             sqlDataAdapter.InsertCommand = insertCommand;
+            
             if (MessageBox.Show("确定向病人发送缴费信息吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {                                     //将SQL数据适配器的插入命令属性指向SQL命令；
                 sqlConnection.Open();                               //SQL数据适配器根据学生数据表提交更新，并返回受影响行数；
-                sqlDataAdapter.Update(this.SelectedPriceTable);
+                int rowCount = sqlDataAdapter.Update(this.SelectedPriceTable);
                 sqlConnection.Close();
-                MessageBox.Show("发送成功！");
-                frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
-                frm_DischargeNotice.Show();
+                if (rowCount == 0)
+                {
+                    MessageBox.Show("未新增项目！请重新选择项目！");
+                }
+                else
+                {
+                    MessageBox.Show("发送成功！");
+                    frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
+                    frm_DischargeNotice.Show();
+                }
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvCostInfo1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dgvCostInfo1.Columns[e.ColumnIndex].Name == "link_More" && e.RowIndex >= 0)
+            {
+                frm_Information frm_Information = new frm_Information();
+                frm_Information.Show();
+            }
         }
     }
 }

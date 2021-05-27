@@ -84,6 +84,7 @@ namespace Doctor_sWorkStation
                 updateCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 MessageBox.Show("等床成功！");
+                this.Close();
             }
             else
             {

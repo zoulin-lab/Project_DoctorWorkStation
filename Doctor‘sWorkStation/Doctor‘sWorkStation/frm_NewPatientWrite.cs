@@ -17,7 +17,7 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             //this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
-
+            this.rtbDiagnose.Focus();
             this.rdbMale.Enabled = false;
             this.rdbFemale.Enabled = false;
             this.rdbMarried.Enabled = false;
@@ -91,6 +91,7 @@ namespace Doctor_sWorkStation
                 this.cbxFirstOffice.SelectedValue = sqlDataReader["OfficeNo"];
                 this.txbWorkPlace.Text = sqlDataReader["WorkPlace"].ToString();
                 this.cbxInOffice.SelectedValue = -1;
+                this.cbxInOffice.SelectedValue = sqlDataReader["OfficeNo"];
                 this.cbxBedNo.SelectedValue = -1;
                 sqlConnection.Close();
 
@@ -99,33 +100,41 @@ namespace Doctor_sWorkStation
         
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
-            sqlConnection.ConnectionString =
-                    "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";
-            SqlCommand insertCommand = sqlConnection.CreateCommand();
-            insertCommand.CommandText = $@"insert tb_MedicalRecord(No,Name,ThisNo,InHospitalCount,OfficesNo,BedNo,InDate,MainDiagnoseContent,Doctor,IsToHospital)
-                                           values(@No,@Name,@ThisNo,1,@OfficesNo,@BedNo,@InDate,@MainDiagnoseContent,@Doctor,@IsToHospital)";
-            insertCommand.Parameters.AddWithValue("@No", this.txbNo.Text);
-            insertCommand.Parameters.AddWithValue("@Name", this.txbName.Text);
-            insertCommand.Parameters.AddWithValue("@ThisNo", this.txbThisNo.Text);
-            insertCommand.Parameters.AddWithValue("@OfficesNo", this.cbxInOffice.SelectedValue);
-            insertCommand.Parameters.AddWithValue("@BedNo", this.cbxBedNo.Text);
-            insertCommand.Parameters.AddWithValue("@InDate", this.dtpInDate.Value);
-            insertCommand.Parameters.AddWithValue("@MainDiagnoseContent", this.rtbDiagnose.Text);
-            insertCommand.Parameters.AddWithValue("@Doctor", Doctor.Name); 
-            insertCommand.Parameters.AddWithValue("@IsToHospital", 0);
-            sqlConnection.Open();
-            insertCommand.ExecuteNonQuery();
-            sqlConnection.Close();
-            if (this.cbxBedNo.Text == "") 
+            if (this.cbxInOffice.SelectedIndex >= 0 && this.rtbDiagnose.Text != "" && this.txbThisNo.Text != "") 
             {
-                MessageBox.Show($"暂无空闲病床！病人{this.txbName.Text}成为等床病人！");
+                SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
+                sqlConnection.ConnectionString =
+                        "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";
+                SqlCommand insertCommand = sqlConnection.CreateCommand();
+                insertCommand.CommandText = $@"insert tb_MedicalRecord(No,Name,ThisNo,InHospitalCount,OfficesNo,BedNo,InDate,MainDiagnoseContent,Doctor,IsToHospital,OutOfficesNo)
+                                           values(@No,@Name,@ThisNo,1,@OfficesNo,@BedNo,@InDate,@MainDiagnoseContent,@Doctor,@IsToHospital,0)";
+                insertCommand.Parameters.AddWithValue("@No", this.txbNo.Text);
+                insertCommand.Parameters.AddWithValue("@Name", this.txbName.Text);
+                insertCommand.Parameters.AddWithValue("@ThisNo", this.txbThisNo.Text);
+                insertCommand.Parameters.AddWithValue("@OfficesNo", this.cbxInOffice.SelectedValue);
+                insertCommand.Parameters.AddWithValue("@BedNo", this.cbxBedNo.Text);
+                insertCommand.Parameters.AddWithValue("@InDate", this.dtpInDate.Value);
+                insertCommand.Parameters.AddWithValue("@MainDiagnoseContent", this.rtbDiagnose.Text);
+                insertCommand.Parameters.AddWithValue("@Doctor", Doctor.Name);
+                insertCommand.Parameters.AddWithValue("@IsToHospital", 0);
+                sqlConnection.Open();
+                insertCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                if (this.cbxBedNo.Text == "")
+                {
+                    MessageBox.Show($"暂无空闲病床！病人{this.txbName.Text}成为等床病人！");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show($"病人{this.txbName.Text}新建成功！");
+                    this.Close();
+                }
             }
             else
             {
-                MessageBox.Show($"病人{this.txbName.Text}新建成功！");
+                MessageBox.Show("请输入入院诊断或住院号！");
             }
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

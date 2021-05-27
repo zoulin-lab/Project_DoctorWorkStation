@@ -52,7 +52,7 @@ namespace Doctor_sWorkStation
                 {
                     this.txbNo.Text = sqlDataReader["Patient"].ToString();
                     this.txbName.Text = sqlDataReader["Name"].ToString();
-                    if (sqlDataReader["Gender"].ToString()=="男")
+                    if (sqlDataReader["Gender"].ToString() == "男")
                     {
                         this.rdbMale.Checked = true;
                         this.rdbFemale.Checked = false;
@@ -107,7 +107,7 @@ namespace Doctor_sWorkStation
                 InitialDirectory = GetFolderPath(SpecialFolder.MyPictures),//指定文件夹,使用前加了using static System.Environment; ->问题：图片为空时会报错
                 Filter = "图片文件|*.jpg;*.bmp;*.png"//过滤器
             };
-            if (openFileDialog.ShowDialog()==DialogResult.OK)//为了判断选择或打开或取出的按钮
+            if (openFileDialog.ShowDialog() == DialogResult.OK)//为了判断选择或打开或取出的按钮
             {
                 string fileName = openFileDialog.FileName;
                 this.pbPatient.Image = Image.FromFile(fileName);//使用前加using system.drawing
@@ -116,18 +116,20 @@ namespace Doctor_sWorkStation
 
         private void btnChangeInfo_Click(object sender, EventArgs e)
         {
-            //更新图片文件所需语句
-            MemoryStream memoryStream = new MemoryStream();
-            this.pbPatient.Image.Save(memoryStream, ImageFormat.Bmp);
-            byte[] photoBytes = new byte[memoryStream.Length];
-            memoryStream.Seek(0, SeekOrigin.Begin);//保证从头开始读
-            memoryStream.Read(photoBytes, 0, photoBytes.Length);
+            if (this.pbPatient.Image != null)
+            {
+                //更新图片文件所需语句
+                MemoryStream memoryStream = new MemoryStream();
+                this.pbPatient.Image.Save(memoryStream, ImageFormat.Bmp);
+                byte[] photoBytes = new byte[memoryStream.Length];
+                memoryStream.Seek(0, SeekOrigin.Begin);//保证从头开始读
+                memoryStream.Read(photoBytes, 0, photoBytes.Length);
 
-            SqlConnection sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString =
-                "Server=(local);DataBase=DataBase_DoctorWorkStation;Integrated Security=true";
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandText = @"BEGIN TRAN
+                SqlConnection sqlConnection = new SqlConnection();
+                sqlConnection.ConnectionString =
+                    "Server=(local);DataBase=DataBase_DoctorWorkStation;Integrated Security=true";
+                SqlCommand sqlCommand = sqlConnection.CreateCommand();
+                sqlCommand.CommandText = @"BEGIN TRAN
 	                                   UPDATE tb_Patient 
 	                                   SET Name=@Name,Gender=@Gender,Career=@Career,Birthday=@Birthday,Picture=@Picture
 	                                   WHERE No=@PatientNo
@@ -135,49 +137,53 @@ namespace Doctor_sWorkStation
 	                                   SET ThisNo=@ThisNo,InHospitalCount=@InHospitalCount,OfficesNo=@OfficesNo,InDate=@InDate,OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
 	                                   WHERE No=@PatientNo
 	                                   COMMIT";
-            sqlCommand.Parameters.AddWithValue("@Name",txbName.Text.Trim());
-            if (rdbMale.Checked==true)
-            {
-                sqlCommand.Parameters.AddWithValue("@Gender", "男");
-            }
-            else
-            {
-                sqlCommand.Parameters.AddWithValue("@Gender", "女");
-            }
-            sqlCommand.Parameters.AddWithValue("@Career",txbCareer.Text.Trim());
-            sqlCommand.Parameters.AddWithValue("@Birthday",dtpBirthday.Value);
-            sqlCommand.Parameters.AddWithValue("@ThisNo",txbInHospitalNo.Text.Trim());
-            sqlCommand.Parameters.AddWithValue("@InHospitalCount",Convert.ToInt32(txbInHospitalCount.Text.Trim()));
-            sqlCommand.Parameters.AddWithValue("@OfficesNo",(int)cbxInHospitalRoom.SelectedValue);
-            sqlCommand.Parameters.AddWithValue("@InDate",dtpInDate.Value);
-            sqlCommand.Parameters.AddWithValue("@OtherSitiuation",txbSituation.Text.Trim());
-            if (cbxOutHospitalRoom.SelectedIndex>=0)
-            {
-                sqlCommand.Parameters.AddWithValue("@OutOfficesNo", (int)cbxOutHospitalRoom.SelectedValue);
-            }
-            else
-            {
-                sqlCommand.Parameters.AddWithValue("@OutOfficesNo", "");
-            }
-            if (this.dtpOutDate.Checked == false) 
-            {
-                sqlCommand.Parameters.AddWithValue("@OutDate", "1900/1/1 0:00:00");
-            }
-            else
-            {
-                sqlCommand.Parameters.AddWithValue("@OutDate", dtpOutDate.Value);
-            }
-            
-            //更新图片文件
-            sqlCommand.Parameters.AddWithValue("@Picture", photoBytes);
+                sqlCommand.Parameters.AddWithValue("@Name", txbName.Text.Trim());
+                if (rdbMale.Checked == true)
+                {
+                    sqlCommand.Parameters.AddWithValue("@Gender", "男");
+                }
+                else
+                {
+                    sqlCommand.Parameters.AddWithValue("@Gender", "女");
+                }
+                sqlCommand.Parameters.AddWithValue("@Career", txbCareer.Text.Trim());
+                sqlCommand.Parameters.AddWithValue("@Birthday", dtpBirthday.Value);
+                sqlCommand.Parameters.AddWithValue("@ThisNo", txbInHospitalNo.Text.Trim());
+                sqlCommand.Parameters.AddWithValue("@InHospitalCount", Convert.ToInt32(txbInHospitalCount.Text.Trim()));
+                sqlCommand.Parameters.AddWithValue("@OfficesNo", (int)cbxInHospitalRoom.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@InDate", dtpInDate.Value);
+                sqlCommand.Parameters.AddWithValue("@OtherSitiuation", txbSituation.Text.Trim());
+                if (cbxOutHospitalRoom.SelectedIndex >= 0)
+                {
+                    sqlCommand.Parameters.AddWithValue("@OutOfficesNo", (int)cbxOutHospitalRoom.SelectedValue);
+                }
+                else
+                {
+                    sqlCommand.Parameters.AddWithValue("@OutOfficesNo", "");
+                }
+                if (this.dtpOutDate.Checked == false)
+                {
+                    sqlCommand.Parameters.AddWithValue("@OutDate", "1900/1/1 0:00:00");
+                }
+                else
+                {
+                    sqlCommand.Parameters.AddWithValue("@OutDate", dtpOutDate.Value);
+                }
 
-            sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
-            sqlConnection.Open();
-            int rowAffected = sqlCommand.ExecuteNonQuery();//执行并返回结果
-            sqlConnection.Close();
-            //MessageBox.Show($"更新{rowAffected}行。");
-            MessageBox.Show($"更新成功。");
+                //更新图片文件
+                sqlCommand.Parameters.AddWithValue("@Picture", photoBytes);
 
+                sqlCommand.Parameters.AddWithValue("@PatientNo", Patient.No);
+                sqlConnection.Open();
+                int rowAffected = sqlCommand.ExecuteNonQuery();//执行并返回结果
+                sqlConnection.Close();
+                //MessageBox.Show($"更新{rowAffected}行。");
+                MessageBox.Show($"更新成功。");
+            }
+            else
+            {
+                MessageBox.Show("请选择图片！");
+            }
         }
 
         private void frm_Information_FormClosed(object sender, FormClosedEventArgs e)
@@ -206,23 +212,55 @@ namespace Doctor_sWorkStation
             sqlConnection.Open();
             int Count = (int)sqlCommand.ExecuteScalar();
             sqlConnection.Close();
-            if (Count > 0)
+            if (this.cbxOutHospitalRoom.SelectedIndex >= 0 && this.dtpOutDate.Checked == true) 
             {
-                if (MessageBox.Show("仍有医嘱还在执行中,确定出院吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (Count > 0)
                 {
-                    Patient.No = this.txbNo.Text;
-                    frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
-                    frm_DischargeNotice.Show();
+                    if (MessageBox.Show("仍有医嘱还在执行中,确定出院吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
+                        sqlCommand2.CommandText = @"
+	                                   UPDATE tb_MedicalRecord
+	                                   SET OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
+	                                   WHERE No=@PatientNo";
+                        sqlCommand2.Parameters.AddWithValue("@PatientNo", txbNo.Text.Trim());
+                        sqlCommand2.Parameters.AddWithValue("@OtherSitiuation", txbSituation.Text.Trim());
+                        sqlCommand2.Parameters.AddWithValue("@OutOfficesNo", (int)cbxOutHospitalRoom.SelectedValue);
+                        sqlCommand2.Parameters.AddWithValue("@OutDate", dtpOutDate.Value);
+                        sqlConnection.Open();
+                        int rowAffected = sqlCommand2.ExecuteNonQuery();//执行并返回结果
+                        sqlConnection.Close();
+                        Patient.No = this.txbNo.Text;
+                        frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
+                        frm_DischargeNotice.Show();
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("确定允许病人出院吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
+                        sqlCommand2.CommandText = @"
+	                                   UPDATE tb_MedicalRecord
+	                                   SET OtherSitiuation=@OtherSitiuation,OutOfficesNo=@OutOfficesNo,OutDate=@OutDate
+	                                   WHERE No=@PatientNo";
+                        sqlCommand2.Parameters.AddWithValue("@PatientNo", txbNo.Text.Trim());
+                        sqlCommand2.Parameters.AddWithValue("@OtherSitiuation", txbSituation.Text.Trim());
+                        sqlCommand2.Parameters.AddWithValue("@OutOfficesNo", (int)cbxOutHospitalRoom.SelectedValue);
+                        sqlCommand2.Parameters.AddWithValue("@OutDate", dtpOutDate.Value);
+                        sqlConnection.Open();
+                        sqlCommand2.ExecuteNonQuery();//执行并返回结果
+                        sqlConnection.Close();
+
+                        Patient.No = this.txbNo.Text;
+                        frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
+                        frm_DischargeNotice.Show();
+                    }
                 }
             }
             else
             {
-                if (MessageBox.Show("确定允许病人出院吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    Patient.No = this.txbNo.Text;
-                    frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
-                    frm_DischargeNotice.Show();
-                }
+                MessageBox.Show("请输入出院科室或出院时间！");
             }
         }
     }

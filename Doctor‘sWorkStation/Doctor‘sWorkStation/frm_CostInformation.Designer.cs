@@ -49,6 +49,7 @@
             this.dgvCostInfo1.RowTemplate.Height = 30;
             this.dgvCostInfo1.Size = new System.Drawing.Size(291, 399);
             this.dgvCostInfo1.TabIndex = 0;
+            this.dgvCostInfo1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCostInfo1_CellContentClick);
             // 
             // dgvCostInfo2
             // 
