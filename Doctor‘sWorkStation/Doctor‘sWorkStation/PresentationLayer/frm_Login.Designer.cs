@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txbNo = new System.Windows.Forms.TextBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.btnSure = new System.Windows.Forms.Button();
@@ -35,6 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSignUp = new System.Windows.Forms.Label();
+            this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txbNo
@@ -101,6 +104,10 @@
             this.lblSignUp.Text = "注册";
             this.lblSignUp.Click += new System.EventHandler(this.lblSignUp_Click);
             // 
+            // ErrorProvider
+            // 
+            this.ErrorProvider.ContainerControl = this;
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -115,6 +122,7 @@
             this.Controls.Add(this.txbNo);
             this.Name = "frm_Login";
             this.Text = "用户登录";
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +137,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSignUp;
+        private System.Windows.Forms.ErrorProvider ErrorProvider;
     }
 }

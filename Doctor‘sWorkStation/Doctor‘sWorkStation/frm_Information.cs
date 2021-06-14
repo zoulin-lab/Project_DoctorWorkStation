@@ -82,14 +82,16 @@ namespace Doctor_sWorkStation
 
                 photoBytes = sqlDataReader["Picture"] == DBNull.Value ? null : (byte[])sqlDataReader["Picture"];
 
-                sqlDataReader.Close();//读取器自带的关闭函数
+                sqlConnection.Close();//读取器自带的关闭函数
 
                 if (photoBytes != null)
                 {
                     MemoryStream memoryStream = new MemoryStream(photoBytes);
                     this.pbPatient.Image = Image.FromStream(memoryStream);
                 }
-
+                //诊断手术检验详细信息
+                SqlCommand sqlCommand3 = sqlConnection.CreateCommand();
+                sqlCommand3.CommandText = $@"";
             }
             else
             {

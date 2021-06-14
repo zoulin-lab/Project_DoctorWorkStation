@@ -71,6 +71,7 @@ namespace Doctor_sWorkStation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(this.dgvWaitBedPatient.CurrentRow.Cells["Bed"].Value.ToString());
             SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
             sqlConnection.ConnectionString =
                 "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=sspi";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；

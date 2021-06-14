@@ -30,9 +30,6 @@
         {
             this.tcInfo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,9 +61,21 @@
             this.btnPicture = new System.Windows.Forms.Button();
             this.btnChangeInfo = new System.Windows.Forms.Button();
             this.btnOutHospital = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgv1 = new System.Windows.Forms.DataGridView();
+            this.dgv2 = new System.Windows.Forms.DataGridView();
+            this.dgv3 = new System.Windows.Forms.DataGridView();
+            this.dgv4 = new System.Windows.Forms.DataGridView();
             this.tcInfo.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv4)).BeginInit();
             this.SuspendLayout();
             // 
             // tcInfo
@@ -86,6 +95,7 @@
             // tabPage1
             // 
             this.tabPage1.AllowDrop = true;
+            this.tabPage1.Controls.Add(this.dgv1);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1079, 316);
@@ -93,35 +103,9 @@
             this.tabPage1.Text = "诊断信息";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1079, 316);
-            this.tabPage2.TabIndex = 0;
-            this.tabPage2.Text = "中医诊断信息";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(103, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 28);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(26, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 18);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "label10";
-            // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dgv3);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -132,6 +116,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dgv4);
             this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -390,6 +375,52 @@
             this.btnOutHospital.UseVisualStyleBackColor = true;
             this.btnOutHospital.Click += new System.EventHandler(this.btnOutHospital_Click);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgv2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(1079, 316);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "检验信息";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgv1
+            // 
+            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv1.Location = new System.Drawing.Point(18, 16);
+            this.dgv1.Name = "dgv1";
+            this.dgv1.RowTemplate.Height = 30;
+            this.dgv1.Size = new System.Drawing.Size(1049, 279);
+            this.dgv1.TabIndex = 0;
+            // 
+            // dgv2
+            // 
+            this.dgv2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv2.Location = new System.Drawing.Point(15, 19);
+            this.dgv2.Name = "dgv2";
+            this.dgv2.RowTemplate.Height = 30;
+            this.dgv2.Size = new System.Drawing.Size(1049, 279);
+            this.dgv2.TabIndex = 1;
+            // 
+            // dgv3
+            // 
+            this.dgv3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv3.Location = new System.Drawing.Point(15, 19);
+            this.dgv3.Name = "dgv3";
+            this.dgv3.RowTemplate.Height = 30;
+            this.dgv3.Size = new System.Drawing.Size(1049, 279);
+            this.dgv3.TabIndex = 1;
+            // 
+            // dgv4
+            // 
+            this.dgv4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv4.Location = new System.Drawing.Point(15, 19);
+            this.dgv4.Name = "dgv4";
+            this.dgv4.RowTemplate.Height = 30;
+            this.dgv4.Size = new System.Drawing.Size(1049, 279);
+            this.dgv4.TabIndex = 1;
+            // 
             // frm_Information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -429,9 +460,15 @@
             this.Text = "首页信息";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_Information_FormClosed);
             this.tcInfo.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbPatient)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,7 +478,6 @@
 
         private System.Windows.Forms.TabControl tcInfo;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label1;
@@ -472,8 +508,11 @@
         private System.Windows.Forms.PictureBox pbPatient;
         private System.Windows.Forms.Button btnPicture;
         private System.Windows.Forms.Button btnChangeInfo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnOutHospital;
+        private System.Windows.Forms.DataGridView dgv1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dgv2;
+        private System.Windows.Forms.DataGridView dgv3;
+        private System.Windows.Forms.DataGridView dgv4;
     }
 }

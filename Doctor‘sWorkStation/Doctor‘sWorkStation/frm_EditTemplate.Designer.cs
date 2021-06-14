@@ -96,9 +96,8 @@
             // 
             this.cbxTemplateCategory.FormattingEnabled = true;
             this.cbxTemplateCategory.Items.AddRange(new object[] {
-            "-请选择-",
-            "个人",
             "公用",
+            "个人",
             "科室"});
             this.cbxTemplateCategory.Location = new System.Drawing.Point(157, 166);
             this.cbxTemplateCategory.Name = "cbxTemplateCategory";

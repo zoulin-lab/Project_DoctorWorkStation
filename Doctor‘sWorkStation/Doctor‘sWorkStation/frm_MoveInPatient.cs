@@ -65,8 +65,8 @@ namespace Doctor_sWorkStation
 
         private void frm_MoveInPatient_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frm_FirstAge frm_FirstAge = new frm_FirstAge();
-            frm_FirstAge.Show();
+            //frm_FirstAge frm_FirstAge = new frm_FirstAge();
+            //frm_FirstAge.Show();
         }
     }
 }

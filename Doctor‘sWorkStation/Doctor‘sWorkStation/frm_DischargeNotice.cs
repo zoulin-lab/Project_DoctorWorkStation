@@ -13,6 +13,7 @@ namespace Doctor_sWorkStation
 {
     public partial class frm_DischargeNotice : Form
     {
+        int pick = 0;
         public frm_DischargeNotice()
         {
             InitializeComponent();
@@ -81,20 +82,21 @@ namespace Doctor_sWorkStation
 
         private void btnDischarge_Click(object sender, EventArgs e)
         {
+            
             SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
             sqlConnection.ConnectionString =
                 "Server=(local);Database=DataBase_DoctorWorkStation;Integrated Security=true";                         //在字符串变量中，描述连接字符串所需的服务器地址、数据库名称、集成安全性（即是否使用Windows验证）；
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandText = $@"select OutOfficesNo from tb_MedicalRecord
+            sqlCommand.CommandText = $@"select * from tb_MedicalRecord
                                         where No=@No";
             sqlCommand.Parameters.AddWithValue("@No", Patient.No);
             sqlConnection.Open();
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            //sqlConnection.Close();
             if (sqlDataReader.Read())
             {
-                if (sqlDataReader["OutOfficesNo"].ToString() == "0")
+                if (sqlDataReader["OutOfficesNo"].ToString() == "0"||(DateTime)sqlDataReader["OutDate"]==Convert.ToDateTime("1900-01-01"))
                 {
+                    pick = 1;
                     if (MessageBox.Show("出院信息未填写完整，是否再次填写?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
                         frm_Information frm_Information = new frm_Information();
@@ -102,29 +104,30 @@ namespace Doctor_sWorkStation
                         this.Close();
                     }
                 }
-                else
+            }
+            sqlConnection.Close();
+            if (pick == 0)
+            {
+                if (this.dgvInfo2.RowCount <= 1)
                 {
-                    if (this.dgvInfo2.RowCount <= 1)
-                    {
-                        SqlCommand updateCommand = sqlConnection.CreateCommand();
-                        updateCommand.CommandText = $@" update tb_MedicalRecord
+                    SqlCommand updateCommand = sqlConnection.CreateCommand();
+                    updateCommand.CommandText = $@" update tb_MedicalRecord
                                             set IsToHospital=0
                                             where No=@No";
-                        updateCommand.Parameters.AddWithValue("@No", Patient.No);
-                        //sqlConnection.Open();
-                        updateCommand.ExecuteNonQuery();
-                        sqlConnection.Close();
-                        MessageBox.Show($"编号为{Patient.No.ToString()}病人出院成功!");
-                        this.Close();
-                    }
-                    else
+                    updateCommand.Parameters.AddWithValue("@No", Patient.No);
+                    sqlConnection.Open();
+                    updateCommand.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    MessageBox.Show($"编号为{Patient.No.ToString()}病人出院成功!");
+                    this.Close();
+                }
+                else
+                {
+                    if (MessageBox.Show("病人仍有未缴费项目，是否向病人发送缴费信息？", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        if (MessageBox.Show("病人仍有未缴费项目，是否向病人发送缴费信息？", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                        {
-                            frm_CostInformation frm_CostInformation = new frm_CostInformation();
-                            frm_CostInformation.Show();
-                            this.Close();
-                        }
+                        frm_CostInformation frm_CostInformation = new frm_CostInformation();
+                        frm_CostInformation.Show();
+                        this.Close();
                     }
                 }
             }

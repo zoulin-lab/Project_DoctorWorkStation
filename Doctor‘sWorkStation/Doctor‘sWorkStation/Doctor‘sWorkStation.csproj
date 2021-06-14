@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogicLayer\DoctorBll.cs" />
+    <Compile Include="BusinessLogicLayer\IDoctorBll.cs" />
     <Compile Include="CalendarColumn.cs" />
+    <Compile Include="DataAccessLayer\DoctorDal.cs" />
+    <Compile Include="DataAccessLayer\IDoctorDal.cs" />
     <Compile Include="frm_CostInformation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,7 +69,7 @@
     <Compile Include="frm_DoctorAdviceCategory.Designer.cs">
       <DependentUpon>frm_DoctorAdviceCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Doctor.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="frm_EditTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,10 +100,10 @@
     <Compile Include="frm_Information.Designer.cs">
       <DependentUpon>frm_Information.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_Login.cs">
+    <Compile Include="PresentationLayer\frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Login.Designer.cs">
+    <Compile Include="PresentationLayer\frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_MedicalRecordWrite.cs">
@@ -138,10 +142,10 @@
     <Compile Include="frm_PatientTamplate.Designer.cs">
       <DependentUpon>frm_PatientTamplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_SignUp.cs">
+    <Compile Include="PresentationLayer\frm_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_SignUp.Designer.cs">
+    <Compile Include="PresentationLayer\frm_SignUp.Designer.cs">
       <DependentUpon>frm_SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_NewPatient.cs">
@@ -174,7 +178,7 @@
     <Compile Include="frm_WaitBedPatient.Designer.cs">
       <DependentUpon>frm_WaitBedPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Patient.cs" />
+    <Compile Include="Model\Patient.cs" />
     <Compile Include="frm_PatientListTwo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,7 +211,7 @@
     <EmbeddedResource Include="frm_Information.resx">
       <DependentUpon>frm_Information.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Login.resx">
+    <EmbeddedResource Include="PresentationLayer\frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_MedicalRecordTemplate.resx">
@@ -234,7 +238,7 @@
     <EmbeddedResource Include="frm_PatientTamplate.resx">
       <DependentUpon>frm_PatientTamplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_SignUp.resx">
+    <EmbeddedResource Include="PresentationLayer\frm_SignUp.resx">
       <DependentUpon>frm_SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NewPatient.resx">
@@ -311,5 +315,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

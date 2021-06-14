@@ -80,7 +80,7 @@ namespace Doctor_sWorkStation
 
         private void btnRight_Click(object sender, EventArgs e)
         {
-            if (this.dgvHadPickedTemplate.RowCount == 0)                                                      //若已选课程数据网格视图内的行计数等于0；
+            if (this.dgvHadPickedTemplate.RowCount == 1)                                                      //若已选课程数据网格视图内的行计数等于0；
                 return;                                                                                     //返回；
             DataRowView MyTemplateRowView =
                 this.dgvHadPickedTemplate.CurrentRow.DataBoundItem as DataRowView;                            //将已选课程数据网格视图的当前行的数据绑定项，转换为数据行视图；

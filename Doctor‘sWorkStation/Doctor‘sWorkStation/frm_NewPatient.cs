@@ -103,8 +103,8 @@ namespace Doctor_sWorkStation
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            frm_FirstAge frm_FirstAge = new frm_FirstAge();
-            frm_FirstAge.Show();
+            //frm_FirstAge frm_FirstAge = new frm_FirstAge();
+            //frm_FirstAge.Show();
         }
 
         private void btnSure_Click(object sender, EventArgs e)

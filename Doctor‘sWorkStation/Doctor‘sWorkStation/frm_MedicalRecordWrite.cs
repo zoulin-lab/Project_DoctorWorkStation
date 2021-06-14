@@ -18,6 +18,7 @@ namespace Doctor_sWorkStation
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; //本窗体启动位置设为屏幕中央；
+            txbMedicalRecordTitle.Text = Patient.Name;
 
             SqlConnection sqlConnection = new SqlConnection();                                          //声明并实例化SQL连接；
             sqlConnection.ConnectionString =
@@ -46,18 +47,38 @@ namespace Doctor_sWorkStation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string ThisFileName = this.txbMedicalRecordTitle.Text;
-            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{ThisFileName}.docx";
-            System.Diagnostics.Process.Start(fileName);
+            if (System.IO.File.Exists($@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx"))
+            {
+                string ThisFileName = this.txbMedicalRecordTitle.Text;
+                string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{ThisFileName}.docx";
+                System.Diagnostics.Process.Start(fileName);
+            }
+            else
+            {
+                MessageBox.Show("该病人病历还未建立，请自行新建！");
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            File.Copy($@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.cbxTemplate.Text}.docx", $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx");
-            MessageBox.Show("新建成功！");
-            MessageBox.Show(this.cbxTemplate.Text);
-            string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx";
-            System.Diagnostics.Process.Start(fileName);
+            if (this.cbxTemplate.SelectedIndex > 0)
+            {
+                if (!System.IO.File.Exists($@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx"))
+                {
+                    File.Copy($@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\{this.cbxTemplate.Text}.docx", $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx");
+                    MessageBox.Show("新建成功！");
+                    string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{this.txbMedicalRecordTitle.Text}.docx";
+                    System.Diagnostics.Process.Start(fileName);
+                }
+                else
+                {
+                    MessageBox.Show("该病人病历已存在！");
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选择模板！");
+            }
         }
     }
 }

@@ -124,9 +124,15 @@ namespace Doctor_sWorkStation
             }
             if (lbPatient.SelectedIndex > -1 && lbObject.SelectedIndex == 0)
             {
-                string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{lbPatient.Text}.docx";
-                System.Diagnostics.Process.Start(fileName);
-
+                if (System.IO.File.Exists($@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{lbPatient.Text}.docx"))
+                {
+                    string fileName = $@"D:\数据库作业-林立老师\Project_DoctorWorkStation\文档\病历\{lbPatient.Text}.docx";
+                    System.Diagnostics.Process.Start(fileName);
+                }
+                else
+                {
+                    MessageBox.Show("该病人病历还未建立，请自行新建！");
+                }
             }
         }
 
@@ -150,9 +156,10 @@ namespace Doctor_sWorkStation
 
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Patient.Name = lbPatient.Text.ToString();
             frm_MedicalRecordWrite frm_MedicalRecordWrite = new frm_MedicalRecordWrite();
             frm_MedicalRecordWrite.Show();
-            frm_MedicalRecordWrite.Text = "某某的病历";
+            frm_MedicalRecordWrite.Text = $"{Patient.Name}的病历";
         }
 
         private void 搜索病人ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,7 +189,15 @@ namespace Doctor_sWorkStation
 
         private void 出院通知ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Patient.No = lbPatient.SelectedValue.ToString(); 
+            if (lbPatient.SelectedIndex < 0) 
+            {
+                Patient.No = "";
+            }
+            else
+            {
+                Patient.No = lbPatient.SelectedValue.ToString();
+            }
+            
             frm_DischargeNotice frm_DischargeNotice = new frm_DischargeNotice();
             frm_DischargeNotice.Show();
         }

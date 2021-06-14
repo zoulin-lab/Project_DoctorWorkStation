@@ -21,21 +21,31 @@ CREATE TABLE tb_Doctor
 	    VARCHAR(20)
 	    NOT NULL,
 	    OfficeNo
-	    int
+	    int,
+		IsActivated  --是否激活
+		BIT
+		DEFAULT 1
+	    ,LoginFailCount --登录失败次数
+		INT
+		DEFAULT 0
 	   )
 
 DELETE tb_Doctor
 INSERT tb_Doctor
-       (No,Name,Password,OfficeNo)
+       (No,Name,Password,OfficeNo,IsActivated)
 	   VALUES
-	   ('D001','魏爱东',HashBytes('MD5','001'),1),
-	   ('D002','李君',HashBytes('MD5','002'),4),
-	   ('D003','周彩云',HashBytes('MD5','003'),3),
-	   ('D004','马勇',HashBytes('MD5','004'),2),
-	   ('D005','梁一一',HashBytes('MD5','005'),1),
-	   ('D006','张强',HashBytes('MD5','006'),1),
-	   ('D007','王小二',HashBytes('MD5','007'),1)
+	   ('D001','魏爱东',HashBytes('MD5','001'),1,1),
+	   ('D002','李君',HashBytes('MD5','002'),4,1),
+	   ('D003','周彩云',HashBytes('MD5','003'),3,1),
+	   ('D004','马勇',HashBytes('MD5','004'),2,1),
+	   ('D005','梁一一',HashBytes('MD5','005'),1,1),
+	   ('D006','张强',HashBytes('MD5','006'),1,1),
+	   ('D007','王小二',HashBytes('MD5','007'),1,1)
 select * from tb_Doctor
+
+UPDATE tb_Doctor SET
+                                           IsActivated = 1
+                                          , LoginFailCount = 0 WHERE No = 'D001'
 
 DROP TABLE tb_Offices
 CREATE TABLE tb_Offices
@@ -46,7 +56,7 @@ CREATE TABLE tb_Offices
 	   NOT NULL,
 	   Name
 	   VARCHAR(20))
-
+select * from tb_Offices
 INSERT tb_Offices
        (OfficesNo,Name)
 	   VALUES
@@ -193,7 +203,7 @@ INSERT tb_MedicalRecord
 	   ('0006','M0011','李焕二',2,'0011',1,'2020/04/01','呼吸道感染','魏爱东','','','',1,1),
 	   ('0007','M0012','焕二',1,'0012',4,'2020/04/01','泌尿感染','李君','','','',1,1),
 	   ('0008','M0013','李三',4,'0013',3,'2020/04/07','蛛网膜下出血','周彩云','','','',1,0)
-
+update tb_MedicalRecord set IsToHospital=1 where Name='李焕'
 
 SELECT * FROM tb_MedicalRecord 
 
